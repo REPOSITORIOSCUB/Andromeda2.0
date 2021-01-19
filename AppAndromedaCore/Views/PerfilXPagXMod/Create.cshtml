@@ -1,0 +1,145 @@
+﻿@model BAL.Modelos.Configuracion.PerfilXPagXModModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Perfil x Página x Módulo</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Crear</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "PerfilXPagXMod", FormMethod.Post, new { id = "id" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card bg-light mb-3" style="max-width: 100%;">
+                <div class="card-header bg-gradient-gray" style="text-align:center">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col">
+                                INGRESO PERFIL POR PÁGINA POR MÓDULOS
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.IdModulo, htmlAttributes: new { @class = "control-label col-md" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                        @*<input type="text" class="form-control" id="IdModulo" name="IdModulo" value="@Html.DisplayFor(model => model.IdModulo)" />*@
+                                        @Html.DropDownListFor(model => model.IdModulo, ViewBag.ListaModulo as SelectList, new { @id = "Id", @class = "form-control" })
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md" })</h6>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                        @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                        @Html.DropDownListFor(model => model.IdPerfil, ViewBag.ListaPerfil as SelectList, new { @id = "Id", @class = "form-control" })
+                                        @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md" })</h6>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                        @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                        @Html.DropDownListFor(model => model.IdPagina, ViewBag.ListaPagina as SelectList, new { @id = "Id", @class = "form-control" })
+                                        @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+
+                            </div>
+
+                            <div align="left">
+                                @Html.ActionLink(" Cancelar", "Index", "PerfilXPagXMod", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+@*<h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>PerfilXPagXModModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPerfil, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPerfil, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPagina, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPagina, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdModulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdModulo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdModulo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

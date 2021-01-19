@@ -1,0 +1,160 @@
+﻿@model BAL.Modelos.Configuracion.BotonXPerXPagModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Botón por Perfil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+    <input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+    <input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+
+    <input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card bg-light mb-3" style="max-width: 100%;">
+                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col">
+                                    MODIFICAR BOTON POR PERFIL
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true)
+                                        <div class="row">
+                                            <div class="form-group col-sm-1">
+                                                <h6>@Html.LabelFor(model => model.Id, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-id-badges"></i></span>
+                                                    <input type="text" disabled class="form-control" id="Id" name="ID" value="@Html.DisplayFor(model => model.Id)" />
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm">
+                                                <h6>@Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md-2" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                    @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                                    @Html.DropDownListFor(model => model.IdPerfil, ViewBag.ListaPerfil as SelectList, new { @id = "Id", @class = "form-control" })
+                                                    @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+                                            <div class="form-group col-sm">
+                                                <h6>@Html.LabelFor(model => model.IdBoton, htmlAttributes: new { @class = "control-label col-md-2" })</h6>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                    @*<input type="text" class="form-control" id="IdModulo" name="IdModulo" value="@Html.DisplayFor(model => model.IdModulo)" />*@
+                                                    @Html.DropDownListFor(model => model.IdBoton, ViewBag.ListaBoton as SelectList, new { @id = "Id", @class = "form-control" })
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                <h6>@Html.LabelFor(model => model.Estado, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                    @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                                    @Html.DropDownListFor(model => model.Estado, ViewBag.ListaEstado as SelectList, new { @id = "Id", @class = "form-control" })
+                                                    @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div align="left">
+                                    @Html.ActionLink(" Cancelar", "Index", "BotonXPerfil", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                    <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+@*<h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>BotonXPerXPagModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPerfil, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPerfil, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdBoton, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdBoton, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdBoton, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

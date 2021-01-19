@@ -1,0 +1,177 @@
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\AppAndromedaCore.dll.config
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\AppAndromedaCore.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\AppAndromedaCore.pdb
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csc.exe
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csc.exe.config
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csc.rsp
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csi.exe
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csi.exe.config
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\csi.rsp
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.AppContext.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Collections.Immutable.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Console.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Globalization.Calendars.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.IO.Compression.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.IO.FileSystem.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Net.Http.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Net.Sockets.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Reflection.Metadata.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.ValueTuple.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Xml.XPath.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\vbc.exe
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\vbc.exe.config
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\vbc.rsp
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\VBCSCompiler.exe
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\roslyn\VBCSCompiler.exe.config
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Antlr3.Runtime.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\BAL.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\EntityFramework.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\EntityFramework.SqlServer.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Microsoft.Web.Infrastructure.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Newtonsoft.Json.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\ServiciosApp.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Helpers.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Mvc.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Optimization.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Razor.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.Deployment.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.Razor.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\WebGrease.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\BAL.pdb
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\ServiciosApp.pdb
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\EntityFramework.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\EntityFramework.SqlServer.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Helpers.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Mvc.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Optimization.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.Razor.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.Deployment.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\System.Web.WebPages.Razor.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Newtonsoft.Json.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Antlr3.Runtime.pdb
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\obj\Debug\AppAndromedaCore.csprojAssemblyReference.cache
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CoreCompileInputs.cache
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CopyComplete
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\obj\Debug\AppAndromedaCore.dll
+C:\temp\001Andromeda\Andromeda - copia\AppAndromedaCore\obj\Debug\AppAndromedaCore.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\AppAndromedaCore.dll.config
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\AppAndromedaCore.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\AppAndromedaCore.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csc.exe
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csc.exe.config
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csc.rsp
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csi.exe
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csi.exe.config
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\csi.rsp
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.AppContext.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Collections.Immutable.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Console.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Globalization.Calendars.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.IO.Compression.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.IO.FileSystem.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Net.Http.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Net.Sockets.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Reflection.Metadata.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.ValueTuple.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Xml.XPath.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\vbc.exe
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\vbc.exe.config
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\vbc.rsp
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\VBCSCompiler.exe
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\roslyn\VBCSCompiler.exe.config
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Antlr3.Runtime.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\BAL.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\EntityFramework.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\EntityFramework.SqlServer.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Microsoft.Web.Infrastructure.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Newtonsoft.Json.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\ServiciosApp.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Helpers.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Mvc.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Optimization.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Razor.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.Deployment.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.Razor.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\WebGrease.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Oracle.DataAccess.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\DAL.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\BAL.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\ServiciosApp.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\EntityFramework.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\EntityFramework.SqlServer.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Helpers.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Mvc.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Optimization.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.Razor.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.Deployment.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\System.Web.WebPages.Razor.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Newtonsoft.Json.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Antlr3.Runtime.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\bin\DAL.pdb
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\obj\Debug\AppAndromedaCore.csprojAssemblyReference.cache
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CoreCompileInputs.cache
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CopyComplete
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\obj\Debug\AppAndromedaCore.dll
+C:\temp\001Andromeda\Andromeda\AppAndromedaCore\obj\Debug\AppAndromedaCore.pdb

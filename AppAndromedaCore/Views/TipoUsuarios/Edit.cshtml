@@ -1,0 +1,162 @@
+﻿@model BAL.Modelos.Configuracion.TipoUsuarioModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Tipos de Usuarios</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+    <input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+    <input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+
+    <input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card bg-light mb-3" style="max-width: 100%;">
+                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col">
+                                    MODIFICAR TIPO DE USUARIO
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true)
+
+                                        <div class="row">
+                                            <div class="form-group col-sm">
+                                                <h6> @Html.LabelFor(model => model.Id, new { @class = "control-label col-sm", @for = "tipousuario1" })</h6>
+                                                <div class="input-group">
+                                                    @Html.HiddenFor(model => model.Id)
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                                    <input disabled type="text" class="form-control" id="id" name="id" value="@Html.DisplayFor(model => model.Id)" />
+                                                    @*@Html.ValidationMessageFor(model => model.Codigo)*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm">
+                                                <h6>@Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Html.DisplayFor(model => model.Nombre)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm">
+                                                <h6>@Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="@Html.DisplayFor(model => model.Descripcion)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-2">
+                                                <h6>@Html.LabelFor(model => model.Estado, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>                                                    
+                                                    <select name="Estado" id="Estado" class="form-control selectpicker">
+                                                        <option selected value="1" @(Model.Estado.Equals("1") ? "selected" : "")>Activo</option>
+                                                        <option value="0" @(Model.Estado.Equals("0") ? "selected" : "")>Inactivo</option>
+                                                    </select>
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Borrado)*@
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                </div>
+
+                                <div align="left">                                   
+                                    @Html.ActionLink(" Cancelar", "Index", "TipoUsuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                    <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>TipoUsuarioModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

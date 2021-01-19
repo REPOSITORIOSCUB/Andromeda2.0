@@ -1,0 +1,202 @@
+﻿@model BAL.Modelos.Configuracion.MenuModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Menú</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+    <input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+    <input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+
+    <input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card bg-light mb-3" style="max-width: 100%;">
+                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col">
+                                    MODIFICAR ITEM DE MENÚ
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true)
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-id-badges"></i></span>
+                                                    <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Html.DisplayFor(model => model.Nombre)" />
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="card text-center">
+                                                <div class="card-header " style="background-color:#747c84 ;color:white">
+                                                    CONFIGURACIÓN
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm">
+                                                            <h6>@Html.Label("Modulo", new { @class = "control-label col-sm" })</h6>
+
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                                @*<input type="text" class="form-control" id="IdModulo" name="IdModulo" value="@Html.DisplayFor(model => model.IdModulo)" />*@
+                                                                @Html.DropDownListFor(model => model.IdModulo, ViewBag.ListaModulo as SelectList, new { @id = "Id", @class = "form-control" })
+                                                            </div>
+                                                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                                        </div>
+                                                        <div class="form-group col-sm">
+                                                            <h6>@Html.Label("Menú Padre", new { @class = "control-label col-sm" })</h6>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                                @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                                                @Html.DropDownListFor(model => model.IdPadre, ViewBag.ListaMenuPadre as SelectList, new { @id = "Id", @class = "form-control" })
+                                                                @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                                            </div>
+                                                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                                        </div>
+                                                        <div class="form-group col-sm">
+                                                            <h6>@Html.Label("Nombre Página", new { @class = "control-label col-sm" })</h6>
+
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                                @*<input type="text" class="form-control" id="IdPagina" name="IdPagina" value="@Html.DisplayFor(model => model.IdPagina)" />*@
+                                                                @Html.DropDownListFor(model => model.IdPagina, ViewBag.ListaPagina as SelectList, new { @id = "Id", @class = "form-control" })
+                                                            </div>
+                                                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                                        </div>
+                                                        <div class="form-group col-sm">
+                                                            <h6>@Html.LabelFor(model => model.Ordenamiento, new { @class = "control-label col-sm" })</h6>
+
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                                <input type="number" class="form-control" id="Ordenamiento" name="Ordenamiento" value="@Html.DisplayFor(model => model.Ordenamiento)" />
+                                                            </div>
+                                                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="card-footer text-muted">
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div align="left">
+                                    @Html.ActionLink(" Cancelar", "Index", "Menus", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                    <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@*<h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>MenuModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPadre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPadre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPadre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdPagina, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdPagina, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdModulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdModulo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdModulo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ordenamiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ordenamiento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ordenamiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

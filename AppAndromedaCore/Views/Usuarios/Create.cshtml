@@ -1,0 +1,162 @@
+﻿@model BAL.Modelos.UsuairoModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Usuario</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Crear</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Usuarios", FormMethod.Post, new { id = "idPersona" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card bg-light mb-3" style="max-width: 100%;">
+                <div class="card-header bg-gradient-gray" style="text-align:center">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col">
+                                INGRESO DE USUARIO
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+
+                            <div class="row">
+
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.idpersona, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-usersr"></i></span>
+                                        <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(model => model.idpersona)" />
+                                        <button id="btnBuscarPersona" type="button" class="btn btn-info btn-xs tmn " data-toggle="modal" data-target="#personaModal">
+                                            <i class="fa fa-search-plus fa-2x"></i>
+                                        </button>
+
+                                    </div>
+                                    <!-- Button trigger modal -->
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <h6>@Html.Label("Nombre", new { @class = "control-label col-sm" })</h6>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="nombrePersona" name="Login" value="" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.Login, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-usersr"></i></span>
+                                        <input type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(model => model.Login)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.Password, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-keys"></i></span>
+                                        <input type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(model => model.Password)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <h6>@Html.LabelFor(model => model.idtipousuario, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        @*<input type="text" class="form-control" id="Cargo" name="Cargo" value="@Html.DisplayFor(model => model.Cargo)" />*@
+
+                                        @Html.DropDownListFor(model => model.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control" })
+
+                                    </div>
+                                    @* @Html.ValidationMessageFor(model => model.idtipousuario)*@
+
+                                </div>
+                            </div>
+
+                            <div align="left">
+                                @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="personaModal" tabindex="-1" role="dialog" aria-labelledby="personaModalLabel" aria-hidden="true" style="display:none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="personaModalLabel">Busqueda Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    cargando..
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+@section  scripts
+{
+    <script src="~/Scripts/Configuracion/ConsultaPersona.js"></script>
+    <script>
+        function Limpiar() {
+            document.getElementById("dato").value = "";
+            document.getElementById("frmFormPer").Submit();
+        };
+
+        function AsignarIdentificacion(idetificadion, nombre) {
+            //alert(nombre+"cc " + idetificadion );
+            debugger;
+            document.getElementById("idpersona").value = idetificadion;
+            document.getElementById("nombrePersona").value = nombre;
+            $('#personaModal').modal("hide");
+        };
+
+    </script>
+}

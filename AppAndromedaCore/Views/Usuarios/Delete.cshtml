@@ -1,0 +1,209 @@
+﻿@model BAL.Modelos.UsuairoModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Usuario</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Eliminar</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+    <input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+    <input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+
+    <input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card bg-light mb-3" style="max-width: 100%;">
+                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col">
+                                    ELIMINAR USUARIO
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true)
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-2">
+                                                <h6> @Html.LabelFor(model => model.idUsuairo, new { @class = "control-label col-sm", @for = "Usuario11" })</h6>
+                                                <div class="input-group">
+                                                    @Html.HiddenFor(model => model.idUsuairo)
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                                    <input disabled type="text" class="form-control" id="idUsuairo" name="idUsuairo" value="@Html.DisplayFor(model => model.idUsuairo)" />
+                                                    @*@Html.ValidationMessageFor(model => model.Codigo)*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                <!--<h6>@Html.LabelFor(model => model.bhabilitado, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>-->
+                                                                                            @*<input type="text" class="form-control" id="Borrado" value="@Html.DisplayFor(model => model.Borrado)" />*@
+                                                                                            <!--<select disabled name="bhabilitado" id="bhabilitado" class="form-control selectpicker">
+                                                        <option selected value="1" @(Model.bhabilitado.Equals("1") ? "selected" : "")>Activo</option>
+                                                        <option value="0" @(Model.bhabilitado.Equals("0") ? "selected" : "")>Inactivo</option>
+                                                    </select>
+                                                </div>-->
+                                                @*@Html.ValidationMessageFor(model => model.Borrado)*@
+                                                <div class="form-group col-sm-2">
+                                                    <h6>@Html.LabelFor(model => model.bhabilitado, new { @class = "control-label col-sm" })</h6>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                                        @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
+                                                        @Html.DropDownListFor(model => model.bhabilitado, ViewBag.ListaEstado as SelectList, new { @id = "Id", @class = "form-control" })
+                                                        @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.idpersona, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input disabled type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(model => model.idpersona)" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.Login, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input disabled type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(model => model.Login)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.Password, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input disabled type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(model => model.Password)" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.idtipousuario, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    @*<input disabled type="text" class="form-control" id="idtipousuario" name="idtipousuario" value="@Html.DisplayFor(model => model.idtipousuario)" />*@
+                                                    @Html.DropDownListFor(model => model.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control", @disabled = "disabled" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div align="left">
+                                    @*<input type="submit" value="Save" class="btn btn-info" />*@
+                                    @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@*<h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>UsuairoModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.idUsuairo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idUsuairo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.idpersona)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idpersona)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.bhabilitado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.bhabilitado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.idtipousuario)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idtipousuario)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@

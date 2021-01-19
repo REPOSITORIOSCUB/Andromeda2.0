@@ -1,0 +1,141 @@
+﻿@model IEnumerable<BAL.Modelos.Configuracion.PerfilXModuloModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+<input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+<input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+<input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Perfil por Módulo</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="content-body">
+    <div class="card bg-light mb-3" style="max-width: 100%;">
+        <div class="card-header bg-gradient-gray" style="text-align:center">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a href="@Url.Action("Create","PerfilXModulos")" class="btn btn-success tmn1">
+                            <i class="fa fa-plus-circle"></i> Agregar
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        LISTA DE PERFILES POR MODULOS
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col">
+                <table id="ListaDatos" class="table table-striped table-hover table-responsive " width="100%">
+                    <thead class="blue-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdModulo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdPerfil)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>                           
+                            <th class="operaciones4">Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdModulo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdPerfil)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Estado)*@
+                                    @if (item.Estado.ToString().Equals("1"))
+                                    {
+                                        <span>Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Inactivo</span>
+                                    }
+                                </td>
+                               
+                                <td>
+                                    <a href="@Url.Action("Edit", "PerfilXModulos", new { @id = @item.Id })" class="btn btn-info btn-xs tmn">
+                                        <i class='fas fa-pencil-alt'></i> Editar
+                                    </a>
+                                    <a href="@Url.Action("Delete", "PerfilXModulos", new { @id = @item.Id })" class="btn btn-danger btn-xs tmn">
+                                        <i class='fa fa-trash'></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot class="blue-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdModulo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdPerfil)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th class="operaciones4">Operaciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- page script -->
+@section scripts{
+    <script>
+        $(function () {
+
+            $('#ListaDatos').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}
+

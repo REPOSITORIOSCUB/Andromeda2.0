@@ -1,0 +1,141 @@
+﻿@model BAL.Modelos.Configuracion.ModuloModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Modulos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Eliminar</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+<div>
+    <input type="hidden" name="Message" id="Message" value="@ViewBag.Message" />
+    <input type="hidden" name="AlertType" id="AlertType" value="@ViewBag.AlertType" />
+    <input type="hidden" name="ShowAlert" id="ShowAlert" value="@ViewBag.ShowAlert" />
+
+    <input type="hidden" name="ShowMsg" id="ShowMsg" value="@ViewBag.ShowMsg" />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card bg-light mb-3" style="max-width: 100%;">
+                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col">
+                                    ELIMINAR MODULO
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true)
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-3 ">
+                                                <h6> @Html.LabelFor(model => model.Id, new { @class = "control-label col-sm", @for = "tipousuario1" })</h6>
+                                                <div class="input-group">
+                                                    @Html.HiddenFor(model => model.Id)
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                                    <input disabled type="text" class="form-control" id="id" name="id" value="@Html.DisplayFor(model => model.Id)" />
+                                                    @*@Html.ValidationMessageFor(model => model.Codigo)*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input disabled type="text" class="form-control" id="Nombre" name="Nombre" value="@Html.DisplayFor(model => model.Nombre)" />
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                        <div class="row">
+                                            <div class="form-group col-sm-2">
+                                                <h6>@Html.LabelFor(model => model.Estado, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                                                    <select disabled name="Estado" id="Estado" class="form-control selectpicker">
+                                                        <option selected value="1" @(Model.Estado.Equals("1") ? "selected" : "")>Activo</option>
+                                                        <option value="0" @(Model.Estado.Equals("0") ? "selected" : "")>Inactivo</option>
+                                                    </select>
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Borrado)*@
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div align="left">
+                                    @Html.ActionLink(" Cancelar", "Index", "Modulos", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
+                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+@*<h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>ModuloModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@

@@ -1,0 +1,8 @@
+C:\temp\001Andromeda\Andromeda\DAL\bin\Debug\DAL.dll
+C:\temp\001Andromeda\Andromeda\DAL\bin\Debug\DAL.pdb
+C:\temp\001Andromeda\Andromeda\DAL\bin\Debug\Oracle.DataAccess.dll
+C:\temp\001Andromeda\Andromeda\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\temp\001Andromeda\Andromeda\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\temp\001Andromeda\Andromeda\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\temp\001Andromeda\Andromeda\DAL\obj\Debug\DAL.dll
+C:\temp\001Andromeda\Andromeda\DAL\obj\Debug\DAL.pdb

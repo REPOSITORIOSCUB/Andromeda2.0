@@ -1,0 +1,133 @@
+﻿@model BAL.Modelos.UsuairoModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/">
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/daterangepicker/daterangepicker.css">*@
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/main.css">
+    <!--===============================================================================================-->
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+</head>
+<body style="background-color: #395998;">
+    @ViewBag.ResultMessage
+    <div class="wrapper">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form" th:object="${login}" method="post">
+                        <span class="login100-form-title p-b-43">
+                            ANDRÓMEDA V2.0
+                        </span>
+                        @Html.ValidationSummary(true)
+                        <div class="wrap-input100 validate-input" data-validate="Usuario es requerido">
+                            @Html.TextBoxFor(model => model.Login, new { @class = "form-control input100" })
+
+                            <span class="focus-input100"></span>
+                            <span class="label-input100"><i class="fa fa-user" aria-hidden="true"></i> Usuario</span>
+                        </div>
+
+
+                        <div class="wrap-input100 validate-input" data-validate="Contraseña requerida">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control input100", @type = "password" })
+
+                            <span class="focus-input100"></span>
+                            <span class="label-input100"><i class="fa fa-lock" aria-hidden="true"></i> Contraseña</span>
+                        </div>
+
+
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn">
+                                Iniciar sesión
+                            </button>
+                            <div id="divShow" style="display:none">
+                                <strong><span id="Title"></span></strong><span id="dtMessage"></span>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="login100-more" style="background-image: url('../../Content/Login/images/bg-01.jpg');">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    @*<script src="~/Content/Login/vendor/daterangepicker/moment.min.js"></script>
+        <script src="~/Content/Login/vendor/daterangepicker/daterangepicker.js"></script>*@
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/js/main.js"></script>
+    <!-- Sweetalert2 -->
+    <script src="~/Content/AdminLT/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.js"></script>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 8000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: '@ViewBag.AlertType',
+                title: '@ViewBag.Message'
+            });
+
+         };
+        </script>
+    }
+</body>
+</html>
+
+
