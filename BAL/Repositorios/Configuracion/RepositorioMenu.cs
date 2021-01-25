@@ -53,6 +53,12 @@ namespace BAL.Repositorios.Configuracion
             _command.Parameters.Add("vIdPagina", "INT").Value = obj.IdPagina;
             _command.Parameters["vIdPagina"].Direction = ParameterDirection.Input;
 
+            _command.Parameters.Add("vImg", "NVARCHAR2").Value = obj.Imagen;
+            _command.Parameters["vImg"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vDescripcion", "NVARCHAR2").Value = obj.Descripcion;
+            _command.Parameters["vDescripcion"].Direction = ParameterDirection.Input;
+
             //_command.Parameters.Add("pFecregi", "NVARCHAR2").Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");// entidad.FechaRegistro;
             //_command.Parameters["pFecregi"].Direction = ParameterDirection.Input;
 
@@ -92,6 +98,14 @@ namespace BAL.Repositorios.Configuracion
 
             _command.Parameters.Add("vIdPagina", "INT").Value = obj.IdPagina;
             _command.Parameters["vIdPagina"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vImg", "NVARCHAR2").Value = obj.Imagen;
+            _command.Parameters["vImg"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vDescripcion", "NVARCHAR2").Value = obj.Descripcion;
+            _command.Parameters["vDescripcion"].Direction = ParameterDirection.Input;
+
+
 
             //_command.Parameters.Add("pFecregi", "NVARCHAR2").Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");// entidad.FechaRegistro;
             //_command.Parameters["pFecregi"].Direction = ParameterDirection.Input;
@@ -155,6 +169,8 @@ namespace BAL.Repositorios.Configuracion
             obj.IdPagina = regi[3].ToString();
             obj.IdModulo = regi[4].ToString();
             obj.Ordenamiento = Convert.ToInt32(regi[5]);
+            obj.Imagen = regi[6].ToString();
+            obj.Descripcion = regi[7].ToString();
             return obj;
         }
 

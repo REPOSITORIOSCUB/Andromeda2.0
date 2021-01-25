@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string imagen = ViewBag.RutaImagen;
+    string nombreImg = ViewBag.NombreImagen;
 }
 
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
@@ -49,7 +51,36 @@
                                     <div class="form-horizontal">
                                         @Html.ValidationSummary(true)
                                         <div class="row">
+                                            <div class="form-group col-sm-2">
+                                                <h6>@Html.LabelFor(model => model.Imagen, new { @class = "control-label col-sm" })</h6>
+                                                @if (!String.IsNullOrEmpty(@imagen))
+                                                {
+                                                    <div class="input-group" style="">
+                                                        <img class="profile-user-img img-fluid img-circle" src="@imagen" value="@Html.DisplayFor(model => model.Imagen)" />
+                                                        @*<input disabled type="text" class="form-control" id="Imagen" name="Imagen" value="@nombreImg" />*@
 
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <label class="control-label col-sm " style="text-align: center;">@nombreImg</label>
+                                                        @*<h7>@Html.Label(@nombreImg, new { @class = "control-label col-sm" })</h7>*@
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    if (!String.IsNullOrEmpty(Model.Imagen))
+                                                    {
+                                                        <div class="input-group" style="">
+                                                            <img class="profile-user-img img-fluid img-circle" src="@Html.DisplayFor(model => model.Imagen)" />
+                                                            @*<input disabled type="text" class="form-control" id="Imagen" name="Imagen" value="@nombreImg" />*@
+
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label class="control-label col-sm " style="text-align: center;">@Html.DisplayFor(model => model.Descripcion)</label>
+                                                            @*<h7>@Html.Label(@nombreImg, new { @class = "control-label col-sm" })</h7>*@
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
                                             <div class="form-group col-sm-4">
                                                 <h6>@Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
@@ -57,6 +88,24 @@
                                                     <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Html.DisplayFor(model => model.Nombre)" />
                                                 </div>
                                                 @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <h6>@Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-sm" })</h6>
+                                                <div class="input-group">
+                                                    @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", @placeholder = "Detalle menú...", @rows = 3 })
+
+                                                </div>
+                                                @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                            </div>
+
+                                        </div>
+                                        <!--Boton del POPUP-->
+                                        <div class="row">
+                                            <div class="form-group col-sm" style="text-align:left;">
+                                                <button id="btnSubirArchivoEdit" type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#imgModal">
+                                                    <i class="fa fa-upload fa-1x"></i>&nbsp;Subir imagen
+                                                </button>
+                                                <input type="hidden" class="form-control" id="id" name="id" value="@Html.DisplayFor(model => model.Id)" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -135,6 +184,29 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true" style="display:none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imgModalLabel">Carga de Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    cargando....
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section  scripts
+{
+    <script src="~/Scripts/Configuracion/SubirArchivos.js"></script>
+}
 
 
 @*<h2>Edit</h2>

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -31,9 +32,10 @@ namespace ServiciosApp
         public List<AccesoModel> ConsultaUsuario(string usuario, string contrasena)
         {
             List<AccesoModel> Permisos = new List<AccesoModel>();
-            string error = "";
-            //string URL = "http://intra:8181/ApiAndromeda/"+usurio+"/"+contrasena;
-            string URL = "http://localhost:2241/ApiAndromeda/" + usuario + "/"+contrasena;
+            string error = "";  
+            //Direccion api
+            string URL = ConfigurationManager.AppSettings["ApiAndromeda"].ToString() + usuario + "/" + contrasena;
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
             try
             {
@@ -56,15 +58,8 @@ namespace ServiciosApp
                     
                 }
             }
-            catch (WebException ex)
-            {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-                   
-                }
+            catch (WebException )
+            {               
                 return JsonConvert.DeserializeObject<List<AccesoModel>>(error);
             }
 
@@ -74,9 +69,8 @@ namespace ServiciosApp
         public List<PermisoAccesoModel> ConsoltaPerModulo(string usuario)
         {
             List<PermisoAccesoModel> Permisos = new List<PermisoAccesoModel>();
-
-            //string URL = "http://intra:8181/ApiAndromeda/"+usurio+"/"+contrasena;
-            string URL = "http://localhost:2241/ApiAndromeda/GetAccesoModulos/" + usuario;
+            string URL = ConfigurationManager.AppSettings["ApiAndromeda"].ToString() + "GetAccesoModulos/" + usuario;
+            string error = "";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
             try
             {
@@ -86,7 +80,7 @@ namespace ServiciosApp
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     //Permisos.Add(JsonConvert.DeserializeObject<AccesoModel>(reader.ReadToEnd()));
                     string resp = reader.ReadToEnd();
-
+                    error = resp;
                     if (resp == "[{}]" || String.IsNullOrEmpty(resp))
                     {
                         List<PermisoAccesoModel> lista = new List<PermisoAccesoModel>();
@@ -99,16 +93,10 @@ namespace ServiciosApp
 
                 }
             }
-            catch (WebException ex)
-            {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-
-                }
-                return JsonConvert.DeserializeObject<List<PermisoAccesoModel>>("[{}]");
+            catch (WebException )
+            {              
+               
+                return JsonConvert.DeserializeObject<List<PermisoAccesoModel>>(error);
             }
         }
     }

@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string imagen = ViewBag.RutaImagen;
+    string nombreImg = ViewBag.NombreImagen;
+
 }
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
@@ -41,7 +46,23 @@
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
                             <div class="row">
+                                
+                                <div class="form-group col-sm-2">
+                                    <h6>@Html.LabelFor(model => model.Imagen, new { @class = "control-label col-sm" })</h6>
+                                    @if (@imagen != null)
+                                    {
+                                        <div class="input-group" style="">
+                                            <img class="profile-user-img img-fluid img-circle" src="@imagen" value="@Html.DisplayFor(model => model.Imagen)" />
+                                            @*<input disabled type="text" class="form-control" id="Imagen" name="Imagen" value="@nombreImg" />*@
 
+                                        </div>
+                                    <div class="input-group">
+                                        <label class="control-label col-sm " style="text-align: center;">@nombreImg</label>
+                                        @*<h7>@Html.Label(@nombreImg, new { @class = "control-label col-sm" })</h7>*@
+                                    </div>
+                                    }
+                                </div>
+                                
                                 <div class="form-group col-sm-4">
                                     <h6>@Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm" })</h6>
 
@@ -50,12 +71,34 @@
                                         <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Html.DisplayFor(model => model.Nombre)" />
                                     </div>
                                     @*@Html.ValidationMessageFor(model => model.Nombre)*@
-                                </div>                               
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <h6>@Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-id-badges"></i></span>
+                                        @*<input type="text" class="form-control" id="Descripcion" name="Descripcion" value="@Html.DisplayFor(model => model.Nombre)" />*@
+                                        <textarea class="form-control" rows="3" placeholder="Detalle menú..." id="Descripcion"  name ="Descripcion" value="@Html.DisplayFor(model => model.Descripcion)"></textarea>
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <!--Boton del POPUP-->
+                            <div class="row">
+                                <div class="form-group col-sm" style="text-align:left;">
+                                    @*<button id="btnSubirArchivos" class="btn btn-sm btn-info" data-toggle="modal" data-target="#imgModal">
+                                            <span class="fa fa-upload fa-1x"></span>
+                                            &nbsp;Subir imagen
+                                        </button>*@
+                                    <button id="btnSubirArchivo" type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#imgModal">
+                                        <i class="fa fa-upload fa-1x"></i>&nbsp;Subir imagen
+                                    </button>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="card text-center">
                                     <div class="card-header " style="background-color:#747c84 ;color:white">
-                                       CONFIGURACIÓN
+                                        CONFIGURACIÓN
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -100,15 +143,15 @@
                                             </div>
 
                                         </div>
-                                      
+
                                     </div>
                                     <div class="card-footer text-muted">
-                                    
+
                                     </div>
                                 </div>
 
-                               
-                            </div>  
+
+                            </div>
 
                             <div align="left">
                                 @Html.ActionLink(" Cancelar", "Index", "Menu", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
@@ -126,64 +169,29 @@
     </div>
 </div>
 
-@*<h2>Create</h2>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>MenuModel</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdPadre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdPadre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdPadre, "", new { @class = "text-danger" })
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true" style="display:none">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imgModalLabel">Carga de Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdPagina, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdPagina, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdModulo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdModulo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdModulo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Ordenamiento, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Ordenamiento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Ordenamiento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+            <div class="modal-body">
+                <div id="modal-content">
+                    cargando....
                 </div>
             </div>
         </div>
-    }
+    </div>
+</div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+@section  scripts
+{
+   <script src="~/Scripts/Configuracion/SubirArchivos.js"></script>
+}
+    
+

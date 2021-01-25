@@ -38,7 +38,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +71,7 @@
     <Compile Include="Modelos\Configuracion\TipoUsuarioModel.cs" />
     <Compile Include="Modelos\Configuracion\UsuarioAModel.cs" />
     <Compile Include="Modelos\Configuracion\PerfilXModuloModel.cs" />
+    <Compile Include="Modelos\General\ArchivoModel.cs" />
     <Compile Include="Modelos\General\MensajesOperacion.cs" />
     <Compile Include="Modelos\PermisoAccesoModel.cs" />
     <Compile Include="Modelos\UsuairoModel.cs" />

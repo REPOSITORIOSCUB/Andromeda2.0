@@ -194,9 +194,11 @@ namespace BAL.Repositorios.Configuracion
             if (pagina != null)
             {
                 if (
-                    string.IsNullOrEmpty(pagina.Mensaje.ToString()) ||
-                    string.IsNullOrEmpty(pagina.Accion.ToString()) ||
-                    string.IsNullOrEmpty(pagina.Controlador.ToString())
+                    
+                    string.IsNullOrEmpty(pagina.Id.ToString()) ||
+                    string.IsNullOrEmpty(pagina.Mensaje.ToString()) 
+                    //string.IsNullOrEmpty(pagina.Accion.ToString()) ||
+                    //string.IsNullOrEmpty(pagina.Controlador.ToString())                    
                 )
                 {
                     returnValue = false;

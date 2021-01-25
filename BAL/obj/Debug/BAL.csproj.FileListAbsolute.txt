@@ -8,3 +8,13 @@ C:\temp\001Andromeda\Andromeda\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
 C:\temp\001Andromeda\Andromeda\BAL\obj\Debug\BAL.csproj.CopyComplete
 C:\temp\001Andromeda\Andromeda\BAL\obj\Debug\BAL.dll
 C:\temp\001Andromeda\Andromeda\BAL\obj\Debug\BAL.pdb
+C:\RepositoriosProyectos\Andromeda2.0\BAL\bin\Debug\BAL.dll
+C:\RepositoriosProyectos\Andromeda2.0\BAL\bin\Debug\BAL.pdb
+C:\RepositoriosProyectos\Andromeda2.0\BAL\bin\Debug\DAL.dll
+C:\RepositoriosProyectos\Andromeda2.0\BAL\bin\Debug\Oracle.DataAccess.dll
+C:\RepositoriosProyectos\Andromeda2.0\BAL\bin\Debug\DAL.pdb
+C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CopyComplete
+C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.dll
+C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.pdb
