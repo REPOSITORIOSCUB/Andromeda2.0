@@ -16,22 +16,10 @@ namespace AppAndromedaCore.Controllers
         [HttpGet]
         public ActionResult Index(string id ,string accion)
         {
-            //List<Archivo> _archivos = new List<Archivo>();
-            //using (_dbContext = new AppDbContext())
-            //{
-            //    // Recuperamos la Lista de los archivos subidos.
-            //    _archivos = _dbContext.Archivos.OrderBy(x => x.Creado).ToList();
-            //}
-            // Retornamos la Vista Index, con los archivos subidos.
-            //return View(_archivos);
             opcion = accion;
             identificador = id;
-            if (TempData["Message"] != null)
-            {
-                ViewBag.Mensjae = TempData["Message"].ToString();
-            }
-
-            return View();
+            ArchivoModel armod = new ArchivoModel();
+            return View(armod);
         }
 
 
