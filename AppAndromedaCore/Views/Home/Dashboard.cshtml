@@ -1,300 +1,215 @@
 ﻿@using BAL.Modelos;
-@model IEnumerable<AccesoModel>
+@model List<AccesoModel>
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
+<script>
+    function MostrarMenu(vMenu) {
+        $(vMenu).css("display", "block");
+    }
 
-<div>
-    <!--Miga de pan-->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-            <li class="breadcrumb-item"><a href="/Home/Index">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Menú</li>
-        </ol>
-    </nav>
+    function OcultarMenu(vMenu) {
+        $(vMenu).css("display", "none");
+    }
+</script>
+
+<style>
+    .card {
+        margin: 0;
+        max-width: 450px;
+        background-color: transparent;
+        border: 20px solid transparent !important;
+        border-image-slice: 1 !important;
+        -webkit-transition: -webkit-transform 0.6s ease;
+        transition: -webkit-transform 0.6s ease;
+        transition: transform 0.6s ease;
+        transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+        -webkit-animation: blockAppear .6s ease-in-out;
+        animation: blockAppear .6s ease-in-out;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card:hover {
+            z-index: 999;
+            height: 100%;
+            width: 240px;
+            border: none !important;
+            /*            -webkit-transform: translate(-0px, -30px);
+            transform: translate(-0px, -30px);*/
+            /*            -webkit-transform: translate(-30px, -50px);
+            transform: translate(-10px, -10px);*/
+            /*            -webkit-transform: translate(0px, 30px);
+            transform: translate(0px, 30px);*/
+        }
+
+        .card:before {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            display: block;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: -webkit-box-shadow 0.6s ease;
+            transition: -webkit-box-shadow 0.6s ease;
+            transition: box-shadow 0.6s ease;
+            transition: box-shadow 0.6s ease, -webkit-box-shadow 0.6s ease;
+        }
+
+        .card:hover:before {
+            max-width: 210px;
+            -webkit-box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
+            box-shadow: 25px 25px 20px RGBA(142, 142, 142, .6);
+            /*Para cambiar el ancho de la sombra*/
+            /*original:*/
+            /*box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);*/
+        }
+
+        .card:hover .card-img-top {
+            height: 210px;
+            width: 210px;
+        }
+
+        .card:hover .card-block {
+            /*ancho1*/
+            width: 210px;
+            background-image: -webkit-gradient(linear,right bottom, left top,from(rgb(72, 85, 108)),color-stop(50%, rgb(27, 33, 43)),color-stop(51%, rgb(20, 25, 34)),to(rgb(53, 59, 69)));
+            background-image: linear-gradient(to top left,rgb(72, 85, 108) 0%,rgb(27, 33, 43) 50%,rgb(20, 25, 34) 51%,rgb(53, 59, 69) 100%);
+        }
+
+        .card:hover .card-title {
+            color: white;
+            padding-left: 3px;
+        }
+
+    .card-title {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .card:hover .card-text {
+        color: white;
+    }
+
+    .card-block {
+        background-color: transparent;
+        background-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(37.8%, rgb(245, 245, 245)),color-stop(48.8%, rgb(245, 245, 245)),color-stop(53.1%, rgb(254, 254, 254)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75)));
+        background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%);
+        background-repeat: no-repeat;
+    }
+
+    .card-text {
+        padding-left: 3px;
+        padding-right: 3px;
+        color: lightyellow
+    }
+
+    .card-img-top {
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        -webkit-transition: height 0.8s ease;
+        transition: height 0.8s ease;
+    }
+</style>
+
+<style>
+    ul#menu {
+        font-size: 0;
+        z-index: 999;
+        position: relative;
+        display: block;
+        float: left;
+        padding: 0 7px 7px;
+        background-color: none;
+        border-radius: 0px;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+    }
+
+        ul#menu > li {
+            margin: 3px 0 0;
+        }
+
+        ul#menu a:active, ul#menu a:focus {
+            outline-style: none;
+        }
+
+        ul#menu a {
+            display: block;
+            vertical-align: middle;
+            text-align: left;
+            text-decoration: none;
+            font: 15px Noto Sans,Arial,Helvetica,sans-serif;
+            color: #000000;
+            cursor: pointer;
+            padding: 3px;
+            background-repeat: repeat;
+            border-width: 0px;
+            border-style: none;
+        }
+
+        ul#menu li.topmenu > a {
+            background-color: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #BBBBBB;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            padding: 3px 14px;
+            color: #BBBBBB;
+        }
+
+        ul#menu li.topmenu:hover > a, ul#menu li.topmenu a.pressed {
+            background-color: #86DbC8;
+            border-style: solid;
+            border-color: #86DbC8;
+            color: #314F49;
+        }
+</style>
+
+<div class="row container col-md-12">
+    @if (Model != null)
+    {
+        var menuid = "";
+
+        for (var i = 0; i < Model.Count(); i++)
+        {
+            menuid = "menu" + i;
+            <div>
+                <div class="card" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
+                    <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center"></div>
+                    <div class="card-block">
+                        <label class="card-title">@Model[i].nomMenu</label>
+                        <div id=@menuid style="display:none">
+                            <p class="card-text">@Model[i].descripcion</p>
+                            <ul class="topmenu" id="menu">
+                                @for (var j = i + 1; j < Model.Count(); j++)
+                                {
+                                    if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        <li class="topmenu"><a href="@Model[1].controller" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                        i++;
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
 </div>
-
-<nav class="mt-4">
-    <ul class="nav nav-pills  flex-column" data-widget="treeview" role="menu" data-accordion="false">       
-
-        <li class="nav-item has-treeview ">
-
-            @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-
-                    if (string.IsNullOrWhiteSpace(item.idPadre))
-                    {
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                @item.nomMenu
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                    }
-                    else
-                    {
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="@item.controller" class="nav-link">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>@item.nomMenu</p>
-                                </a>
-                            </li>
-                        </ul>
-
-                    }
-
-                }
-            }
-
-
-        </li>
-        
-    </ul>
-
-
-</nav>
-<!--<div class="jumbotron">
-    <div>-->
-        <!-- Main content -->
-        <!--<section class="content">
-            <div class="container-fluid">-->
-                <!-- Small boxes (Stat box) -->
-                <!--<div class="row">
-                    <div class="col-lg-3 col-6">-->
-                        <!-- small box -->
-                        <!--<div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>150</h3>
-
-                                <p>Nuevo registro</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-document"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ver mas<i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>-->
-                    <!-- ./col -->
-                    <!--<div class="col-lg-3 col-6">-->
-                        <!-- small box -->
-                        <!--<div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                                <p>Cumplido</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ver mas<i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>-->
-                    <!-- ./col -->
-                    <!--<div class="col-lg-3 col-6">-->
-                        <!-- small box -->
-                        <!--<div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>Pendientes</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ver mas<i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>-->
-                    <!-- ./col -->
-                    <!--<div class="col-lg-3 col-6">-->
-                        <!-- small box -->
-                        <!--<div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>65</h3>
-
-                                <p>Sin verificar</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-alert"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ver mas <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>-->
-                    <!-- ./col -->
-                <!--</div>-->
-                <!-- /.row -->
-                <!-- Main row -->
-                <!--<div class="row">-->
-                    <!-- Donut chart -->
-                    <!--<div class="card card-primary card-outline " style="width: 46%;">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="far fa-chart-bar"></i>
-                                Estados
-                            </h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="donut-chart" style="height: 300px;"></div>
-                        </div>-->
-                        <!-- /.card-body-->
-                    <!--</div>-->
-                    <!-- /.card -->
-                    <!-- /.card -->
-                    <!-- BAR CHART -->
-                    <!--<div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="far fa-chart-bar"></i>
-                                Auditoría
-                            </h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>-->
-                        <!-- /.card-body -->
-                    <!--</div>
-                </div>-->
-                <!-- /.row (main row) -->
-            <!--</div>--><!-- /.container-fluid -->
-        <!--</section>-->
-        <!-- /.content -->
-    <!--</div>
-</div>-->
-
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            debugger;
-            var areaChartData = {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
-                datasets: [
-                    {
-                        label: 'Auditados',
-                        backgroundColor: 'rgba(60,141,188,0.9)',
-                        borderColor: 'rgba(60,141,188,0.8)',
-                        pointRadius: false,
-                        pointColor: '#3b8bba',
-                        pointStrokeColor: 'rgba(60,141,188,1)',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(60,141,188,1)',
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    },
-                    {
-                        label: 'Sin Auditar',
-                        backgroundColor: 'rgba(210, 214, 222, 1)',
-                        borderColor: 'rgba(210, 214, 222, 1)',
-                        pointRadius: false,
-                        pointColor: 'rgba(210, 214, 222, 1)',
-                        pointStrokeColor: '#c1c7d1',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                ]
-            }
-            //-------------
-            //- BAR CHART -
-            //-------------
-            var barChartCanvas = $('#barChart').get(0).getContext('2d')
-            var barChartData = jQuery.extend(true, {}, areaChartData)
-            var temp0 = areaChartData.datasets[0]
-            var temp1 = areaChartData.datasets[1]
-            barChartData.datasets[0] = temp1
-            barChartData.datasets[1] = temp0
-
-            var barChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                datasetFill: false
-            }
-
-            var barChart = new Chart(barChartCanvas, {
-                type: 'bar',
-                data: barChartData,
-                options: barChartOptions
-            })
-            ///Grafico Dona
-            /*
-             * DONUT CHART
-             * -----------
-             */
-            var donutData = [
-                {
-                    label: 'Revision',
-                    data: 30,
-                    color: '#3c8dbc'
-                },
-                {
-                    label: 'Activo',
-                    data: 20,
-                    color: '#0073b7'
-                },
-                {
-                    label: 'Asignado',
-                    data: 50,
-                    color: '#00c0ef'
-                }
-            ]
-            $.plot('#donut-chart', donutData, {
-                series: {
-                    pie: {
-                        show: true,
-                        radius: 1,
-                        innerRadius: 0.5,
-                        label: {
-                            show: true,
-                            radius: 2 / 3,
-                            formatter: labelFormatter,
-                            threshold: 0.1
-                        }
-
-                    }
-                },
-                legend: {
-                    show: false
-                }
-            })
-
-            /*
-              * Custom Label formatter
-              * ----------------------
-              */
-            function labelFormatter(label, series) {
-                return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
-                    + label
-                    + '<br>'
-                    + Math.round(series.percent) + '%</div>'
-            }
-
-        });
-
-
-    </script>
-
-
-}
-

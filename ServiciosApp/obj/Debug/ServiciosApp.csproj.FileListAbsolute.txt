@@ -26,3 +26,16 @@ C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.dll
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.pdb
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\BAL.dll
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.dll
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\DAL.dll
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\BAL.pdb
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.xml
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\bin\Debug\DAL.pdb
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csprojAssemblyReference.cache
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CoreCompileInputs.cache
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
+C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb

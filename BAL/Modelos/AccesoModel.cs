@@ -14,6 +14,7 @@ namespace BAL.Modelos
         public string nomMenu { get; set; }
         public string  ordenMenu { get; set; }
         public string controller { get; set; }
-
+        public string imagen { get; set; }
+        public string descripcion { get; set; }
     }
 }

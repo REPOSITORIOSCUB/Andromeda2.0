@@ -147,7 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminLT\dist\css\adminlte.css" />
-    <Content Include="Content\AdminLT\dist\css\adminlte.min.css" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.components.css" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.components.min.css" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.core.css" />
@@ -1923,7 +1922,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\AdminLT\dist\css\adminlte.css.map" />
-    <Content Include="Content\AdminLT\dist\css\adminlte.min.css.map" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.components.css.map" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.components.min.css.map" />
     <Content Include="Content\AdminLT\dist\css\alt\adminlte.core.css.map" />
