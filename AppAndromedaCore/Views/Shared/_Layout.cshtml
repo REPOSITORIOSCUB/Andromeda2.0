@@ -234,6 +234,16 @@
     <script type="text/javascript">
         //obtener el usuario logueado
         document.getElementById('usurioLog').innerHTML = '@Session["UsuarioAD"]';
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                selector: true,
+                title: function () {
+                    return $(this).attr('href');
+                }
+            });
+        });
+
     </script>
     @if (ViewBag.Message != null)
     {

@@ -12,7 +12,8 @@ namespace AppAndromedaCore.Controllers
 {
     public class HomeController : Controller
     {
-        public static List<AccesoModel> Access = new List<AccesoModel>();
+
+        private static List<AccesoModel> Access = new List<AccesoModel>();
 
         public ActionResult Index()
         {
@@ -43,7 +44,7 @@ namespace AppAndromedaCore.Controllers
             if (ModelState.IsValid)
             {
                 ConsultaPerfilUsuario perfil = new ConsultaPerfilUsuario();
-                List<PermisoAccesoModel> accesoModulo = new List<PermisoAccesoModel>();
+                List<PermisoAccesoModel> accesoModulo;
 
                 //verificación de acceso al modulo
                 accesoModulo = perfil.ConsoltaPerModulo(usuario.Login);
@@ -58,11 +59,11 @@ namespace AppAndromedaCore.Controllers
                             if (Access[0].usuario != null)
                             {
                                 Session["UsuarioAD"] = usuario.Login.ToString();
-                                // string login = Session["UsuarioCT"] as string;                                
 
 
                                 return RedirectToAction("Dashboard");
                             }
+                            else
                             {
 
                                 TempData["Message"] = "Datos incorrectos favor valide el usuario ó contraseña.";
