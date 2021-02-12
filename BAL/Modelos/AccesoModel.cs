@@ -12,7 +12,7 @@ namespace BAL.Modelos
         public string idMenu { get; set; }
         public string idPadre { get; set; }
         public string nomMenu { get; set; }
-        public string  ordenMenu { get; set; }
+        public string ordenMenu { get; set; }
         public string controller { get; set; }
         public string imagen { get; set; }
         public string descripcion { get; set; }

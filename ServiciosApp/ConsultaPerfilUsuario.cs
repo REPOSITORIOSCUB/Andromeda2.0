@@ -29,12 +29,12 @@ namespace ServiciosApp
         }
         #endregion
 
-        public List<AccesoModel> ConsultaUsuario(string usuario, string contrasena)
+        public List<AccesoModel> ConsultaUsuario(string usuario, string contrasena, string nommodulo)
         {
             List<AccesoModel> Permisos = new List<AccesoModel>();
             string error = "";  
             //Direccion api
-            string URL = ConfigurationManager.AppSettings["ApiAndromeda"].ToString() + usuario + "/" + contrasena;
+            string URL = ConfigurationManager.AppSettings["ApiAndromeda"].ToString() + usuario + "/" + contrasena + "/" + nommodulo;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
             try

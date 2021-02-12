@@ -48,19 +48,22 @@ namespace AppAndromedaCore.Controllers
 
                 //verificación de acceso al modulo
                 accesoModulo = perfil.ConsoltaPerModulo(usuario.Login);
+                if (accesoModulo.Count > 0)
+                {
+                    Session["UsuarioID"] = accesoModulo[0].cedula;
+                }
+
                 foreach (PermisoAccesoModel registro in accesoModulo)
                 {
                     if (registro.nommodulo == "PRINCIPAL")
                     {
                         //CONSULTA DEL MENU DEL USUARIO
-                        Access = perfil.ConsultaUsuario(usuario.Login, usuario.Password);
+                        Access = perfil.ConsultaUsuario(usuario.Login, usuario.Password, registro.nommodulo);
                         if (Access.Count > 0)
                         {
                             if (Access[0].usuario != null)
                             {
                                 Session["UsuarioAD"] = usuario.Login.ToString();
-
-
                                 return RedirectToAction("Dashboard");
                             }
                             else
@@ -90,20 +93,12 @@ namespace AppAndromedaCore.Controllers
                 ViewBag.Message = "El usuario no tiene permiso al aplicativo.";
                 ViewBag.AlertType = "error";
                 return View(usuario);
-
-
-
-
-
-
             }
             else
             {
                 return View();
             }
         }
-
-
 
     public ActionResult LogOut()
         {
