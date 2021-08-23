@@ -27,4 +27,4 @@ export default class Packer {
     splitNode(node: PackerRoot, w: number, h: number): PackerRoot;
     growDown(w: number, h: number): PackerRoot | void;
 }
-export {};
+export { };

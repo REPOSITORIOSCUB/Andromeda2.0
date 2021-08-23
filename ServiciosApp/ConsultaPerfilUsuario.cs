@@ -45,6 +45,7 @@ namespace ServiciosApp
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     //Permisos.Add(JsonConvert.DeserializeObject<AccesoModel>(reader.ReadToEnd()));
                     string resp = reader.ReadToEnd();
+                    //dynamic parsedJson = JsonConvert.DeserializeObject(resp);
                     error = resp;
                     if (resp == "Clave Erronea" || resp == "[{}]" || String.IsNullOrEmpty(resp))
                     {
@@ -79,7 +80,8 @@ namespace ServiciosApp
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     //Permisos.Add(JsonConvert.DeserializeObject<AccesoModel>(reader.ReadToEnd()));
-                    string resp = reader.ReadToEnd();
+                    string resp = reader.ReadToEnd();                    
+                    //  dynamic parsedJson = JsonConvert.DeserializeObject(resp);
                     error = resp;
                     if (resp == "[{}]" || String.IsNullOrEmpty(resp))
                     {

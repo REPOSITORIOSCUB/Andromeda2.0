@@ -1,4 +1,5 @@
 ﻿$("#btnBuscarPersona").click(function (eve) {
+   
     //$("#modal-content").load("/Usuarios/BucarPersonaPopup")
     $("#modal-content").load("/Usuarios/GetPerPopup")
 })

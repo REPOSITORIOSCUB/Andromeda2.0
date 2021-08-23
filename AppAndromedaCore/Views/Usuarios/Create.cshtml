@@ -26,7 +26,7 @@
             @Html.AntiForgeryToken()
 
             <div class="card bg-light mb-3" style="max-width: 100%;">
-                <div class="card-header bg-gradient-gray" style="text-align:center">
+                <div class="card-header bg-gradient-lightblue" style="text-align:center">
                     <div class="container">
                         <div class="row">
 
@@ -48,9 +48,11 @@
                                     <h6>@Html.LabelFor(model => model.idpersona, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-usersr"></i></span>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-address-card"></i></div>
+                                        </div>
                                         <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(model => model.idpersona)" />
-                                        <button id="btnBuscarPersona" type="button" class="btn btn-info btn-xs tmn " data-toggle="modal" data-target="#personaModal">
+                                        <button id="btnBuscarPersona" type="button" class="btn btn-outline-success btn-xs tmn " data-toggle="modal" data-target="#personaModal">
                                             <i class="fa fa-search-plus fa-2x"></i>
                                         </button>
 
@@ -61,6 +63,9 @@
                                 <div class="form-group col-sm-4">
                                     <h6>@Html.Label("Nombre", new { @class = "control-label col-sm" })</h6>
                                     <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-user-alt"></i></div>
+                                        </div>
                                         <input type="text" class="form-control" id="nombrePersona" name="Login" value="" disabled />
                                     </div>
                                 </div>
@@ -70,7 +75,9 @@
                                     <h6>@Html.LabelFor(model => model.Login, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-usersr"></i></span>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-user-alt"></i></div>
+                                        </div>                                   
                                         <input type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(model => model.Login)" />
                                     </div>
                                     @*@Html.ValidationMessageFor(model => model.Nombre)*@
@@ -79,7 +86,9 @@
                                     <h6>@Html.LabelFor(model => model.Password, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-keys"></i></span>
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-key"></i></div>
+                                        </div>                                        
                                         <input type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(model => model.Password)" />
                                     </div>
                                     @*@Html.ValidationMessageFor(model => model.Nombre)*@
@@ -90,9 +99,11 @@
                                     <h6>@Html.LabelFor(model => model.idtipousuario, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-id-card"></i></div>
+                                        </div>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        @*<input type="text" class="form-control" id="Cargo" name="Cargo" value="@Html.DisplayFor(model => model.Cargo)" />*@
-
+                                        
                                         @Html.DropDownListFor(model => model.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control" })
 
                                     </div>
@@ -102,8 +113,8 @@
                             </div>
 
                             <div align="left">
-                                @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                     Guardar
                                 </button>
                             </div>
@@ -161,7 +172,7 @@
 
         function AsignarIdentificacion(idetificadion, nombre) {
             //alert(nombre+"cc " + idetificadion );
-            debugger;
+           
             document.getElementById("idpersona").value = idetificadion;
             document.getElementById("nombrePersona").value = nombre;
             $('#personaModal').modal("hide");

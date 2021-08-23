@@ -1,37 +1,37 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ANDROMEDA 2.0</title>
-    @*@Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")*@
+    <title>@ViewBag.Title - ANDROMEDA 2.0</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/AdminLT")
+    @Scripts.Render("~/bundles/modernizr")
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/Content/AdminLT/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->    
-    <link rel="stylesheet" href="~/Content/AdminLT/plugins/overlayScrollbars/css/OverlayScrollbars.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/Content/AdminLT/dist/css/adminlte.css">
-    @*<link rel="stylesheet" href="~/Content/AdminLT/dist/css/personalizadosCUB.css">*@
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="~/Content/AdminLT/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/Content/AdminLT/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <!--Datapicker-->
-    <link href="~/Content/AdminLT/plugins/bootstrap/js/bootstrap-datetimepicker.min.js" rel="stylesheet" media="screen">
-    @*<link href="~/Content/AdminLT/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" media="screen">*@
-    <link href="~/Content/AdminLT/plugins/jquery-ui/themes/cupertino/jquery-ui.min.css" rel="stylesheet" media="screen">
-    <link href="~/Content/AdminLT/plugins/jquery-ui/themes/cupertino/theme.css" rel="stylesheet" media="screen">
+
+    <!-- Bootstrap4 Duallistbox -->
+    @* <link rel="stylesheet" href="~/Content/AdminLT/plugins/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">*@
+
+    <style>
+        textarea {
+            resize: both;
+            outline: none;
+        }
+
+        #count_message {
+            border-radius: 9px;
+            background-color: gainsboro;
+            margin-top: -20px;
+            margin-right: 5px;
+        }
+    </style>
 
 
+    @*<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">*@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700" rel="stylesheet">
-    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapse">
     <div class="wrapper">
@@ -48,7 +48,6 @@
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
                     </li>*@
-
             </ul>
 
             <!-- SEARCH FORM -->
@@ -61,7 +60,7 @@
                             </button>
                         </div>
                     </div>*@
-                <h3 style="color:#ffffff"></h3>
+                <h3 style="color:#ffffff">ANDRÓMEDA 2.0</h3>
             </form>
 
             <!-- Right navbar links -->
@@ -94,21 +93,22 @@
                         </div>
                     </li>*@
                 <li>
-                    <img src="~/Content/AdminLT/dist/img/logoheader.png" class="logoheader" alt="">
+                    @*<img src="~/Content/AdminLT/dist/img/logoheader.png" class="logoheader" alt="">*@
                 </li>
-
             </ul>
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 ">
             <!-- Brand Logo -->
-            <a href="/Home/index" class="brand-link" style="background-color: #3b5998">
-                <img src="~/Content/AdminLT/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+            <a href="/Home/Dashboard" class="brand-link" style=" border-top-right-radius: 17px; background: linear-gradient(to right, rgba(73,155,234,1) -7%, rgba(59,89,152,1) 8%, rgba(59,89,152,1) 98%, rgba(59,89,152,0.5) 125%) !important; ">
+                <img src="~/Content/AdminLT/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
                 <span class="brand-text font-weight-light">Andrómeda</span>
             </a>
+
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar " style="background: linear-gradient(to right, rgba(73,155,234,1) -7%, rgba(59,89,152,1) 8%, rgba(59,89,152,1) 98%, rgba(59,89,152,0.5) 125%) !important; ">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -120,7 +120,7 @@
                     @*<div class="collapse" id="loggedinMenu">*@
                     <div>
                         <ul class="nav nav-aside mg-b-0">
-                            <li class="nav-item"><a href="/Home/LogIn" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
+                            <li class="nav-item"><a href="/Home/LogOut" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -129,18 +129,28 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
                         <li>
-                            <a href="/Home/Dashboard" class="nav-link active" style="color: #ffffff; background-color: #365998;">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="/Home/Dashboard" class="nav-link active" style="color: #ffffff; background-color: #3B5998;">
+                                <i class="nav-icon fas fa-home fa-2x"></i>
                                 <p>
-                                    Menú
+                                    Inicio
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header"><b>V</b> 1.0.0</li>
+                        <li class="clearfix">&nbsp;</li>
+                        <li class="nav-header">AYUDA</li>
+                        <li class="nav-item">
+                            <a href="/Home/PDFPartialView" class="nav-link">
+                                <i class="fa fa-question-circle fa-2x"></i>
+                                <p>
+                                    Guía de Usuario
+                                    <span class="right badge badge-danger">A</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="clearfix">&nbsp;</li>
+                        <li class="nav-header"><b>V</b> 1.0</li>
                     </ul>
-
-
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -184,67 +194,21 @@
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline-block">
                 @*<b>Version</b> 1.0.1.1*@
-                <h5>Proyecto Andrómeda - CTIC</h5>
+                <h5> Proyecto Andrómeda - CTIC 2021</h5>
             </div>
         </footer>
     </div>
 
-    <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="~/Content/AdminLT/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Content/AdminLT/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/Content/AdminLT/plugins/chart.js/Chart.min.js"></script>
-    <!-- FLOT CHARTS -->
-    <script src="~/Content/AdminLT/plugins/flot/jquery.flot.js"></script>
-    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="~/Content/AdminLT/plugins/flot-old/jquery.flot.pie.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/Content/AdminLT/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/Content/AdminLT/dist/js/adminlte.js"></script>
-    <!-- Sweetalert2 -->
-    <script src="~/Content/AdminLT/plugins/select2/js/select2.full.min.js"></script>
-    <script src="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.js"></script>
-    <!-- Toastr -->
-    <script src="~/Content/AdminLT/plugins/toastr/toastr.min.js"></script>
-    <!-- DataTables -->
-    <script src="~/Content/AdminLT/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="~/Content/AdminLT/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Content/AdminLT/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/Content/AdminLT/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <!-- Datapicker-->
-    <script type="text/javascript" src="~/Scripts/App/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="~/Scripts/App/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="~/Scripts/App/" charset="UTF-8"></script>
-
-    @*<script type="text/javascript" src="~/Scripts/App/ charset="UTF-8"></script>*@
-    <!-- daterangepicker -->
-    <script src="~/Content/AdminLT/plugins/jquery-ui/jquery-ui.js"></script>
-    <script src="~/Content/AdminLT/plugins/jquery-ui/"></script>
-    <script src="~/Content/AdminLT/plugins/moment/locales.min.js"></script>
-    <script src="~/Content/AdminLT/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="~/Content/AdminLT/dist/js/pages/dashboard.js"></script>
-
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
-
     <script type="text/javascript">
-        //obtener el usuario logueado
-        document.getElementById('usurioLog').innerHTML = '@Session["UsuarioAD"]';
+    //obtener el usuario logueado
+     document.getElementById('usurioLog').innerHTML = '@Session["UsuarioAD"]';
+     //document.getElementById('usurioLog').innerHTML = '---';
 
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip({
-                selector: true,
-                title: function () {
-                    return $(this).attr('href');
-                }
-            });
-        });
+    //$(document).ready(function () {
 
+    //    });
     </script>
+
     @if (ViewBag.Message != null)
     {
         <script type="text/javascript">
@@ -265,6 +229,95 @@
         </script>
     }
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/AdminLT/plugins")
+    @Scripts.Render("~/bundles/AdminLT/js")
+    @RenderSection("scripts", required: false)
+
+
+    <!-- daterangepicker -->
+    <script src="~/Content/AdminLT/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Content/AdminLT/plugins/daterangepicker/daterangepicker.js"></script>
+
+    @*<script src="~/Content/AdminLT/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>*@
+
+    <script type="text/javascript">
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+
+       //obtener el usuario logueado
+     document.getElementById('usurioLog').innerHTML = '@Session["UsuarioAD"]';
+        $(document).ready(function () {
+
+            $('[data-toggle="tooltip"]').tooltip({
+                selector: true,
+                title: function () {
+                    return $(this).attr('href');
+                }
+            });
+           // $.bsCustomFileInput.init();
+
+            $.datepicker.setDefaults($.datepicker.regional["es"] = {
+                dateFormat: 'dd/mm/yy',
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                prevText: '<Ant',
+                nextText: 'Sig> ',
+                currentText: 'Hoy',
+                firstDay: 1,
+                showMonthAfterYear: false,
+                changeMonth: true,
+                changeYear: true,
+                isRTL: false,
+            });
+            $("#FechaReporte").datepicker();
+            $("#FechaRecibido").datepicker();
+
+            var text_max = 3950;
+            $('#count_message').html('0 / ' + text_max);
+
+            $('#Situacion').keyup(function () {
+                var text_length = $('#Situacion').val().length;
+                var text_remaining = text_max - text_length;
+
+                $('#count_message').html(text_length + ' / ' + text_max);
+            });
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox();
+          /*  $("#wizard").steps();*/
+
+            bsCustomFileInput.init();
+
+    });
+    </script>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000
+            });
+
+            Toast.fire({
+                icon: '@ViewBag.AlertType',
+                title: '@ViewBag.Message'
+            });
+
+         };
+        </script>
+    }
 
 </body>
 </html>

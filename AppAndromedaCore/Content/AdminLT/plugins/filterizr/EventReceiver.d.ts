@@ -9,4 +9,4 @@ export default class EventReceiver implements Destructible {
     destroy(): void;
     private removeAllEvents;
 }
-export {};
+export { };

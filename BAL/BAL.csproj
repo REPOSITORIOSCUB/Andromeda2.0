@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="oracle.dataaccess, Version=2.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Oracle.DataAccess\v4.0_4.121.1.0__89b483f429c47342\oracle.dataaccess.dll</HintPath>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <HintPath>..\packages\odp.net.x64.112.3.20\lib\net40\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -59,6 +58,7 @@
     <Compile Include="Interfaces\Configuracion\IRepositorioTipoUsuario.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioUsuario.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioPerfilXModulo.cs" />
+    <Compile Include="Interfaces\Configuracion\IRepositorioUsuarioXTipoUsuairo.cs" />
     <Compile Include="Modelos\AccesoModel.cs" />
     <Compile Include="Modelos\Configuracion\BotonesModel.cs" />
     <Compile Include="Modelos\Configuracion\BotonXPerXPagModel.cs" />
@@ -71,7 +71,9 @@
     <Compile Include="Modelos\Configuracion\TipoUsuarioModel.cs" />
     <Compile Include="Modelos\Configuracion\UsuarioAModel.cs" />
     <Compile Include="Modelos\Configuracion\PerfilXModuloModel.cs" />
+    <Compile Include="Modelos\Configuracion\UsuarioXTipoUsuarioModel.cs" />
     <Compile Include="Modelos\General\ArchivoModel.cs" />
+    <Compile Include="Modelos\General\DatoAuditoria.cs" />
     <Compile Include="Modelos\General\MensajesOperacion.cs" />
     <Compile Include="Modelos\PermisoAccesoModel.cs" />
     <Compile Include="Modelos\UsuairoModel.cs" />
@@ -85,13 +87,16 @@
     <Compile Include="Repositorios\Configuracion\RepositorioTipoUsuario.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioUsuario.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioPerfilXModulo.cs" />
+    <Compile Include="Repositorios\Configuracion\RepositorioUsuarioXTipoUsuairo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{f4136c3c-7b4c-455d-a951-102c6291a4e9}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

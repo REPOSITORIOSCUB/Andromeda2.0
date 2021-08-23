@@ -135,6 +135,7 @@
     <Compile Include="Controllers\Configuracion\MenusController.cs" />
     <Compile Include="Controllers\Configuracion\PerfilXModulosController.cs" />
     <Compile Include="Controllers\Configuracion\PerfilXPagXModController.cs" />
+    <Compile Include="Controllers\Configuracion\UsuarioXTipoUsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Configuracion\ModulosController.cs" />
     <Compile Include="Controllers\Configuracion\PaginasController.cs" />
@@ -1869,6 +1870,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Imagenes\ADMINISTRACIÓN.JPG" />
     <Content Include="Content\Imagenes\ADMINISTRATIVO-Y-FINANCIERO.JPG" />
+    <Content Include="Content\Imagenes\BACKGROUND_PRINCIPAL.jpg" />
     <Content Include="Content\Imagenes\MONITOREO-COVID.JPG" />
     <Content Include="Content\Imagenes\RECURSOS-HUMANOS.JPG" />
     <Content Include="Content\Imagenes\TELEMEDICINA_CUB.JPG" />
@@ -2086,6 +2088,7 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Instructivo.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Configuracion\ConsultaPersona.js" />
     <Content Include="Scripts\Configuracion\SubirArchivos.js" />
@@ -2099,6 +2102,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2109,7 +2113,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -2153,6 +2156,8 @@
     <Content Include="Views\BotonXPerfil\Delete.cshtml" />
     <Content Include="Views\Usuarios\GetPerPopup.cshtml" />
     <Content Include="Views\Archivos\Index.cshtml" />
+    <Content Include="Views\UsuarioXTipoUsuario\Index.cshtml" />
+    <Content Include="Views\Home\PDFPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

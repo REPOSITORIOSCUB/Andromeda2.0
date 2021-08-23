@@ -176,60 +176,79 @@
             border-color: #86DbC8;
             color: #314F49;
         }
+        .tablero-menu-fondo {
+            background-image: url('../../Content/Imagenes/BACKGROUND_PRINCIPAL.jpg');
+            border: 2px;
+            border-radius: 10px;
+            color: rgb(72, 85, 108);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            padding: 15px 20px 15px 20px;
+            width: calc(100% - 1px);
+            /*width: 100vw;*/
+            height: 81vh;
+            /*height: calc(100% - 560px);*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: right;
+            position: relative;
+            z-index: 1;
+        }
 </style>
 
-<div class="row container col-md-12">
-    @if (Model != null)
-    {
-        var menuid = "";
-        var url = "";
-
-        for (var i = 0; i < Model.Count(); i++)
+<div class="tablero-menu-fondo">
+    <div class="row container col-md-12">
+        @if (Model != null)
         {
-            menuid = "menu" + i;
-            <div>
-                <div class="card" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
-                    <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
-                    <div class="card-block">
-                        <label class="card-title">@Model[i].nomMenu</label>
-                        <div id=@menuid style="display:none">
-                            <p class="card-text">@Model[i].descripcion</p>
-                            <ul class="topmenu" id="menu">
-                                @for (var j = i + 1; j < Model.Count(); j++)
-                                {
-                                    if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        switch (Model[i].nomMenu)
-                                        {
-                                            case "Telemedicina":
-                                                //Usuario y Cedula Y pERFIL
-                                                url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString() + "&Doc=" + @Session["UsuarioID"].ToString();
-                                                break;
-                                            case "Monitoreo COVID":
-                                                //Usuario
-                                                url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
-                                                break;
-                                            case "Ingresos Operacionales":
-                                                url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
-                                                break;
-                                            default:
-                                                url = @Model[j].controller;
-                                                break;
-                                        }
+            var menuid = "";
+            var url = "";
 
-                                        <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
-                                        i++;
+            for (var i = 0; i < Model.Count(); i++)
+            {
+                menuid = "menu" + i;
+                <div>
+                    <div class="card" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
+                        <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
+                        <div class="card-block">
+                            <label class="card-title">@Model[i].nomMenu</label>
+                            <div id=@menuid style="display:none">
+                                <p class="card-text">@Model[i].descripcion</p>
+                                <ul class="topmenu" id="menu">
+                                    @for (var j = i + 1; j < Model.Count(); j++)
+                                    {
+                                        if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            switch (Model[i].nomMenu)
+                                            {
+                                                case "Telemedicina":
+                                                    //Usuario y Cedula Y pERFIL
+                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString() + "&Doc=" + @Session["UsuarioID"].ToString();
+                                                    break;
+                                                case "Monitoreo COVID":
+                                                    //Usuario
+                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+                                                    break;
+                                                case "Ingresos Operacionales":
+                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+                                                    break;
+                                                default:
+                                                    url = @Model[j].controller;
+                                                    break;
+                                            }
+
+                                            <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                            i++;
+                                        }
                                     }
-                                }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
+    </div>
 </div>

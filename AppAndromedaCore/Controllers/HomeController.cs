@@ -141,6 +141,13 @@ namespace AppAndromedaCore.Controllers
                 }
             }
         }
+
+        //Manual de usuario
+        public PartialViewResult PDFPartialView()
+        {
+
+            return PartialView();
+        }
     }
 
 }

@@ -8,4 +8,4 @@ interface FilterizrState {
  * Possible animation states for Filterizr
  */
 export declare const FILTERIZR_STATE: FilterizrState;
-export {};
+export { };

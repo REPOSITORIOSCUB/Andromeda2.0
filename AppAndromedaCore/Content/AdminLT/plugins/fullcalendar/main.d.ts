@@ -954,7 +954,7 @@ declare module '@fullcalendar/core/theme/Theme' {
         getCustomButtonIconClass(customButtonProps: any): string;
     }
     export type ThemeClass = {
-        new (calendarOptions: any): Theme;
+        new(calendarOptions: any): Theme;
     };
 }
 
@@ -1085,7 +1085,7 @@ declare module '@fullcalendar/core/Calendar' {
         destroy(): any;
     };
     export type CalendarInteractionClass = {
-        new (calendar: Calendar): CalendarInteraction;
+        new(calendar: Calendar): CalendarInteraction;
     };
     export type OptionChangeHandler = (propValue: any, calendar: Calendar, deepEqual: any) => void;
     export type OptionChangeHandlerMap = {
@@ -1208,7 +1208,7 @@ declare module '@fullcalendar/core/Calendar' {
         scrollToTime(timeInput: DurationInput): void;
     }
     function buildDelayedRerender(this: Calendar, wait: any): any;
-    export {};
+    export { };
 }
 
 declare module '@fullcalendar/core/View' {
@@ -1735,7 +1735,7 @@ declare module '@fullcalendar/core/datelib/timezone' {
         abstract timestampToArray(ms: number): number[];
     }
     export type NamedTimeZoneImplClass = {
-        new (timeZoneName: string): NamedTimeZoneImpl;
+        new(timeZoneName: string): NamedTimeZoneImpl;
     };
 }
 
@@ -1790,8 +1790,8 @@ declare module '@fullcalendar/core/structs/event-source' {
         [otherProp: string]: any;
     }
     export type EventSourceInput = ExtendedEventSourceInput | // object in extended form
-    EventSourceFunc | // just a function
-    string;
+        EventSourceFunc | // just a function
+        string;
     export interface EventSource {
         _raw: any;
         sourceId: string;
@@ -1836,7 +1836,7 @@ declare module '@fullcalendar/core/interactions/interaction' {
         destroy(): void;
     }
     export type InteractionClass = {
-        new (settings: InteractionSettings): Interaction;
+        new(settings: InteractionSettings): Interaction;
     };
     export interface InteractionSettingsInput {
         el: HTMLElement;
@@ -1917,7 +1917,7 @@ declare module '@fullcalendar/core/interactions/ElementDragging' {
         setAutoScrollEnabled(bool: boolean): void;
     }
     export type ElementDraggingClass = {
-        new (el: HTMLElement): ElementDragging;
+        new(el: HTMLElement): ElementDragging;
     };
 }
 
@@ -2463,10 +2463,10 @@ declare module '@fullcalendar/core/common/slicing-utils' {
     abstract class Slicer<SegType extends Seg, ExtraArgs extends any[] = []> {
         abstract sliceRange(dateRange: DateRange, ...extraArgs: ExtraArgs): SegType[];
         sliceProps(props: SliceableProps, dateProfile: DateProfile, nextDayThreshold: Duration | null, calendar: Calendar, component: DateComponent<any>, // TODO: kill
-        ...extraArgs: ExtraArgs): SlicedProps<SegType>;
+            ...extraArgs: ExtraArgs): SlicedProps<SegType>;
         sliceNowDate(// does not memoize
-        date: DateMarker, component: DateComponent<any>, // TODO: kill
-        ...extraArgs: ExtraArgs): SegType[];
+            date: DateMarker, component: DateComponent<any>, // TODO: kill
+            ...extraArgs: ExtraArgs): SegType[];
     }
 }
 
@@ -2731,4 +2731,3 @@ declare module '@fullcalendar/core/Toolbar' {
         toggleButtonEnabled(buttonName: any, bool: any): void;
     }
 }
-

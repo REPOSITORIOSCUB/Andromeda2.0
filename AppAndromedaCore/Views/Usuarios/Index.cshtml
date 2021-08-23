@@ -25,14 +25,15 @@
 
 <div class="content-body">
     <div class="card bg-light mb-3" style="max-width: 100%;">
-        <div class="card-header bg-gradient-gray" style="text-align:center">
+        <div class="card-header bg-gradient-lightblue" style="text-align:center">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <a href="@Url.Action("Create","Usuarios")" class="btn btn-success tmn1">
-                            <i class="fa fa-plus-circle"></i>&nbsp;Agregar
+                        <a href="@Url.Action("Create","Usuarios")" class="btn btn-outline-light btn-sm" data-toggle="tooltip" title="Agregar">
+                            <i class="fa fa-plus-circle"></i>&nbsp;Nuevo Registro
                         </a>
                     </div>
+                   
                     <div class="col-6">
                         LISTA DE USUARIOS
                     </div>
@@ -41,6 +42,7 @@
                 </div>
             </div>
         </div>
+        <br/>
         <div class="card-body">
             <div class="col">
                 <table id="ListaDatos" class="table table-striped table-hover table-responsive " width="100%">
