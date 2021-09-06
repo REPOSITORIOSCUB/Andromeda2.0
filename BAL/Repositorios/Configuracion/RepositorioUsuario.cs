@@ -228,6 +228,7 @@ namespace BAL.Repositorios.Configuracion
             obj.Password = dr[2].ToString();
             obj.bhabilitado =Convert.ToInt32(dr[4].ToString());
             obj.idtipousuario = Convert.ToInt32(dr[5].ToString());
+            
 
             return obj;
         }

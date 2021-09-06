@@ -133,8 +133,8 @@ namespace BAL.Repositorios.Configuracion
             ModuloModel obj = new  ModuloModel();
             obj.Id = registro[0].ToString();
             obj.Nombre = registro[1].ToString();
-            obj.Estado = Convert.ToInt32(registro[2]);
-
+            obj.Estado = Convert.ToInt32(registro[2]);           
+          
             return obj;
         }
 
@@ -190,6 +190,44 @@ namespace BAL.Repositorios.Configuracion
             }
 
             return returnValue;
+        }
+
+        public IEnumerable<ModuloModel> getobjModuloxTiposuario(string vUsuario)
+        {
+            List<ModuloModel> lista = new List<ModuloModel>();
+            DataTable dttLista = new DataTable();
+
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.ListarModuloPerfil");
+            _command.CommandType = CommandType.StoredProcedure;
+
+            _command.Parameters.Add("vUsuario", "NVARCHAR2").Value = vUsuario;
+            _command.Parameters.Add("vCursorGeneral", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            dttLista = Metodos.EjecutarComandoSelect(_command);
+
+            foreach (DataRow regi in dttLista.Rows)
+            {
+                lista.Add(LlenarEntidadModulo(regi));
+            }
+
+
+            return lista;
+        }
+
+        private ModuloModel LlenarEntidadModulo(DataRow registro)
+        {
+            ModuloModel obj = new ModuloModel();
+            obj.Id = registro[0].ToString();
+            obj.Nombre = registro[1].ToString();
+            string a  = registro[2].ToString();
+
+            TipoUsuarioModel obj2 = new TipoUsuarioModel();
+            obj2.Id = Convert.ToInt32(registro[2]);
+            obj2.Nombre = registro[3].ToString();
+            obj.tipousuario= obj2;
+            obj2.Estado = Convert.ToInt32(registro[4]);
+
+            return obj;
         }
     }
 }

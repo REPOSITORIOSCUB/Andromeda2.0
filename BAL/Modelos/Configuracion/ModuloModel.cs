@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BAL.Modelos.Configuracion
 {
-    public class ModuloModel
+    public class ModuloModel 
     {
         public string Id { get; set; }
         public string Nombre { get; set; }
         public int Estado { get; set; }
+
+        public TipoUsuarioModel tipousuario { get; set; }
     }
 }

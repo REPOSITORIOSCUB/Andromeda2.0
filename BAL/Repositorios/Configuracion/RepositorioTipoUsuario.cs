@@ -84,6 +84,28 @@ namespace BAL.Repositorios.Configuracion
             return Metodos.EjecutarComando(_command);
         }
 
+        public bool Eliminar(string idpersona)
+        {
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.EliminarTipoUsuario");
+            _command.CommandType = CommandType.StoredProcedure;
+
+            _command.Parameters.Add("vUsuario", "NVARCHAR2").Value = idpersona;
+
+            return Metodos.EjecutarComando(_command);
+        }
+
+        public bool Grabar(string idpersona, string idmodulo, string idperfil)
+        {
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.GrabarTipoUsuario");
+            _command.CommandType = CommandType.StoredProcedure;
+
+            _command.Parameters.Add("vUsuario", "NVARCHAR2").Value = idpersona;
+            _command.Parameters.Add("vTipoUsuario", "NVARCHAR2").Value = idmodulo;
+            _command.Parameters.Add("vPerfil", "NVARCHAR2").Value = idperfil;
+
+            return Metodos.EjecutarComando(_command);
+        }
+
         public TipoUsuarioModel FindId(string Id)
         {
             TipoUsuarioModel lista = new TipoUsuarioModel();

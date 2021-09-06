@@ -1,9 +1,38 @@
-﻿@model BAL.Modelos.UsuairoModel
+﻿@model Tuple<BAL.Modelos.UsuairoModel, IEnumerable<BAL.Modelos.Configuracion.ModuloModel>>
+@using Newtonsoft
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    .accordion-headermenu {
+        color: white;
+        background-color: #546E7A;
+        border-color: #EEEEEE;
+        height: 37px;
+        line-height: 37px;
+        font-weight: 500;
+        padding-left: 15px
+    }
+
+    .accordion-headersubmenu {
+        color: white;
+        background-color: #78909C;
+        border-color: #EEEEEE;
+        height: 37px;
+        line-height: 37px;
+        font-weight: 500;
+        padding-left: 15px
+    }
+
+    .modal-open {
+        padding: 0 !important;
+        overflow-y: auto;
+    }
+</style>
+
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
         <nav aria-label="breadcrumb">
@@ -35,7 +64,7 @@
                             <div class="row">
 
                                 <div class="col">
-                                   MODIFICAR USUARIO
+                                    MODIFICAR USUARIO
                                 </div>
 
                             </div>
@@ -50,80 +79,167 @@
 
                                         <div class="row">
                                             <div class="form-group col-sm">
-                                                <h6> @Html.LabelFor(model => model.idUsuairo, new { @class = "control-label col-sm", @for = "Usuario11" })</h6>
+                                                <h6> @Html.LabelFor(Tuple => Tuple.Item1.idUsuairo, new { @class = "control-label col-sm", @for = "Usuario11" })</h6>
                                                 <div class="input-group">
-                                                    @Html.HiddenFor(model => model.idUsuairo)
+                                                    @Html.HiddenFor(Tuple => Tuple.Item1.idUsuairo)
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                                                    <input disabled type="text" class="form-control" id="idUsuairo" name="idUsuairo" value="@Html.DisplayFor(model => model.idUsuairo)" />
+                                                    <input disabled type="text" class="form-control" id="idUsuairo" name="idUsuairo" value="@Html.DisplayFor(Tuple => Tuple.Item1.idUsuairo)" />
                                                     @*@Html.ValidationMessageFor(model => model.Codigo)*@
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm">
-                                                <h6>@Html.LabelFor(model => model.Login, new { @class = "control-label col-sm" })</h6>
+                                                <h6>@Html.LabelFor(Tuple => Tuple.Item1.Login, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(model => model.Login)" />
+                                                    <input type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(Tuple => Tuple.Item1.Login)" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-sm">
-                                                <h6>@Html.LabelFor(model => model.Password, new { @class = "control-label col-sm" })</h6>
+                                                <h6>@Html.LabelFor(Tuple => Tuple.Item1.Password, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(model => model.Password)" />
+                                                    <input type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(Tuple => Tuple.Item1.Password)" />
                                                 </div>
                                             </div>
-                                            <div class="form-group col-sm">
-                                                <h6>@Html.LabelFor(model => model.idtipousuario, new { @class = "control-label col-sm" })</h6>
+                                            <div class="form-group col-sm" style="display:none">
+                                                <h6>@Html.LabelFor(Tuple => Tuple.Item1.idtipousuario, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    @Html.DropDownListFor(model => model.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control" })
+                                                    @Html.DropDownListFor(Tuple => Tuple.Item1.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control" })
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <!--<div class="form-group col-sm-2">
-                                                <h6>@Html.LabelFor(model => model.bhabilitado, new { @class = "control-label col-sm" })</h6>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>-->
-                                                    @*<input type="text" class="form-control" id="Borrado" value="@Html.DisplayFor(model => model.Borrado)" />*@
-                                                    <!--<select name="bhabilitado" id="bhabilitado" class="form-control selectpicker">
-                                                        <option selected value="1" @(Model.bhabilitado.Equals("1") ? "selected" : "")>Activo</option>
-                                                        <option value="0" @(Model.bhabilitado.Equals("0") ? "selected" : "")>Inactivo</option>
-                                                    </select>
-                                                </div>-->
-                                                @*@Html.ValidationMessageFor(model => model.Borrado)*@
-                                            <!--</div>-->
                                             <div class="form-group col-sm-2">
-                                                <h6>@Html.LabelFor(model => model.bhabilitado, new { @class = "control-label col-sm" })</h6>
+                                                <h6>@Html.LabelFor(Tuple => Tuple.Item1.bhabilitado, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-barss"></i></span>
                                                     @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
-                                                    @Html.DropDownListFor(model => model.bhabilitado, ViewBag.ListaEstado as SelectList, new { @id = "Id", @class = "form-control" })
+                                                    @Html.DropDownListFor(Tuple => Tuple.Item1.bhabilitado, ViewBag.ListaEstado as SelectList, new { @id = "Habilitado", @class = "form-control" })
                                                     @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
                                                 </div>
 
                                             </div>
                                             <div class="form-group col-sm">
-                                                <h6>@Html.LabelFor(model => model.idpersona, new { @class = "control-label col-sm" })</h6>
+                                                <h6>@Html.LabelFor(Tuple => Tuple.Item1.idpersona, new { @class = "control-label col-sm" })</h6>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(model => model.idpersona)" />
+                                                    <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(Tuple => Tuple.Item1.idpersona)" />
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-                               
+
+                                <!-- Permisos -->
+                                <div class="card" style="margin-bottom:1px;">
+                                    <a id="cardEncabezado" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionEncabezado" href="#collapseEncabezado" style="text-decoration:none">
+                                        <div class="accordion-headermenu">
+                                            Permisos
+                                        </div>
+                                    </a>
+                                    <div id="collapseEncabezado" class="collapsing hide" role="tabpanel" data-parent="#accordionEncabezado">
+                                        <div class="accordion" id="accordionEncabezado" style="margin-left:10px;margin-right:10px;">
+                                            <div class="card-body">
+                                                <br />
+                                                <ul id="menu">
+                                                    @if (Model.Item2.Count() > 0)
+                                                    {
+                                                        var contador = Model.Item2.Count();
+                                                        var i = 0;
+                                                        var j = 0;
+                                                        var k = 0;
+
+                                                        var menuid = "";
+                                                        var seleccionar = "";
+
+                                                        //Model.Item2.ToArray()[0].Id
+                                                        //Model.Item2.ToArray()[0].Nombre
+                                                        //Model.Item2.ToArray()[0].tipousuario.Id
+                                                        //Model.Item2.ToArray()[0].tipousuario.Nombre
+                                                        //Model.Item2.ToArray()[0].tipousuario.Estado
+
+                                                        do
+                                                        {
+                                                            menuid = @Model.Item2.ToArray()[i].Id;
+                                                            j = i;
+                                                            seleccionar = "No";
+
+                                                            <li id=@(menuid) class="panel" style="list-style:none">
+                                                                @do
+                                                                {
+                                                                    if (menuid == @Model.Item2.ToArray()[k].Id)
+                                                                    {
+                                                                        if (Model.Item2.ToArray()[k].tipousuario.Estado != 0)
+                                                                        {
+                                                                            seleccionar = "Si";
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        break;
+                                                                    }
+                                                                    k++;
+                                                                } while (k < contador);
+
+                                                                <a class="nav nav-list" data-toggle="collapse" data-parent="#menu" href=@("#m_" + menuid) style="text-decoration:none">
+                                                                    @if (seleccionar == "Si")
+                                                                    {
+                                                                        <input id=@("inputm_" + menuid) type="checkbox" checked="checked" class="nav nav-list" style="width:18px;height:18px;"><label style="line-height:18px;color:black">&nbsp;@Model.Item2.ToArray()[i].Nombre</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input id=@("inputm_" + menuid) type="checkbox" class="nav nav-list" style="width:18px;height:18px;"><label style="line-height:18px;color:black">&nbsp;@Model.Item2.ToArray()[i].Nombre</label>
+                                                                    }
+                                                                </a>
+                                                                <ul id=@("m_" + menuid) class="collapse" style="list-style:none" onchange="ValidarPermisos('@("inputm_" + menuid)' , this.id)">
+                                                                    @do
+                                                                    {
+                                                                        if (menuid == @Model.Item2.ToArray()[j].Id)
+                                                                        {
+                                                                            if (Model.Item2.ToArray()[j].tipousuario.Estado == 0)
+                                                                            {
+                                                                                if (seleccionar == "Si")
+                                                                                {
+                                                                                    <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" style="width:18px;height:18px;" disabled><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" style="width:18px;height:18px;"><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" checked="checked" style="width:18px;height:18px;"><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            break;
+                                                                        }
+                                                                        j++;
+                                                                    } while (j < contador);
+                                                                </ul>
+                                                            </li>
+                                                            i = j;
+                                                        } while (i < contador);
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
                                 <div align="left">
-                                    @*<input type="submit" value="Save" class="btn btn-info" />*@
-                                    @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                    <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                    @*<button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                         Guardar
-                                    </button>
+                                    </button>*@
+                                    <button id="guardar" type="button" class="btn btn-success btn-mae-grdr fa fa-check-circle" onclick="Guardar()"> Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -134,3 +250,80 @@
         </div>
     </div>
 </div>
+
+<script>
+    function ValidarPermisos(menu, submenu) {
+        if ($("#" + submenu + " li input[type='checkbox']:checked").length == 1) {
+            $("#" + menu).prop('checked', true);
+            $("#" + submenu + " input[type=checkbox]").not(':checked').prop('disabled', true);
+        } else {
+            $("#" + menu).prop('checked', false);
+            $("#" + submenu + " input[type=checkbox]").prop('disabled', false);
+        }
+    }
+
+    function Guardar() {
+        var menuid = "";
+        var submenuid = "";
+        var arrayModulos = new Array();
+        var arrayPerfiles = new Array();
+        var k = -1;
+
+        for (var i = 0; i < $("#menu li.panel").length; i++) {
+            menuid = $("#menu li.panel")[i].id;
+
+            for (var j = 0; j < $("#m_" + menuid + " li").length; j++) {
+                submenuid = $("#m_" + menuid + " li")[j].id;
+                if ($("#m_" + menuid + " li input[type='checkbox']")[j].checked) {
+                    k++;
+                    arrayModulos[k] = menuid;
+                    arrayPerfiles[k] = submenuid;
+                }
+            }
+        }
+
+        var obju = {
+            login: $("#Login").val(),
+            password: $("#Password").val(),
+            bhabilitado: $("#Habilitado").val(),
+            idUsuairo: $("#idUsuairo").val(),
+            idpersona: $("#idpersona").val()
+        };
+        var jsonu = JSON.stringify(obju);
+
+        var objm = [];
+        for (var i = 0; i < arrayModulos.length; i++) {
+            objm.push({ "idmodulo": arrayModulos[i], "idperfil": arrayPerfiles[i] });
+        };
+        var jsonm = JSON.stringify(objm);
+
+        $.ajax({
+            url: '@Url.Action("Grabar", "Usuarios")',
+            data: {
+                usuariostr: jsonu,
+                modulosstr: jsonm
+            },
+            method: "GET",
+            dataType: "text",
+            async: true,
+            beforeSend: function () {
+            },
+            success: function (result) {
+                switch (result) {
+                    case "success":
+                        window.location.href = "/Usuarios/Index";
+                        break;
+                    case "errorgrabando":
+                        break;
+                    case "errorsesion":
+                        window.location.href = "/Home/LogIn";
+                        break;
+                }
+            },
+            error: function () {
+                window.location.href = "/Home/LogIn";
+            }
+        });
+    }
+
+</script>

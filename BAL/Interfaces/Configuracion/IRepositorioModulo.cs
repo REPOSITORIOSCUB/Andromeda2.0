@@ -13,6 +13,7 @@ namespace BAL.Interfaces.Configuracion
         bool Edit(ModuloModel obj);
         bool Delete(ModuloModel obj);
         IEnumerable<ModuloModel> getobj();
+        IEnumerable<ModuloModel> getobjModuloxTiposuario(string usuario);
         ModuloModel FindId(string uID);
         bool ValidarCampos(ModuloModel modulo, string v);
     }

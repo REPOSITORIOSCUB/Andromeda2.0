@@ -1,9 +1,36 @@
-﻿@model BAL.Modelos.UsuairoModel
+﻿@model Tuple<BAL.Modelos.UsuairoModel, IEnumerable<BAL.Modelos.Configuracion.ModuloModel>>
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    .accordion-headermenu {
+        color: white;
+        background-color: #546E7A;
+        border-color: #EEEEEE;
+        height: 37px;
+        line-height: 37px;
+        font-weight: 500;
+        padding-left: 15px
+    }
+
+    .accordion-headersubmenu {
+        color: white;
+        background-color: #78909C;
+        border-color: #EEEEEE;
+        height: 37px;
+        line-height: 37px;
+        font-weight: 500;
+        padding-left: 15px
+    }
+
+    .modal-open {
+        padding: 0 !important;
+        overflow-y: auto;
+    }
+</style>
 
 
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
@@ -45,13 +72,13 @@
                             <div class="row">
 
                                 <div class="form-group col-sm-3">
-                                    <h6>@Html.LabelFor(model => model.idpersona, new { @class = "control-label col-sm" })</h6>
+                                    <h6>@Html.LabelFor(Tuple => Tuple.Item1.idUsuairo, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-address-card"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(model => model.idpersona)" />
+                                        <input type="text" class="form-control" id="idpersona" name="idpersona" value="@Html.DisplayFor(Tuple => Tuple.Item1.idUsuairo)" />
                                         <button id="btnBuscarPersona" type="button" class="btn btn-outline-success btn-xs tmn " data-toggle="modal" data-target="#personaModal">
                                             <i class="fa fa-search-plus fa-2x"></i>
                                         </button>
@@ -72,51 +99,132 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-3">
-                                    <h6>@Html.LabelFor(model => model.Login, new { @class = "control-label col-sm" })</h6>
+                                    <h6>@Html.LabelFor(Tuple => Tuple.Item1.Login, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-user-alt"></i></div>
-                                        </div>                                   
-                                        <input type="text" class="form-control" id="Login" name="Login" value="@Html.DisplayFor(model => model.Login)" />
+                                        </div>
+                                        <input type="text" class="form-control" id="Login" name="Login" value="" autocomplete="off" />
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    <h6>@Html.LabelFor(model => model.Password, new { @class = "control-label col-sm" })</h6>
+                                    <h6>@Html.LabelFor(Tuple => Tuple.Item1.Password, new { @class = "control-label col-sm" })</h6>
 
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-key"></i></div>
-                                        </div>                                        
-                                        <input type="password" class="form-control" id="Password" name="Password" value="@Html.DisplayFor(model => model.Password)" />
+                                        </div>
+                                        <input type="password" class="form-control" id="Password" name="Password" value="" />
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-sm-3">
-                                    <h6>@Html.LabelFor(model => model.idtipousuario, new { @class = "control-label col-sm" })</h6>
 
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="fa fa-id-card"></i></div>
-                                        </div>
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        
-                                        @Html.DropDownListFor(model => model.idtipousuario, ViewBag.ListOfPerfiles as SelectList, new { @id = "idtipousuario", @class = "form-control" })
-
+                            <!-- Permisos -->
+                            <div class="card" style="margin-bottom:1px;">
+                                <a id="cardEncabezado" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionEncabezado" href="#collapseEncabezado" style="text-decoration:none">
+                                    <div class="accordion-headermenu">
+                                        Permisos
                                     </div>
-                                    @* @Html.ValidationMessageFor(model => model.idtipousuario)*@
+                                </a>
+                                <div id="collapseEncabezado" class="collapsing hide" role="tabpanel" data-parent="#accordionEncabezado">
+                                    <div class="accordion" id="accordionEncabezado" style="margin-left:10px;margin-right:10px;">
+                                        <div class="card-body">
+                                            <br />
+                                            <ul id="menu">
+                                                @if (Model.Item2.Count() > 0)
+                                                {
+                                                    var contador = Model.Item2.Count();
+                                                    var i = 0;
+                                                    var j = 0;
+                                                    var k = 0;
 
+                                                    var menuid = "";
+                                                    var seleccionar = "";
+
+                                                    //Model.Item2.ToArray()[0].Id
+                                                    //Model.Item2.ToArray()[0].Nombre
+                                                    //Model.Item2.ToArray()[0].tipousuario.Id
+                                                    //Model.Item2.ToArray()[0].tipousuario.Nombre
+                                                    //Model.Item2.ToArray()[0].tipousuario.Estado
+
+                                                    do
+                                                    {
+                                                        menuid = @Model.Item2.ToArray()[i].Id;
+                                                        j = i;
+                                                        seleccionar = "No";
+
+                                                        <li id=@(menuid) class="panel" style="list-style:none">
+                                                            @do
+                                                            {
+                                                                if (menuid == @Model.Item2.ToArray()[k].Id)
+                                                                {
+                                                                    if (Model.Item2.ToArray()[k].tipousuario.Estado != 0)
+                                                                    {
+                                                                        seleccionar = "Si";
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    break;
+                                                                }
+                                                                k++;
+                                                            } while (k < contador);
+
+                                                            <a class="nav nav-list" data-toggle="collapse" data-parent="#menu" href=@("#m_" + menuid) style="text-decoration:none">
+                                                                @if (seleccionar == "Si")
+                                                                {
+                                                                    <input id=@("inputm_" + menuid) type="checkbox" checked="checked" class="nav nav-list" style="width:18px;height:18px;"><label style="line-height:18px;color:black">&nbsp;@Model.Item2.ToArray()[i].Nombre</label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input id=@("inputm_" + menuid) type="checkbox" class="nav nav-list" style="width:18px;height:18px;"><label style="line-height:18px;color:black">&nbsp;@Model.Item2.ToArray()[i].Nombre</label>
+                                                                }
+                                                            </a>
+                                                            <ul id=@("m_" + menuid) class="collapse" style="list-style:none" onchange="ValidarPermisos('@("inputm_" + menuid)' , this.id)">
+                                                                @do
+                                                                {
+                                                                    if (menuid == @Model.Item2.ToArray()[j].Id)
+                                                                    {
+                                                                        if (Model.Item2.ToArray()[j].tipousuario.Estado == 0)
+                                                                        {
+                                                                            if (seleccionar == "Si")
+                                                                            {
+                                                                                <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" style="width:18px;height:18px;" disabled><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" style="width:18px;height:18px;"><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <li id=@(Model.Item2.ToArray()[j].tipousuario.Id)><input type="checkbox" checked="checked" style="width:18px;height:18px;"><label style="line-height:18px; position:absolute;">&nbsp;@Model.Item2.ToArray()[j].tipousuario.Nombre</label></li>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        break;
+                                                                    }
+                                                                    j++;
+                                                                } while (j < contador);
+                                                            </ul>
+                                                        </li>
+                                                        i = j;
+                                                    } while (i < contador);
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div align="left">
                                 @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
-                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
+                                @*<button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                     Guardar
-                                </button>
+                                </button>*@
+                                <button id="guardar" type="button" class="btn btn-success btn-mae-grdr fa fa-check-circle" onclick="Guardar()"> Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -155,7 +263,7 @@
 @section  scripts
 {
     <script src="~/Scripts/Configuracion/ConsultaPersona.js"></script>
-    <script>   
+    <script>
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -171,15 +279,16 @@
         };
 
         function AsignarIdentificacion(idetificadion, nombre) {
-            //alert(nombre+"cc " + idetificadion );
-           
             document.getElementById("idpersona").value = idetificadion;
             document.getElementById("nombrePersona").value = nombre;
             $('#personaModal').modal("hide");
+
+            $("#Password").val("");
+            $("#Login").val("");
         };
 
         //busqueda por cedula
-        function Buscar() {          
+        function Buscar() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("dato");
             filter = input.value.toUpperCase();
@@ -198,7 +307,7 @@
                     }
                 }
             }
-           
+
         }
         //busqueda por nombre
         function Buscar2() {
@@ -221,6 +330,127 @@
                 }
             }
 
+        }
+
+        function ValidarPermisos(menu, submenu) {
+            if ($("#" + submenu + " li input[type='checkbox']:checked").length == 1) {
+                $("#" + menu).prop('checked', true);
+                $("#" + submenu + " input[type=checkbox]").not(':checked').prop('disabled', true);
+            } else {
+                $("#" + menu).prop('checked', false);
+                $("#" + submenu + " input[type=checkbox]").prop('disabled', false);
+            }
+        }
+
+        function Guardar() {
+            var Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 5000 });
+
+            if ($("#nombrePersona").val() === "") {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Falta el nombre del usuario.  Seleccione usuario de la lista',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+               return;
+            }
+            if ($("#Login").val() === "") {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Falta el usuario',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+            if ($("#Password").val() === "") {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Falta la contraseña',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+
+            var menuid = "";
+            var submenuid = "";
+            var arrayModulos = new Array();
+            var arrayPerfiles = new Array();
+            var k = -1;
+
+            for (var i = 0; i < $("#menu li.panel").length; i++) {
+                menuid = $("#menu li.panel")[i].id;
+
+                for (var j = 0; j < $("#m_" + menuid + " li").length; j++) {
+                    submenuid = $("#m_" + menuid + " li")[j].id;
+                    if ($("#m_" + menuid + " li input[type='checkbox']")[j].checked) {
+                        k++;
+                        arrayModulos[k] = menuid;
+                        arrayPerfiles[k] = submenuid;
+                    }
+                }
+            }
+
+            var obju = {
+                login: $("#Login").val(),
+                password: $("#Password").val(),
+                bhabilitado: $("#Habilitado").val(),
+                idUsuairo: $("#idUsuairo").val(),
+                idpersona: $("#idpersona").val()
+            };
+            var jsonu = JSON.stringify(obju);
+
+            var objm = [];
+            for (var i = 0; i < arrayModulos.length; i++) {
+                objm.push({ "idmodulo": arrayModulos[i], "idperfil": arrayPerfiles[i] });
+            };
+            var jsonm = JSON.stringify(objm);
+
+            if (objm.length === 0) {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Seleccione los permisos',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("Ingresar", "Usuarios")',
+                data: {
+                    usuariostr: jsonu,
+                    modulosstr: jsonm
+                },
+                method: "GET",
+                dataType: "text",
+                async: true,
+                beforeSend: function () {
+                },
+                success: function (result) {
+                    switch (result) {
+                        case "success":
+                            window.location.href = "/Usuarios/Index";
+                            break;
+                        case "errorgrabando":
+                            Toast.fire({
+                                type: 'success',
+                                icon: "warning",
+                                title: ' Error grabando. Intente de nuevo',
+                                customClass: { popup: 'adjust', icon: 'warning' }
+                            });
+
+                            break;
+                        case "errorsesion":
+                            window.location.href = "/Home/LogIn";
+                            break;
+                    }
+                },
+                error: function () {
+                    window.location.href = "/Home/LogIn";
+                }
+            });
         }
 
     </script>

@@ -2120,7 +2120,6 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\TipoUsuarios\Index.cshtml" />
     <Content Include="Views\TipoUsuarios\Create.cshtml" />
     <Content Include="Views\TipoUsuarios\Edit.cshtml" />
@@ -2158,6 +2157,7 @@
     <Content Include="Views\Archivos\Index.cshtml" />
     <Content Include="Views\UsuarioXTipoUsuario\Index.cshtml" />
     <Content Include="Views\Home\PDFPartialView.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
