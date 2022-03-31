@@ -31,7 +31,7 @@
                 @Html.AntiForgeryToken()
 
                 <div class="card bg-light mb-3" style="max-width: 100%;">
-                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                    <div class="card-header bg-gradient-lightblue" style="text-align:center">
                         <div class="container">
                             <div class="row">
 
@@ -42,6 +42,7 @@
                             </div>
                         </div>
                     </div>
+                    &nbsp;
                     <div class="card-body">
                         <div class="col">
                             <div class="panel panel-default">
@@ -95,8 +96,8 @@
                                 </div>
 
                                 <div align="left">
-                                    @Html.ActionLink(" Cancelar", "Index", "BotonXPerfil", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    @Html.ActionLink(" Cancelar", "Index", "BotonXPerfil", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                         Eliminar
                                     </button>
                                 </div>
@@ -109,47 +110,3 @@
         </div>
     </div>
 </div>
-
-
-@*<h2>Delete</h2>
-
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>BotonXPerXPagModel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.IdPerfil)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IdPerfil)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IdBoton)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IdBoton)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Estado)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Estado)
-            </dd>
-
-        </dl>
-
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>*@

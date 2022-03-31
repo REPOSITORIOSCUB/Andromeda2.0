@@ -152,6 +152,30 @@ namespace BAL.Repositorios.Configuracion
 
             return lista;
         }
+
+        //consulta los perfiles ó tipos de usuario sin asignar
+        public IEnumerable<TipoUsuarioModel> getTipoUsuairoSinAsignar()
+        {
+            List<TipoUsuarioModel> lista = new List<TipoUsuarioModel>();
+            DataTable dttLista = new DataTable();
+
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.ListarTiposUsuariosSinAsignar");
+            _command.CommandType = CommandType.StoredProcedure;
+
+            _command.Parameters.Add("vcursorgeneral", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            dttLista = Metodos.EjecutarComandoSelect(_command);
+
+            foreach (DataRow regi in dttLista.Rows)
+            {
+                lista.Add(LlenarEntidad(regi));
+            }
+
+
+            return lista;
+        }
+
+
         private TipoUsuarioModel LlenarEntidad(DataRow registro)
         {
             TipoUsuarioModel obj = new TipoUsuarioModel();
@@ -221,5 +245,7 @@ namespace BAL.Repositorios.Configuracion
 
             return returnValue;
         }
+
+        
     }
 }

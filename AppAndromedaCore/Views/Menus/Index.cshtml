@@ -24,15 +24,16 @@
 </div>
 
 <div class="content-body">
-    <div class="card bg-light mb-3" style="max-width: 100%;">
-        <div class="card-header bg-gradient-gray" style="text-align:center">
+    <div class="card bg-light mb-3" style="max-width: 100%;">        
+        <div class="card-header bg-gradient-lightblue" style="text-align:center">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <a href="@Url.Action("Create","Menus")" class="btn btn-success tmn1" data-toggle="tooltip" title="Agregar">
-                            <i class="fa fa-plus-circle"></i>&nbsp;Agregar
+                        <a href="@Url.Action("Create","Menus")" class="btn btn-outline-light btn-sm" data-toggle="tooltip" title="Agregar">
+                            <i class="fa fa-plus-circle"></i>&nbsp;Nuevo Registro
                         </a>
                     </div>
+
                     <div class="col-6">
                         LISTA DE MENUS
                     </div>
@@ -41,6 +42,7 @@
                 </div>
             </div>
         </div>
+        &nbsp;
         <div class="card-body">
             <div class="col">
                 <table id="ListaDatos" class="table table-striped table-hover table-responsive " width="100%">
@@ -76,41 +78,41 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdPadre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdPagina)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdModulo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Ordenamiento)
-                            </td>
-                            <td>
-                                <img alt="Imagen" class="table-avatar" style=" border-radius: 50%;  display: inline;  width: 2.5rem;" src="@Html.DisplayFor(modelItem => item.Imagen)" />                                
-                                     @*@Html.DisplayFor(modelItem => item.Imagen)*@
-                            </td>
-                            <td>
-                                @Html.TextAreaFor(model => item.Descripcion, new { @class = "form-control", @rows = 2, @MaxLength=50, @disabled = "disabled" })
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Edit", "Menus", new { @id = @item.Id })" class="btn btn-info btn-xs tmn" data-toggle="tooltip" title="Editar">
-                                    <i class='fas fa-pencil-alt'></i>
-                                </a>
-                                <a href="@Url.Action("Delete", "Menus", new { @id = @item.Id })" class="btn btn-danger btn-xs tmn" data-toggle="tooltip" title="Eliminar">
-                                    <i class='fa fa-trash'></i>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdPadre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdPagina)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdModulo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ordenamiento)
+                                </td>
+                                <td>
+                                    <img alt="Imagen" class="table-avatar" style=" border-radius: 50%;  display: inline;  width: 2.5rem;" src="@Html.DisplayFor(modelItem => item.Imagen)" />
+                                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
+                                </td>
+                                <td>
+                                    @Html.TextAreaFor(model => item.Descripcion, new { @class = "form-control", @rows = 2, @MaxLength = 50, @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Menus", new { @id = @item.Id })" class="btn btn-info btn-xs tmn" data-toggle="tooltip" title="Editar">
+                                        <i class='fas fa-pencil-alt'></i>
+                                    </a>
+                                    <a href="@Url.Action("Delete", "Menus", new { @id = @item.Id })" class="btn btn-danger btn-xs tmn" data-toggle="tooltip" title="Eliminar">
+                                        <i class='fa fa-trash'></i>
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                     <tfoot class="blue-dark">

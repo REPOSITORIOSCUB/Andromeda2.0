@@ -13,33 +13,39 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="~/favicon.ico" />
     <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/master.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+
     <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
+    @* <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">*@
+    <!--<!--===============================================================================================-->
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animate/animate.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animate/animate.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/css-hamburgers/hamburgers.min.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animsition/css/animsition.min.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animsition/css/animsition.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/select2/select2.min.css">-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/">-->
     @*<link rel="stylesheet" type="text/css" href="~/Content/">*@
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/daterangepicker/daterangepicker.css">
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/daterangepicker/daterangepicker.css">-->*@
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/util.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/main.css">
+    <!--<link rel="stylesheet" type="text/css" href="~/Content/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/main.css">-->
     <!--===============================================================================================-->
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="~/Content/AdminLT/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
-<body style="background-color: #395998;">
+@*<body style="background-color: #395998;">
     @ViewBag.ResultMessage
     <div class="wrapper">
         <div class="limiter">
@@ -82,28 +88,42 @@
             </div>
         </div>
 
+    </div>*@
+
+
+<body id="particles-js">
+    @ViewBag.ResultMessage
+    <div class="animated bounceInDown">
+        <div class="container">
+            <span class="error animated tada" id="msg"></span>
+            <form name="form1" class="box" th:object="${login}" method="post">
+                <div class="top-content-style">
+                  
+                        <img class="box effect2" src="~/Content/Login/images/Logo.jpg" alt="" />
+                    
+                    
+                </div>
+                <h4>ANDRÓMEDA<span> 2.0</span></h4>
+                <h5>Bienvenido</h5>
+                @*<input type="text" name="email" placeholder="Usuario" autocomplete="off">*@
+                @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", })
+                <i class="typcn typcn-eye" id="eye"></i>
+                @*<input type="password" name="password" placeholder="Contraseña" id="pwd" autocomplete="off">*@
+                @Html.TextBoxFor(model => model.Password, new { id = "pwd", placeholder = "Contraseña", autocomplete = "off", @class = "form-control input100", @type = "password" })
+                @*<label>
+            <input type="checkbox">
+            <span></span>
+            <small class="rmb">Remember me</small>
+        </label>
+        <a href="#" class="forgetpass">Forget Password?</a>*@
+                <input type="submit" value="Ingresar" class="btn1">
+            </form>
+            @*<a href="#" class="dnthave">Don’t have an account? Sign up</a>*@
+        </div>
+        <div class="footer">
+            <span>Desarrollado por <a href="">CTIC ®</a></span>
+        </div>
     </div>
-
-
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
-    <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    @*<script src="~/Content/Login/vendor/daterangepicker/moment.min.js"></script>
-        <script src="~/Content/Login/vendor/daterangepicker/daterangepicker.js"></script>*@
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Content/Login/js/main.js"></script>
-    <!-- Sweetalert2 -->
-    <script src="~/Content/AdminLT/plugins/select2/js/select2.full.min.js"></script>
-    <script src="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.js"></script>
 
     @if (ViewBag.Message != null)
     {
@@ -129,7 +149,67 @@
          };
         </script>
     }
+
+
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <!-- Sweetalert2 -->
+    <script src="~/Content/AdminLT/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.js"></script>
+
+    <script src="https://cldup.com/S6Ptkwu_qA.js"></script>
+    <script src="~/Content/Login/js/master.js"></script>
+
+
 </body>
+
+
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/vendor/animsition/js/animsition.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
+<script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/vendor/select2/select2.min.js"></script>-->
+<!--===============================================================================================-->
+@*<script src="~/Content/Login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/Login/vendor/daterangepicker/daterangepicker.js"></script>*@
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/vendor/countdowntime/countdowntime.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="~/Content/Login/js/main.js"></script>-->
+<!-- Sweetalert2 -->
+@*<script src="~/Content/AdminLT/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Content/AdminLT/plugins/sweetalert2/sweetalert2.js"></script>*@
+
+@*@if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 8000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                Toast.fire({
+                    icon: '@ViewBag.AlertType',
+                    title: '@ViewBag.Message'
+                });
+
+             };
+        </script>
+    }
+    </body>*@
 </html>
 
 

@@ -112,7 +112,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 PerfilXModuloModel datos = new PerfilXModuloModel();
                               
                 //----Selector de perfil
-                IEnumerable<TipoUsuarioModel> objperfil = _repositorioTipoUsuario.getobj();
+                IEnumerable<TipoUsuarioModel> objperfil = _repositorioTipoUsuario.getTipoUsuairoSinAsignar();
                 List<SelectListItem> lstperfil = new List<SelectListItem>();
                 foreach (TipoUsuarioModel perfil in objperfil)
                 {

@@ -31,7 +31,7 @@
                 @Html.AntiForgeryToken()
 
                 <div class="card bg-light mb-3" style="max-width: 100%;">
-                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                    <div class="card-header bg-gradient-lightblue" style="text-align:center">
                         <div class="container">
                             <div class="row">
 
@@ -42,6 +42,7 @@
                             </div>
                         </div>
                     </div>
+                    &nbsp;
                     <div class="card-body">
                         <div class="col">
                             <div class="panel panel-default">
@@ -124,8 +125,8 @@
 
                                 <div align="left">
                                     @*<input type="submit" value="Save" class="btn btn-info" />*@
-                                    @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    @Html.ActionLink(" Cancelar", "Index", "Usuarios", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                         Eliminar
                                     </button>
                                 </div>
@@ -138,72 +139,3 @@
         </div>
     </div>
 </div>
-
-
-
-@*<h2>Delete</h2>
-
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>UsuairoModel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.idUsuairo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.idUsuairo)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Login)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Login)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.idpersona)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.idpersona)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.bhabilitado)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.bhabilitado)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.idtipousuario)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.idtipousuario)
-            </dd>
-
-        </dl>
-
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>*@

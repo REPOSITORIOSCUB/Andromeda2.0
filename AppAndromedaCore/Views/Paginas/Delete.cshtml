@@ -31,17 +31,18 @@
                 @Html.AntiForgeryToken()
 
                 <div class="card bg-light mb-3" style="max-width: 100%;">
-                    <div class="card-header bg-gradient-gray" style="text-align:center">
+                    <div class="card-header bg-gradient-lightblue" style="text-align:center">
                         <div class="container">
                             <div class="row">
 
                                 <div class="col">
-                                    ELIMINAR Pagina
+                                    ELIMINAR PÁGINA
                                 </div>
 
                             </div>
                         </div>
                     </div>
+                    &nbsp;
                     <div class="card-body">
                         <div class="col">
                             <div class="panel panel-default">
@@ -105,8 +106,8 @@
                                 </div>
 
                                 <div align="left">
-                                    @Html.ActionLink(" Cancelar", "Index", "Paginas", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                    @Html.ActionLink(" Cancelar", "Index", "Paginas", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                    <button type="submit" name="Eliminar" id="Delete" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                         Eliminar
                                     </button>
                                 </div>

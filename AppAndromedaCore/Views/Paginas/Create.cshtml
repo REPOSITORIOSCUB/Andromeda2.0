@@ -25,17 +25,18 @@
             @Html.AntiForgeryToken()
 
             <div class="card bg-light mb-3" style="max-width: 100%;">
-                <div class="card-header bg-gradient-gray" style="text-align:center">
+                <div class="card-header bg-gradient-lightblue" style="text-align:center">
                     <div class="container">
                         <div class="row">
 
                             <div class="col">
-                                INGRESO DE PAGINA
+                                INGRESO DE PÁGINA
                             </div>
 
                         </div>
                     </div>
                 </div>
+                &nbsp;
                 <div class="card-body">
                     <div class="col">
                         <div class="form-horizontal">
@@ -82,8 +83,8 @@
                                 </div>
                             </div>                           
                             <div align="left">
-                                @Html.ActionLink(" Cancelar", "Index", "Paginas", new { @class = "btn btn-danger btn-large fa fa-trash-alt fa-2x" })
-                                <button type="submit" name="Create" id="Create" class="btn btn-success btn-mae-grdr fa fa-check-circle fa-2x">
+                                @Html.ActionLink(" Cancelar", "Index", "Paginas", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                <button type="submit" name="Create" id="Create" class="btn btn-success btn-mae-grdr fa fa-check-circle">
                                     Guardar
                                 </button>
                             </div>
@@ -92,61 +93,6 @@
                 </div>
             </div>
 
-
         }
     </div>
 </div>
-
-@*<h2>Create</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>PaginaModel</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Mensaje, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Accion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Accion, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Accion, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Controlador, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Controlador, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Controlador, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
