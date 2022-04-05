@@ -55,6 +55,7 @@
     <Compile Include="Interfaces\Configuracion\IRepositorioPagina.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioPerfiles.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioPerfilXPagXMod.cs" />
+    <Compile Include="Interfaces\Configuracion\IRepositorioReportes.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioTipoUsuario.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioUsuario.cs" />
     <Compile Include="Interfaces\Configuracion\IRepositorioPerfilXModulo.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Modelos\Configuracion\PaginaModel.cs" />
     <Compile Include="Modelos\Configuracion\PerfilesModel.cs" />
     <Compile Include="Modelos\Configuracion\PerfilXPagXModModel.cs" />
+    <Compile Include="Modelos\Configuracion\ReportesModel.cs" />
     <Compile Include="Modelos\Configuracion\TipoUsuarioModel.cs" />
     <Compile Include="Modelos\Configuracion\UsuarioAModel.cs" />
     <Compile Include="Modelos\Configuracion\PerfilXModuloModel.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Repositorios\Configuracion\RepositorioModulo.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioPagina.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioPerfilXPapX Mod.cs" />
+    <Compile Include="Repositorios\Configuracion\RepositorioReportes.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioTipoUsuario.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioUsuario.cs" />
     <Compile Include="Repositorios\Configuracion\RepositorioPerfilXModulo.cs" />

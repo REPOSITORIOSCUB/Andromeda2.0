@@ -210,56 +210,56 @@
     <div class="row container col-md-12">
         @if (Model != null)
         {
-            var menuid = "";
-            var url = "";
+        var menuid = "";
+        var url = "";
 
-            for (var i = 0; i < Model.Count(); i++)
-            {
-                menuid = "menu" + i;
-                <div>
-                    <div class="card" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
-                        <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
-                        <div class="card-block">
-                            <label class="card-title">@Model[i].nomMenu</label>
-                            <div id=@menuid style="display:none">
-                                <p class="card-text">@Model[i].descripcion</p>
-                                <ul class="topmenu" id="menu">
-                                    @for (var j = i + 1; j < Model.Count(); j++)
+        for (var i = 0; i < Model.Count(); i++)
+        {
+        menuid = "menu" + i;
+        <div>
+            <div class="card" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
+                <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
+                <div class="card-block">
+                    <label class="card-title">@Model[i].nomMenu</label>
+                    <div id=@menuid style="display:none">
+                        <p class="card-text">@Model[i].descripcion</p>
+                        <ul class="topmenu" id="menu">
+                            @for (var j = i + 1; j < Model.Count(); j++)
+                            {
+                                if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    switch (Model[i].nomMenu)
                                     {
-                                        if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
-                                        {
+                                        case "Telemedicina":
+                                            //Usuario y Cedula Y pERFIL
+                                            url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString() + "&Doc=" + @Session["UsuarioID"].ToString();
                                             break;
-                                        }
-                                        else
-                                        {
-                                            switch (Model[i].nomMenu)
-                                            {
-                                                case "Telemedicina":
-                                                    //Usuario y Cedula Y pERFIL
-                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString() + "&Doc=" + @Session["UsuarioID"].ToString();
-                                                    break;
-                                                case "Monitoreo COVID":
-                                                    //Usuario
-                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
-                                                    break;
-                                                case "Ingresos Operacionales":
-                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
-                                                    break;
-                                                default:
-                                                    url = @Model[j].controller;
-                                                    break;
-                                            }
-
-                                            <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
-                                            i++;
-                                        }
+                                        case "Monitoreo COVID":
+                                            //Usuario
+                                            url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+                                            break;
+                                        case "Ingresos Operacionales":
+                                            url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+                                            break;
+                                        default:
+                                            url = @Model[j].controller;
+                                            break;
                                     }
-                                </ul>
-                            </div>
-                        </div>
+
+                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                    i++;
+                                }
+                            }
+                        </ul>
                     </div>
                 </div>
-            }
+            </div>
+        </div>
+        }
         }
     </div>
 </div>

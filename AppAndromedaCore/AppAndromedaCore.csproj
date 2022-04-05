@@ -135,6 +135,7 @@
     <Compile Include="Controllers\Configuracion\MenusController.cs" />
     <Compile Include="Controllers\Configuracion\PerfilXModulosController.cs" />
     <Compile Include="Controllers\Configuracion\PerfilXPagXModController.cs" />
+    <Compile Include="Controllers\Configuracion\ReportesController.cs" />
     <Compile Include="Controllers\Configuracion\UsuarioXTipoUsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Configuracion\ModulosController.cs" />
@@ -1870,14 +1871,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Imagenes\ADMINISTRACIÓN.JPG" />
     <Content Include="Content\Imagenes\ADMINISTRATIVO-Y-FINANCIERO.JPG" />
+    <Content Include="Content\Imagenes\APP EXTERNAS .jpg" />
     <Content Include="Content\Imagenes\ARMADOCUENTA.jpg" />
     <Content Include="Content\Imagenes\BACKGROUND_PRINCIPAL.jpg" />
     <Content Include="Content\Imagenes\ErrorPage.jpg" />
     <Content Include="Content\Imagenes\GENERALES.jpg" />
+    <Content Include="Content\Imagenes\GESTION INTERNA .jpg" />
+    <Content Include="Content\Imagenes\MEJORAMIENTO CONTINUO.jpg" />
     <Content Include="Content\Imagenes\MONITOREO-COVID.JPG" />
     <Content Include="Content\Imagenes\RECLAMACIONES.jpg" />
     <Content Include="Content\Imagenes\RECURSOS-HUMANOS.JPG" />
+    <Content Include="Content\Imagenes\REPORTES AD.jpg" />
     <Content Include="Content\Imagenes\REPORTES.jpg" />
+    <Content Include="Content\Imagenes\Reportes\Muestra.jpg" />
+    <Content Include="Content\Imagenes\REPOSITORIO.jpg" />
     <Content Include="Content\Imagenes\TELEMEDICINA_CUB.JPG" />
     <Content Include="Content\Imagenes\UTILIDADES-SMS.JPG" />
     <Content Include="Content\Login\css\main.css" />
@@ -2166,6 +2173,7 @@
     <Content Include="Views\UsuarioXTipoUsuario\Index.cshtml" />
     <Content Include="Views\Home\PDFPartialView.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Reportes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
