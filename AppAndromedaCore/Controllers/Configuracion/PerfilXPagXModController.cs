@@ -5,6 +5,7 @@ using BAL.Repositorios.Configuracion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -74,7 +75,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 try
                 {
                     foreach (PerfilXPagXModModel pxm in respuesta)
-                    {                       
+                    {
                         if (pxm.IdPerfil != null)
                         {
                             Perfil = _repositorioTipoUsuario.FindId(pxm.IdPerfil);
@@ -108,7 +109,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 return RedirectToAction("LogIn", "Home");
             }
         }
-        
+
         // GET: PerfilXPagXMod/Details/5
         public ActionResult Details(int id)
         {
@@ -145,7 +146,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                         lstmodulo.Add(new SelectListItem() { Text = modulo.Nombre, Value = modulo.Id });
                     }
                 }
-                lstmodulo.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = null });
+                lstmodulo.Insert(0, new SelectListItem { Text = "", Value = null });
                 ViewBag.ListaModulo = new SelectList(lstmodulo.ToList(), "Value", "Text", "");
                 //----------------------
 
@@ -159,7 +160,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                         lstpagina.Add(new SelectListItem() { Text = pagina.Mensaje, Value = pagina.Id.ToString() });
                     }
                 }
-                lstpagina.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = null });
+                //lstpagina.Insert(0, new SelectListItem { Text = "", Value = null });
                 ViewBag.ListaPagina = new SelectList(lstpagina.ToList(), "Value", "Text", "");
                 //----------------------
 
@@ -175,6 +176,8 @@ namespace AppAndromedaCore.Controllers.Configuracion
         [HttpPost]
         public ActionResult Create(PerfilXPagXModModel perxpagxmod)
         {
+           
+
             if (verificarSession())
             {
                 int mensajesVista = 0;
@@ -199,22 +202,89 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 catch (Exception) { throw; }
                 try
                 {
-                    if (_repositorioPerfilXPagXMod.ValidarCampos(perxpagxmod, "save"))
+
+
+                    List<PerfilXPagXModModel> ListaPPM = _repositorioPerfilXPagXMod.getobj().ToList();
+                    //IEnumerable<PerfilXPagXModModel> paginas = from PerfilXPagXModModel in ListaPPM where PerfilXPagXModModel.IdPerfil == "54" orderby PerfilXPagXModModel.IdPerfil select PerfilXPagXModModel;
+                    //IEnumerable<PerfilXPagXModModel> paginas = ListaPPM.Where(x => x.IdPerfil == perxpagxmod.IdPerfil);
+                    //IEnumerable<PerfilXPagXModModel> 
+                    var paginas = from listapp in ListaPPM
+                                  where listapp.IdPerfil.All(Idp => Idp.ToString() == perxpagxmod.IdPerfil.ToString())
+                                  select listapp.IdPagina;
+                    //var paginas = from listapp in ListaPPM
+                    //              where listapp.IdPerfil.Any(Idp => Idp.ToString() == perxpagxmod.IdPerfil.ToString())
+                    //              select listapp.IdPagina;
+                    if (paginas.Count() > 0)
                     {
-                        if (_repositorioPerfilXPagXMod.Create(perxpagxmod))
+                        for (int j = 0; j < perxpagxmod.IdPaginaN.Count(); j++)
+                         {                      
+
+                            for (int i = 0; i < paginas.Count(); i++)
+                            {
+                                var pxpxm = new PerfilXPagXModModel
+                                {
+                                    Id = perxpagxmod.Id,
+                                    IdPagina = perxpagxmod.IdPaginaN[j],
+                                    IdModulo = perxpagxmod.IdModulo,
+                                    IdPerfil = perxpagxmod.IdPerfil,
+                                    Estado = perxpagxmod.Estado,
+                                };
+
+                                if (pxpxm.IdPagina == "33021")
+                                {
+                               
+                                    _repositorioPerfilXPagXMod.Delete(pxpxm);
+
+                                }
+                                else
+                                {
+                                    if (true)
+                                    {
+
+                                    }
+                                    
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        bool flag = true;
+                        for (int j = 0; j < perxpagxmod.IdPaginaN.Count(); j++)
                         {
+                            var pxpxm = new PerfilXPagXModModel
+                            {
+                                Id = perxpagxmod.Id,
+                                IdPagina = perxpagxmod.IdPaginaN[j],
+                                IdModulo = perxpagxmod.IdModulo,
+                                IdPerfil = perxpagxmod.IdPerfil,
+                                Estado = perxpagxmod.Estado,
+                            };
+
+                            if (_repositorioPerfilXPagXMod.ValidarCampos(pxpxm, "save"))
+                            {
+                                if (_repositorioPerfilXPagXMod.Create(perxpagxmod))
+                                {
+                                    //mensajesVista = 1;
+                                }
+                                else
+                                {
+                                    flag = false;///mensajesVista = 2;
+                                }
+                            }                            
+                        }
+
+                        if (flag) {
+
                             mensajesVista = 1;
                         }
                         else
                         {
                             mensajesVista = 2;
                         }
+                        
                     }
-                    else
-                    {
-                        mensajesVista = 3;
-                    }
-
                 }
                 catch (Exception)
                 {
@@ -412,7 +482,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
         }
 
         // GET: PerfilXPagXMod/Delete/5
-        public ActionResult Delete(string  id)
+        public ActionResult Delete(string id)
         {
             if (verificarSession())
             {
@@ -505,7 +575,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
 
         // POST: PerfilXPagXMod/Delete/5
         [HttpPost]
-        public ActionResult Delete(PerfilXPagXModModel perfilXpagXmod )
+        public ActionResult Delete(PerfilXPagXModModel perfilXpagXmod)
         {
             if (verificarSession())
             {
@@ -568,7 +638,42 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 return RedirectToAction("LogIn", "Home");
             }
         }
+        public async Task<JsonResult> GetPagina(string pxm)
+        {
 
+            if (pxm == null)
+                return Json(new { success = false, Message = "Error en la consulta" }, JsonRequestBehavior.AllowGet);
+            else
+            {
+
+                IEnumerable<ModuloModel> listaM = _repositoriomodulo.getobj();
+                var modulo = listaM.Where(x => x.Id == pxm).Single();
+
+                IEnumerable<PerfilXPagXModModel> ListaPPM = _repositorioPerfilXPagXMod.getobj();
+                var pagina = ListaPPM.Where(x => x.IdModulo == modulo.Id).ToList();
+
+
+                var idPagina1 = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
+                var idPerfil = pagina.Select(x => new { x.IdPerfil }).Distinct().ToList();
+                foreach (var item in pagina)
+                {
+                    if (item.IdPagina != null)
+                    {
+                        var p = _repositorioPagina.FindId(item.IdPagina);
+                        var perf = _repositorioTipoUsuario.FindId(item.IdPerfil);
+                        item.IdPerfil = perf.Nombre;
+                        item.IdPagina = p.Mensaje;
+                    }
+                }
+
+                var lista = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
+                var Perfil = pagina.Select(x => x.IdPerfil).Distinct().ToList();
+                var datos = new { lista, idPagina1, Perfil, idPerfil };
+
+                return Json(new { success = true, datos }, JsonRequestBehavior.AllowGet);
+
+            }
+        }
         private bool verificarSession()
         {
             try

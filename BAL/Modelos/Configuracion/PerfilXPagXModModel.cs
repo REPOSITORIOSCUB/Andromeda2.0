@@ -20,5 +20,8 @@ namespace BAL.Modelos.Configuracion
         [Display(Name = "Módulo")]
         public string IdModulo { get; set; }
         public int Estado { get; set; }
+
+
+        public string[] IdPaginaN  { get; set; }
     }
 }

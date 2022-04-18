@@ -1,10 +1,15 @@
 ﻿@model BAL.Modelos.Configuracion.PerfilXPagXModModel
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: #000000;
+        background-color: #c5c5c533;
+        border: 1px solid #5aa7ff;
+    }
+</style>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
         <nav aria-label="breadcrumb">
@@ -47,30 +52,23 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-barss"></i></span>
-                                        @*<input type="text" class="form-control" id="IdModulo" name="IdModulo" value="@Html.DisplayFor(model => model.IdModulo)" />*@
-                                        @Html.DropDownListFor(model => model.IdModulo, ViewBag.ListaModulo as SelectList, new { @id = "Id", @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.IdModulo, ViewBag.ListaModulo as SelectList, new { @id = "IdCodModulo", @class = "form-control" })
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
                                 <div class="form-group col-sm-3">
                                     <h6>@Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md" })</h6>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-barss"></i></span>
-                                        @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
-                                        @Html.DropDownListFor(model => model.IdPerfil, ViewBag.ListaPerfil as SelectList, new { @id = "Id", @class = "form-control" })
-                                        @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                        @Html.DropDownListFor(model => model.IdPerfil, new SelectList(" "), "--Seleccione perfil--", new { @id = "IdCodPerfil", @class = "form-control" })
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
-                                <div class="form-group col-sm-3">
+                                <div class="form-group col-sm-4">
                                     <h6>@Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md" })</h6>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
-                                        @* @Html.DropDownListFor(x => x.IdPadre, (IEnumerable<SelectListItem>)ViewBag.ListaMenuPadre, new { @class = "form-control" })*@
-                                        @Html.DropDownListFor(model => model.IdPagina, ViewBag.ListaPagina as SelectList, new { @id = "Id", @class = "form-control" })
-                                        @* <input type="text" class="form-control" id="IdPadre" name="IdPadre" value="@Html.DisplayFor(model => model.IdPadre)" />*@
+                                    <div class="input-group" id="a">
+                                        <span class="input-group-addon" id="listp"><i class="fa fa-barss"></i></span>
+                                        @Html.DropDownListFor(model => model.IdPaginaN, new SelectList(" "), "--Seleccione pagina--", new { @id = "IdCodCampo", @class = "form-control select2", @multiple = "multiple" })
+
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
 
                             </div>
@@ -91,56 +89,39 @@
     </div>
 </div>
 
-@*<h2>Create</h2>
+@section Scripts {
+    @Scripts.Render("~/bundles/select2")
+    <script>
+        $(".select2bs4").select2();
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        $('#IdCodModulo').change(function () {
 
-        <div class="form-horizontal">
-            <h4>PerfilXPagXModModel</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdPerfil, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdPerfil, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            $.post('/PerfilXPagXMod/GetPagina', { pxm: $('#IdCodModulo').val() })
+                .done(function (result) {
+                    if (result) {
+                        //var select = $("#IdCodCampo");
+                        $("#IdCodCampo").empty();
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdPagina, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdPagina, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                        $("#IdCodPerfil").empty();
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdModulo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdModulo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdModulo, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                        $.each(result, function (index, itemData) {
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            if (itemData != true) {
+                                for (var i = 0; i < itemData.idPagina1.length; i++) {   
+                                    $("#IdCodCampo").prepend($('<option value="' + itemData.idPagina1[i].IdPagina +'">'  + itemData.lista[i].IdPagina+  "</option>", {
+                                        
+                                    }));
+                
+                                }
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
+                                for (var i = 0; i < itemData.idPerfil.length; i++) {
+                                    $("#IdCodPerfil").prepend($('<option value="' + itemData.idPerfil[i].IdPerfil + '">' + itemData.Perfil[i] + "</option>", {
+                                    }));
+                                }
+                            }
+                    }
+                });
+   
+    </script>
+}
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@

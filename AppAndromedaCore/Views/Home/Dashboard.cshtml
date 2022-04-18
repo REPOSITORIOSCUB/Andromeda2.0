@@ -198,7 +198,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         width: calc(100% - 1px);
         height: 81vh;
-       background-repeat: no-repeat;
+        background-repeat: no-repeat;
         background-size: cover;
         background-position: right;
         position: relative;
@@ -246,9 +246,15 @@
                                                 {
                                                     url = @Model[j].controller;
                                                 }
+                                                else if (Model[j].nomMenu == "Aplicativo SMS")
+                                                {
+                                                    url = @Model[j].controller + @Session["UsuarioAD"].ToString() + "#";
+
+                                                }
                                                 else
                                                 {
                                                     url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+
                                                 }
                                             }
                                         }
