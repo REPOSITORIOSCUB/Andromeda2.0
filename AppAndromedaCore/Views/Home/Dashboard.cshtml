@@ -235,20 +235,26 @@
                                         }
                                         else
                                         {
-                                            if (Model[j].nomMenu == "3. Registro Día Dispositivo" || Model[j].nomMenu == "1. Registro O. Mejora" || Model[j].nomMenu == "9. Gestor Mejoram. Continuo" || Model[j].nomMenu == "7. Gestor de Infecciones" || Model[j].nomMenu == "5. Análisis de Indicadores" || Model[j].nomMenu == "Gestor de Sorteos ")
+                                            if (Model[j].nomMenu == "3. Registro Día Dispositivo" || Model[j].nomMenu == "1. Registro O. Mejora" || Model[j].nomMenu == "9. Gestor Mejoram. Continuo" || Model[j].nomMenu == "7. Gestor de Infecciones" || Model[j].nomMenu == "5. Análisis de Indicadores" || Model[j].nomMenu == "Gestor de Sorteos")
                                             {
                                                 url = @Model[j].controller + "?Login=" + @Session["UsuarioAD"].ToString();
                                             }
 
                                             else
                                             {
-                                                if (Model[j].nomMenu == "Almera" || Model[j].nomMenu == "Región Integrada" || Model[j].nomMenu == "5. Dirección Científica")
+                                                if (Model[j].nomMenu == "Almera" || Model[j].nomMenu == "Región Integrada" || Model[j].nomMenu == "5. Dirección Científica" || Model[j].nomMenu == "2. Asistencial" || Model[j].nomMenu == "4. CTIC" || Model[j].nomMenu == "7. Dirección Estratégica " || Model[j].nomMenu == "9. Juridica"
+                                                    || Model[j].nomMenu == "11. Radicación Cuentas Méd" || Model[j].nomMenu == "13. SSTGA" || Model[j].nomMenu == "15. Gestión de Riesgos")
                                                 {
                                                     url = @Model[j].controller;
                                                 }
                                                 else if (Model[j].nomMenu == "Aplicativo SMS")
                                                 {
                                                     url = @Model[j].controller + @Session["UsuarioAD"].ToString() + "#";
+
+                                                }
+                                                else if (Model[j].nomMenu == "Gestor de Contratación")
+                                                {
+                                                    url = @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString();
 
                                                 }
                                                 else

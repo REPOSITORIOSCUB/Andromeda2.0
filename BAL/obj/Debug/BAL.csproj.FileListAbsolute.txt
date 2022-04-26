@@ -38,3 +38,13 @@ C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CoreCompileInputs
 C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CopyComplete
 C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.dll
 C:\RepositoriosProyectos\Andromeda2.0\BAL\obj\Debug\BAL.pdb
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\bin\Debug\BAL.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\bin\Debug\BAL.pdb
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\bin\Debug\DAL.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\bin\Debug\Oracle.DataAccess.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\bin\Debug\DAL.pdb
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\obj\Debug\BAL.csproj.CopyComplete
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\obj\Debug\BAL.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\BAL\obj\Debug\BAL.pdb

@@ -30,3 +30,11 @@ C:\RepositoriosProyectos\Andromeda2.0\DAL\obj\Debug\DAL.csproj.CoreCompileInputs
 C:\RepositoriosProyectos\Andromeda2.0\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\RepositoriosProyectos\Andromeda2.0\DAL\obj\Debug\DAL.dll
 C:\RepositoriosProyectos\Andromeda2.0\DAL\obj\Debug\DAL.pdb
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\bin\Debug\DAL.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\bin\Debug\DAL.pdb
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\bin\Debug\Oracle.DataAccess.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\obj\Debug\DAL.dll
+C:\Repositorio Proyectos Kelly\Andromeda2.0\DAL\obj\Debug\DAL.pdb
