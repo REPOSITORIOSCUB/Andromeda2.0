@@ -39,7 +39,7 @@ namespace AppAndromedaCore.Controllers
             if (verificarSession())
             {
                 MensajesOperacion mensajes = new MensajesOperacion();
-                string showMsg = "";
+                string showMsg;
 
                 try
                 {
@@ -84,7 +84,7 @@ namespace AppAndromedaCore.Controllers
                        
                     }
                 }
-                catch (Exception err)
+                catch (Exception )
                 {
 
                     throw;

@@ -44,7 +44,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
             if (verificarSession())
             {
                 MensajesOperacion mensajes = new MensajesOperacion();
-                string showMsg = "";
+                string showMsg;
 
                 try
                 {
@@ -67,8 +67,8 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 ViewBag.ShowMsg = (mensajes.Mostro.ToString().ToLower().Equals("true")) ? "S" : "N";
 
                 IEnumerable<MenuModel> respuesta = _repositorioMenu.getobj();
-                PaginaModel Pagina = new PaginaModel();
-                ModuloModel Mod = new ModuloModel();
+                PaginaModel Pagina;
+                ModuloModel Mod;
 
                 try
                 {
@@ -87,7 +87,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                         }
                     }
                 }
-                catch (Exception err)
+                catch (Exception)
                 {
 
                     throw;
@@ -181,8 +181,8 @@ namespace AppAndromedaCore.Controllers.Configuracion
         {
             if (verificarSession())
             {              
-                int mensajesVista = 0;
-                string showMsg = "";
+                int mensajesVista;
+                string showMsg;
                 MensajesOperacion mensajes = new MensajesOperacion();
                 MensajesOperacion msgAnter = new MensajesOperacion();
 
@@ -268,11 +268,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
                 string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
                 MensajesOperacion mensajes = new MensajesOperacion();
-                MensajesOperacion msgAnter = new MensajesOperacion();
-
-
-
-
+              
                 //validacion de la session del usuario
                 //if (string.IsNullOrEmpty(Session["UsuarioAD"].ToString())) return RedirectToAction("Index", "Usuaurio");
 
@@ -438,8 +434,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 //variables           
                 string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
                 string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
-                MensajesOperacion mensajes = new MensajesOperacion();
-                MensajesOperacion msgAnter = new MensajesOperacion();
+                MensajesOperacion mensajes = new MensajesOperacion();              
 
                 //validacion de la session del usuario
                 //if (string.IsNullOrEmpty(Session["UsuarioAD"].ToString())) return RedirectToAction("Index", "Usuaurio");
@@ -521,7 +516,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
             if (verificarSession())
             {
                 MensajesOperacion mensajes = new MensajesOperacion();
-                int mensajesVista = 0;
+                int mensajesVista ;
                 string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
                 string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
 

@@ -355,6 +355,8 @@ C:\ProyectosRepositorio\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore
 C:\ProyectosRepositorio\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CopyComplete
 C:\ProyectosRepositorio\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.dll
 C:\ProyectosRepositorio\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.pdb
+C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\AppAndromedaCore.dll.config
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\AppAndromedaCore.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\AppAndromedaCore.pdb
@@ -365,11 +367,9 @@ C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\csi.exe
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\csi.exe.config
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\csi.rsp
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll

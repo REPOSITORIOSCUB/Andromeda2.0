@@ -72,6 +72,31 @@
                                 </div>
 
                             </div>
+                            <!-- Permisos -->
+                            <div class="card " style="margin-bottom:1px;">
+                                <a id="cardEncabezado" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionEncabezado" href="#collapseEncabezado" style="text-decoration:none">
+                                    <div class="accordion-headermenu">
+                                        Lista Páginas
+                                    </div>
+                                </a>
+                                <div id="collapseEncabezado" class="collapsing visible" role="tabpanel" data-parent="#accordionEncabezado">
+                                    <div class="accordion" id="accordionEncabezado" style="margin-left:10px;margin-right:10px;">
+                                        <div class="card-body">
+                                            <br />
+                                            <ul data-widget="treeview">
+                                                <li><a href="#">One Level</a></li>
+                                                <li class="treeview">
+                                                    <a href="#">Multilevel</a>
+                                                    <ul class="treeview-menu">
+                                                        <li><a href="#">Level 2</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div id="treeview-checkable" class="treeview"><ul class="list-group"><li class="list-group-item node-treeview-checkable node-checked search-result" data-nodeid="0" style="color:#D9534F;background-color:undefined;"><span class="icon expand-icon glyphicon glyphicon-minus"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Parent 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="1" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon expand-icon glyphicon glyphicon-minus"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Child 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="2" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Grandchild 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="3" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Grandchild 2</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="4" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Child 2</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="5" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Parent 2</li><li class="list-group-item node-treeview-checkable" data-nodeid="6" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 3</li><li class="list-group-item node-treeview-checkable" data-nodeid="7" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 4</li><li class="list-group-item node-treeview-checkable" data-nodeid="8" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 5</li></ul></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div align="left">
                                 @Html.ActionLink(" Cancelar", "Index", "PerfilXPagXMod", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
@@ -90,8 +115,13 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/select2")
+    <script src="~/Scripts/bootstrap-treeview.js"></script>
+
+    @*@Scripts.Render("~/bundles/AdminLT")
+        @Scripts.Render("~/bundles/AdminLT/plugins")*@
     <script>
+        
+
         $(".select2bs4").select2();
 
         $('#IdCodModulo').change(function () {
@@ -107,21 +137,35 @@
                         $.each(result, function (index, itemData) {
 
                             if (itemData != true) {
-                                for (var i = 0; i < itemData.idPagina1.length; i++) {   
-                                    $("#IdCodCampo").prepend($('<option value="' + itemData.idPagina1[i].IdPagina +'">'  + itemData.lista[i].IdPagina+  "</option>", {
-                                        
+                                debugger;
+
+
+                                for (var i = 0; i < itemData.idPagina1.length; i++) {
+
+                                    $("#IdCodCampo").prepend($('<option value="' + itemData.idPagina1[i].IdPagina + '">' + itemData.lista[i].IdPagina + "</option>", {
+
                                     }));
-                
                                 }
 
                                 for (var i = 0; i < itemData.idPerfil.length; i++) {
                                     $("#IdCodPerfil").prepend($('<option value="' + itemData.idPerfil[i].IdPerfil + '">' + itemData.Perfil[i] + "</option>", {
                                     }));
                                 }
+
+                                for (var i = 0; i < itemData.objpag.length; i++) {
+
+
+
+                                }
+
+
                             }
+                        });
                     }
-                });
-   
+                }
+                )
+        });
+
     </script>
 }
 

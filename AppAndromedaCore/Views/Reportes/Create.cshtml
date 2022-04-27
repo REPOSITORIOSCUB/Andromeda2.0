@@ -1,0 +1,142 @@
+﻿@model BAL.Modelos.Configuracion.ReportesModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Configuración</a></li>
+                <li class="breadcrumb-item"><a href="#">Reportes BI</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Crear</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Reportes", FormMethod.Post, new { id = "id" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card bg-light mb-3" style="max-width: 100%;">
+                <div class="card-header bg-gradient-lightblue" style="text-align:center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                INGRESO REPORTE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="card-body">
+                    <div class="col">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            <div class="row">                                
+                                <div class="form-group col-sm-4">
+                                    <h6>@Html.LabelFor(model => model.Grupo, htmlAttributes: new { @class = "control-label col-md-2" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-bars"></i></div>
+                                        </div>
+                                        @*<input type="text" class="form-control" id="IdModulo" name="IdModulo" value="@Html.DisplayFor(model => model.IdModulo)" />*@
+                                        @Html.DropDownListFor(model => model.Grupo, ViewBag.ListaGrupo as SelectList, new { @id = "grupo", @class = "form-control" })
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <h6>@Html.LabelFor(model => model.Titulo, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-bookmark"></i></div>
+                                        </div>
+                                       
+                                        <input type="text" class="form-control" id="Titulo" name="Titulo" value="@Html.DisplayFor(model => model.Titulo)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <h6>@Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-circle"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="@Html.DisplayFor(model => model.Descripcion)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-5">
+                                    <h6>@Html.LabelFor(model => model.RutaEnlace, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-route"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" id="RutaEnlace" name="RutaEnlace" value="@Html.DisplayFor(model => model.RutaEnlace)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-5">
+                                    <h6>@Html.LabelFor(model => model.RutaImagen, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-route"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" id="RutaImagen" name="RutaImagen" value="@Html.DisplayFor(model => model.RutaImagen)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-2">
+                                    <h6>@Html.LabelFor(model => model.Orden, new { @class = "control-label col-sm" })</h6>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-hashtag"></i></div>
+                                        </div>
+                                        <input type="number" class="form-control" id="Orden" name="Orden" value="@Html.DisplayFor(model => model.Orden)" />
+                                    </div>
+                                    @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                                </div>
+                            </div>
+                            <div align="left">
+                                @Html.ActionLink(" Cancelar", "Index", "Reportes", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+
+
+

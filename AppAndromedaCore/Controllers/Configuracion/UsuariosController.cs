@@ -352,9 +352,10 @@ namespace AppAndromedaCore.Controllers
 
                         _repositorioTipoUsuario.Eliminar(usuario.idpersona);
                         DataTable dt = (DataTable)JsonConvert.DeserializeObject(modulosstr, (typeof(DataTable)));
+                        string grabo = String.Empty;
                         for (var i = 0; i < dt.Rows.Count; i++)
                         {
-                            string grabo = "";
+                            
                             if (_repositorioTipoUsuario.Grabar(usuario.idpersona, dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString()))
                             {
                                 grabo = "Si";
@@ -450,9 +451,10 @@ namespace AppAndromedaCore.Controllers
 
                         _repositorioTipoUsuario.Eliminar(usuario.idpersona);
                         DataTable dt = (DataTable)JsonConvert.DeserializeObject(modulosstr, (typeof(DataTable)));
+                        string grabo= String.Empty;
                         for (var i=0; i < dt.Rows.Count; i++)
                         {
-                            string grabo = "";
+                            
                             if (_repositorioTipoUsuario.Grabar(usuario.idpersona, dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString())) 
                             {
                                 grabo = "Si";
