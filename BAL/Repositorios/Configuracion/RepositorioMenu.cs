@@ -163,14 +163,15 @@ namespace BAL.Repositorios.Configuracion
         private MenuModel LlenarEntidad(DataRow regi)
         {
             MenuModel obj = new MenuModel();
-            obj.Id = regi[0].ToString();
-            obj.IdPadre = regi[1].ToString();
-            obj.Nombre = regi[2].ToString();
-            obj.IdPagina = regi[3].ToString();
-            obj.IdModulo = regi[4].ToString();
-            obj.Ordenamiento = Convert.ToInt32(regi[5]);
-            obj.Imagen = regi[6].ToString();
-            obj.Descripcion = regi[7].ToString();
+            obj.Id = regi["idmenu"].ToString();
+            obj.IdPadre = regi["idpadre"].ToString();
+            obj.Nombre = regi["nombre"].ToString();
+            obj.IdPagina = regi["idpagina"].ToString();
+            obj.IdModulo = regi["idmodulo"].ToString();
+            obj.Ordenamiento = Convert.ToInt32(regi["orden"]);
+            obj.Imagen = regi["imagen"].ToString();
+            obj.Descripcion = regi["descripcion"].ToString();
+            obj.IdPaginaPadre = regi["idpaginaPadre"].ToString();
             return obj;
         }
 

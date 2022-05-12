@@ -40,20 +40,6 @@ C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.
 C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
 C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
 C:\ProyectosRepositorio\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.pdb
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\BAL.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Oracle.DataAccess.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\DAL.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\BAL.pdb
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.xml
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\DAL.pdb
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.AssemblyReference.cache
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CoreCompileInputs.cache
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.dll
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.pdb
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\bin\Debug\BAL.dll
@@ -68,3 +54,17 @@ C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
 C:\Repositorio Proyectos Kelly\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\ServiciosApp.pdb
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\BAL.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Oracle.DataAccess.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\DAL.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\BAL.pdb
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.xml
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\DAL.pdb
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.AssemblyReference.cache
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CoreCompileInputs.cache
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb

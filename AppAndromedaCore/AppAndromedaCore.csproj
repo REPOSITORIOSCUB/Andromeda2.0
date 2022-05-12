@@ -142,9 +142,11 @@
     <Compile Include="Controllers\Configuracion\PaginasController.cs" />
     <Compile Include="Controllers\Configuracion\TipoUsuariosController.cs" />
     <Compile Include="Controllers\Configuracion\UsuariosController.cs" />
+    <Compile Include="Controllers\jsTree3Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\jsTree3Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1912,6 +1914,17 @@
     <Content Include="Content\Imagenes\REPOSITORIO.jpg" />
     <Content Include="Content\Imagenes\TELEMEDICINA_CUB.JPG" />
     <Content Include="Content\Imagenes\UTILIDADES-SMS.JPG" />
+    <Content Include="Content\jsTree\docs.css" />
+    <Content Include="Content\jsTree\themes\default-dark\32px.png" />
+    <Content Include="Content\jsTree\themes\default-dark\40px.png" />
+    <Content Include="Content\jsTree\themes\default-dark\style.css" />
+    <Content Include="Content\jsTree\themes\default-dark\style.min.css" />
+    <Content Include="Content\jsTree\themes\default-dark\throbber.gif" />
+    <Content Include="Content\jsTree\themes\default\32px.png" />
+    <Content Include="Content\jsTree\themes\default\40px.png" />
+    <Content Include="Content\jsTree\themes\default\style.css" />
+    <Content Include="Content\jsTree\themes\default\style.min.css" />
+    <Content Include="Content\jsTree\themes\default\throbber.gif" />
     <Content Include="Content\Login\css\main.css" />
     <Content Include="Content\Login\css\master.css" />
     <Content Include="Content\Login\css\util.css" />
@@ -1925,6 +1938,7 @@
     <Content Include="Content\Login\images\bg-01.jpg" />
     <Content Include="Content\Login\images\icons\favicon.ico" />
     <Content Include="Content\Login\images\Logo.jpg" />
+    <Content Include="Content\Login\images\Logo.png" />
     <Content Include="Content\Login\js\main.js" />
     <Content Include="Content\Login\js\master.js" />
     <Content Include="Content\Login\vendor\animate\animate.css" />
@@ -1962,7 +1976,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="log\log.txt" />
-    <Content Include="Scripts\bootstrap-treeview.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2167,6 +2180,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsTree3\jstree.js" />
+    <Content Include="Scripts\jsTree3\jstree.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
@@ -2229,10 +2244,12 @@
     <Content Include="Views\Reportes\Edit.cshtml" />
     <Content Include="Views\Reportes\Delete.cshtml" />
     <Content Include="Views\Reportes\VisorReportesBI.cshtml" />
+    <Content Include="Views\Shared\_jsTreeDemo.cshtml" />
+    <Content Include="Views\jsTree3\Demo.cshtml" />
+    <Content Include="Views\jsTree3\AJAXDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

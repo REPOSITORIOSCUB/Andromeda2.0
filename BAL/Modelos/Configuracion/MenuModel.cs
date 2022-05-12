@@ -32,5 +32,8 @@ namespace BAL.Modelos.Configuracion
 
         [Display(Name = "Archivo")]
         public HttpPostedFileBase ruta { get; set; }
+
+        [Display(Name = "Pápagina padre")]
+        public string IdPaginaPadre { get; set; }
     }
 }

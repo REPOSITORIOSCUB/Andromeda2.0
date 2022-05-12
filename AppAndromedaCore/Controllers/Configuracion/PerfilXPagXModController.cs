@@ -2,9 +2,11 @@
 using BAL.Modelos.Configuracion;
 using BAL.Modelos.General;
 using BAL.Repositorios.Configuracion;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -19,6 +21,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
         IRepositorioPagina _repositorioPagina;
         IRepositorioModulo _repositoriomodulo;
         IRepositorioMenu _repositorioMenu;
+        IRepositorioPerfilXModulo _repositorioPerfilXModulo;
 
         public PerfilXPagXModController()
         {
@@ -42,6 +45,10 @@ namespace AppAndromedaCore.Controllers.Configuracion
             if (_repositorioMenu == null)
             {
                 _repositorioMenu = new RepositorioMenu();
+            }
+            if (_repositorioPerfilXModulo == null)
+            {
+                _repositorioPerfilXModulo = new RepositorioPerfilXModulo();
             }
         }
 
@@ -332,6 +339,96 @@ namespace AppAndromedaCore.Controllers.Configuracion
             else
             {
                 return RedirectToAction("LogIn", "Home");
+            }
+        }
+
+        [HttpGet]
+        public string Ingresar(string perfilxpxmstr, string menustr)
+        {
+            if (VerificarSession())
+            {
+                PerfilXPagXModModel obPXPXM = new PerfilXPagXModModel();
+                obPXPXM = JsonConvert.DeserializeObject<PerfilXPagXModModel>(perfilxpxmstr);
+
+                int mensajesVista = 0;
+                string showMsg = "";
+                MensajesOperacion mensajes = new MensajesOperacion();
+                MensajesOperacion msgAnter = new MensajesOperacion();
+
+
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                try
+                {
+                    if (TempData["Message"] != null) msgAnter.Mensaje = TempData["Message"].ToString();
+                    if (TempData["AlertType"] != null) msgAnter.TipoMsg = TempData["AlertType"].ToString();
+                    if (TempData["ShowAlert"] != null) msgAnter.Muestra = (TempData["ShowAlert"].ToString().ToLower().Equals("true")) ? true : false;
+                    if (TempData["ShowMsg"] != null)
+                    {
+                        msgAnter.Mostro = (TempData["ShowMsg"].ToString().ToLower().Equals("s")) ? true : false;
+                        showMsg = TempData["ShowMsg"].ToString().ToLower();
+                    }
+                }
+                catch (Exception) { throw; }
+                try
+                {
+                    
+                    List<string> obj = (List<string>)JsonConvert.DeserializeObject(menustr, (typeof(List<string>)));
+                    if (obj.Count > 0)
+                    {
+                        _repositorioPerfilXPagXMod.Delete(obPXPXM);
+                        string grabo = String.Empty;
+                        foreach (string item in obj)
+                        {
+                            obPXPXM.IdPagina = item;
+                            if (_repositorioPerfilXPagXMod.Create(obPXPXM))
+                            {
+                                grabo = "Si";
+                            }
+                            else
+                            {
+                                grabo = "No";
+                            }
+                            obPXPXM.IdPagina = String.Empty;
+                        }
+                        mensajesVista = 1;
+                    }
+                    else
+                    {
+                        mensajesVista = 2;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    mensajesVista = 2;
+                }
+
+                mensajes = mensajes.MensajeVista(mensajesVista, controllerName);
+                mensajes.Mensaje = mensajes.Mensaje + " [ " + actionName + " / " + controllerName + " ] ";
+
+                TempData["Message"] = mensajes.Mensaje;
+                TempData["AlertType"] = mensajes.TipoMsg;
+                TempData["ShowAlert"] = mensajes.Muestra.ToString();
+                TempData["ShowMsg"] = (mensajes.Mostro.ToString().ToLower().Equals("true")) ? "S" : "N";
+
+                ViewBag.Message = mensajes.Mensaje;
+                ViewBag.AlertType = mensajes.TipoMsg;
+                ViewBag.ShowAlert = mensajes.Muestra.ToString();
+                ViewBag.ShowMsg = (mensajes.Mostro.ToString().ToLower().Equals("true")) ? "S" : "N";
+
+                if (mensajes.TipoMsg.Equals("success"))
+                {
+                    return "success";
+                }
+                else
+                {
+                    return "errorgrabando";
+                }
+            }
+            else
+            {
+                return "errorsesion";
             }
         }
 
@@ -663,9 +760,13 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 IEnumerable<PerfilXPagXModModel> ListaPPM = _repositorioPerfilXPagXMod.getobj();
                 var pagina = ListaPPM.Where(x => x.IdModulo == modulo.Id).ToList();
 
+                IEnumerable<PerfilXModuloModel> ListaPerfiles = _repositorioPerfilXModulo.getobj();
+                var idPerfil = ListaPerfiles.Where(x => x.IdModulo == modulo.Id).ToList();
 
                 var idPagina1 = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
-                var idPerfil = pagina.Select(x => new { x.IdPerfil }).Distinct().ToList();
+                var lista = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
+
+               // var idPerfil = ListaPer.Select(x => new { x.Id }).Distinct().ToList();
                 foreach (var item in pagina)
                 {
                     if (item.IdPagina != null)
@@ -677,10 +778,13 @@ namespace AppAndromedaCore.Controllers.Configuracion
                     }
                 }
 
-                var lista = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
-                var Perfil = pagina.Select(x => x.IdPerfil).Distinct().ToList();
+                //var lista = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
+                //var Perfil = pagina.Select(x => x.IdPerfil).Distinct().ToList();
+                var tipousuarios = _repositorioTipoUsuario.getobj();               
+                var Perfil = tipousuarios.Where(x => idPerfil.Any(y => y.IdPerfil == x.Id.ToString()));
+                Perfil = Perfil.OrderBy(o => o.Nombre);
 
-                IEnumerable<MenuModel> lstpag = _repositorioMenu.getobj();
+                IEnumerable < MenuModel > lstpag = _repositorioMenu.getobj();
                 var objpag = lstpag.Where(x => x.IdModulo == modulo.Id).ToList();
 
                 var datos = new { lista, idPagina1, Perfil, idPerfil,objpag };

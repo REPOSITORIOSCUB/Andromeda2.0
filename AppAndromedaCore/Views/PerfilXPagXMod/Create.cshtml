@@ -3,6 +3,11 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<link rel='stylesheet' href='~/Content/jsTree/themes/default/style.min.css'>
+
+
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
         color: #000000;
@@ -14,7 +19,7 @@
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="~/Home/Dashboard">Inicio</a></li>
                 <li class="breadcrumb-item"><a href="#">Configuración</a></li>
                 <li class="breadcrumb-item"><a href="#">Perfil x Página x Módulo</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Crear</li>
@@ -62,65 +67,118 @@
                                         @Html.DropDownListFor(model => model.IdPerfil, new SelectList(" "), "--Seleccione perfil--", new { @id = "IdCodPerfil", @class = "form-control" })
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-4">
+                                @*<div class="form-group col-sm-4">
                                     <h6>@Html.LabelFor(model => model.IdPagina, htmlAttributes: new { @class = "control-label col-md" })</h6>
                                     <div class="input-group" id="a">
                                         <span class="input-group-addon" id="listp"><i class="fa fa-barss"></i></span>
                                         @Html.DropDownListFor(model => model.IdPaginaN, new SelectList(" "), "--Seleccione pagina--", new { @id = "IdCodCampo", @class = "form-control select2", @multiple = "multiple" })
 
                                     </div>
-                                </div>
+                                </div>*@
 
                             </div>
+
                             <!-- Permisos -->
                             <div class="card " style="margin-bottom:1px;">
-                                <a id="cardEncabezado" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionEncabezado" href="#collapseEncabezado" style="text-decoration:none">
+                                <a id="cardEncabezado" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionEncabezado" href="#collapseEncabezado" style="text-decoration:none" aria-expanded="true">
                                     <div class="accordion-headermenu">
-                                        Lista Páginas
+                                        MENU
                                     </div>
                                 </a>
-                                <div id="collapseEncabezado" class="collapsing visible" role="tabpanel" data-parent="#accordionEncabezado">
+                                <div id="collapseEncabezado" class="collapsing in" role="tabpanel" data-parent="#accordionEncabezado">
                                     <div class="accordion" id="accordionEncabezado" style="margin-left:10px;margin-right:10px;">
                                         <div class="card-body">
-                                            <br />
-                                            <ul data-widget="treeview">
-                                                <li><a href="#">One Level</a></li>
-                                                <li class="treeview">
-                                                    <a href="#">Multilevel</a>
-                                                    <ul class="treeview-menu">
-                                                        <li><a href="#">Level 2</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <div id="treeview-checkable" class="treeview"><ul class="list-group"><li class="list-group-item node-treeview-checkable node-checked search-result" data-nodeid="0" style="color:#D9534F;background-color:undefined;"><span class="icon expand-icon glyphicon glyphicon-minus"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Parent 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="1" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon expand-icon glyphicon glyphicon-minus"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Child 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="2" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Grandchild 1</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="3" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Grandchild 2</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="4" style="color:undefined;background-color:undefined;"><span class="indent"></span><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Child 2</li><li class="list-group-item node-treeview-checkable node-checked" data-nodeid="5" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-check"></span>Parent 2</li><li class="list-group-item node-treeview-checkable" data-nodeid="6" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 3</li><li class="list-group-item node-treeview-checkable" data-nodeid="7" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 4</li><li class="list-group-item node-treeview-checkable" data-nodeid="8" style="color:undefined;background-color:undefined;"><span class="icon glyphicon"></span><span class="icon check-icon glyphicon glyphicon-unchecked"></span>Parent 5</li></ul></div>
+                                            @*<br />
+                                                <ul data-widget="treeview-checkable">
+                                                    <li><a href="#">One Level</a></li>
+                                                    <li class="treeview">
+                                                        <a href="#">Multilevel</a>
+                                                        <ul class="treeview-menu">
+                                                            <li><a href="#">Level 2</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <br />*@
+                                            <div id="jstree">
+                                                @*<ul>
+                                                    <li data-jstree='{"icon":"fa fa-minus"}'>
+                                                        Root node 1
+                                                        <ul>
+                                                            <li id="child_node_1" data-jstree='{"icon":"fa fa-file"}'>Child node 1</li>
+                                                            <li data-jstree='{"icon":"fa fa-file"}'>Child node 2</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-jstree='{"icon":"fa fa-plus"}'>Root node 2</li>
+                                                </ul>*@
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div align="left">
-                                @Html.ActionLink(" Cancelar", "Index", "PerfilXPagXMod", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
-                                <button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
-                                    Guardar
-                                </button>
+                                <div align="left">
+                                    @Html.ActionLink(" Cancelar", "Index", "PerfilXPagXMod", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
+                                    @*<button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
+                                            Guardar
+                                        </button>*@
+                                    <button id="guardar" type="button" class="btn btn-success btn-mae-grdr fa fa-check-circle" onclick="Guardar()"> Guardar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-
         }
     </div>
+
+
 </div>
 
 @section Scripts {
-    <script src="~/Scripts/bootstrap-treeview.js"></script>
+    <script src='~/Scripts/jsTree3/jstree.min.js'></script>
 
     @*@Scripts.Render("~/bundles/AdminLT")
         @Scripts.Render("~/bundles/AdminLT/plugins")*@
-    <script>
-        
+<script>
+
+     var loDatas = []; //[{ id: '33000', parent: '#', text: 'Configuración' }, { id: '33001', parent: '33000', text: 'Candidatos' }];
+    $('#jstree').jstree({
+        "core": {
+            "multiple": true,
+            "animation": 0,
+            "themes": {
+                "variant": "large"
+            },
+            "check_callback": true,
+            'data': loDatas
+        },
+        "checkbox": {
+            "three_state": false,
+            "keep_selected_style": false
+        },
+        "plugins": ["sort", "checkbox"], 
+        'sort': function (a, b) {
+            a1 = this.get_node(a);
+            b1 = this.get_node(b);
+            if (a1.icon == b1.icon) {
+                return (a1.text > b1.text) ? 1 : -1;
+            } else {
+                return (a1.icon > b1.icon) ? 1 : -1;
+            }
+        }       
+       });
+       
+
+        $('#jstree').on("changed.jstree", function (e, data) {
+           
+            if (data.selected.length > 0) {
+               // alert(data.selected);        
+            }
+
+           
+        });
+
 
         $(".select2bs4").select2();
 
@@ -129,15 +187,21 @@
             $.post('/PerfilXPagXMod/GetPagina', { pxm: $('#IdCodModulo').val() })
                 .done(function (result) {
                     if (result) {
+                        
                         //var select = $("#IdCodCampo");
                         $("#IdCodCampo").empty();
 
                         $("#IdCodPerfil").empty();
 
+                        $("#menu").empty();
+
+                        //var info = "[";
+                        var info = [];
+                        //var listinfo = [];
+
                         $.each(result, function (index, itemData) {
 
                             if (itemData != true) {
-                                debugger;
 
 
                                 for (var i = 0; i < itemData.idPagina1.length; i++) {
@@ -147,25 +211,155 @@
                                     }));
                                 }
 
-                                for (var i = 0; i < itemData.idPerfil.length; i++) {
-                                    $("#IdCodPerfil").prepend($('<option value="' + itemData.idPerfil[i].IdPerfil + '">' + itemData.Perfil[i] + "</option>", {
+                                debugger;
+
+                                for (var i = 0; i < itemData.Perfil.length; i++) {
+                                    $("#IdCodPerfil").prepend($('<option value="' + itemData.Perfil[i].Id  + '">' + itemData.Perfil[i].Nombre + "</option>", {
                                     }));
                                 }
 
-                                for (var i = 0; i < itemData.objpag.length; i++) {
+                                
 
-
-
+                              
+                                if (itemData.objpag.length > 0) {
+                                    //info.push({ "id": 0, "parent": '#', "text": "MENU", "icon": 'fa fa-bars', "disabled": true })
+                                    for (var i = 0; i < itemData.objpag.length; i++) {
+                                        info.push({ "id": itemData.objpag[i].IdPagina, "parent": (itemData.objpag[i].IdPaginaPadre == '' ? "#" : itemData.objpag[i].IdPaginaPadre), "text": itemData.objpag[i].Nombre, "icon":'fa fa-file'})
+                                        /*info = info + "{id:'" + itemData.objpag[i].IdPagina + "', parent:'" + (itemData.objpag[i].IdPaginaPadre == '' ? '#' : itemData.objpag[i].IdPaginaPadre ) + "', text:'" + itemData.objpag[i].Nombre + "'},"*/
+                                    }
+                                    //info = info + "]";
+                                   // listinfo.push(info.replace('"',''));
+                                    
                                 }
-
-
+                               // $("#jstree").jstree("disable_node", 0);
                             }
                         });
+
+                        
+                        var listinfo = info;
+
+                        listarmenu(listinfo);
+
+                        //$('#jstree').jstree(true).settings.core.data = listinfo;
+                        //$('#jstree').jstree(true).refresh();
+                        //$("#jstree").jstree("open_all");
+                        //$("#jstree").jstree("deselect_all");
                     }
                 }
                 )
         });
 
-    </script>
+    function listarmenu(listinfo) {        
+                 
+        $('#jstree').jstree(true).settings.core.data = listinfo;
+        $('#jstree').jstree(true).refresh();
+        $("#jstree").jstree("open_all");
+        $("#jstree").jstree("deselect_all");
+    }
+
+        function Guardar() {
+            var Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 5000 });
+            debugger;
+
+            if ($("#IdCodModulo").val() === "") {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Falta seleccionar el  módulo',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+            if ($("#IdCodPerfil").val() === "") {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Falta seleccionar el perfil a asociar',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+
+            var menuid = "";
+            var submenuid = "";
+            var arrayMenu = new Array();
+            var arraySubmenu = new Array();
+            var k = -1;
+
+            for (var i = 0; i < $("#menu li.panel").length; i++) {
+                menuid = $("#menu li.panel")[i].id;
+
+                for (var j = 0; j < $("#m_" + menuid + " li").length; j++) {
+                    submenuid = $("#m_" + menuid + " li")[j].id;
+                    if ($("#m_" + menuid + " li input[type='checkbox']")[j].checked) {
+                        k++;
+                        arrayMenu[k] = menuid;
+                        arraySubmenu[k] = submenuid;
+                    }
+                }
+            }
+
+            var objpxm = {
+                idModulo: $("#IdCodModulo").val(),
+                idPerfil: $("#IdCodPerfil").val()              
+            };
+            var jsonpxm = JSON.stringify(objpxm);
+           
+            var objm = [];
+            var selectedNodes = $('#jstree').jstree("get_selected", true);
+            $.each(selectedNodes, function () {
+                objm.push(this.id);
+            });
+           
+            var jsonm = JSON.stringify(objm);
+           
+            if (objm.length === 0) {
+                Toast.fire({
+                    type: 'success',
+                    icon: "warning",
+                    title: ' Seleccione las paginas',
+                    customClass: { popup: 'adjust', icon: 'warning' }
+                });
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("Ingresar", "PerfilXPagXMod")',
+                data: {
+                    perfilxpxmstr: jsonpxm,
+                    menustr: jsonm
+                },
+                method: "GET",
+                dataType: "text",
+                async: true,
+                beforeSend: function () {
+                },
+                success: function (result) {
+                   
+                    switch (result) {                        
+                        case "success":
+                            window.location.href = "/PerfilXPagXMod/Index";
+                            break;
+                        case "errorgrabando":
+                            Toast.fire({
+                                type: 'success',
+                                icon: "warning",
+                                title: ' Error grabando. Intente de nuevo',
+                                customClass: { popup: 'adjust', icon: 'warning' }
+                            });
+
+                            break;
+                        case "errorsesion":
+                            window.location.href = "/Home/LogIn";
+                            break;
+                    }
+                },
+                error: function () {
+                    window.location.href = "/Home/LogIn";
+                }
+            });
+        }
+
+</script>
 }
 

@@ -63,8 +63,14 @@ namespace BAL.Repositorios.Configuracion
             _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.deleteperxpagxmod");
             _command.CommandType = CommandType.StoredProcedure;
 
-            _command.Parameters.Add("vId", "NVARCHAR2").Value = obj.Id;
-            _command.Parameters["vId"].Direction = ParameterDirection.Input;
+            //_command.Parameters.Add("vId", "NVARCHAR2").Value = obj.Id;
+            //_command.Parameters["vId"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vIdModulo", "INT").Value = obj.IdModulo;
+            _command.Parameters["vIdModulo"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vIdPerfil", "INT").Value = obj.IdPerfil;
+            _command.Parameters["vIdPerfil"].Direction = ParameterDirection.Input;
 
             return Metodos.EjecutarComando(_command);
         }

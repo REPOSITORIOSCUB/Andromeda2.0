@@ -222,7 +222,7 @@
                     <div class="card col-md-2" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
                         <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
                         <div class="card-block">
-                            <label class="card-title">@Model[i].nomMenu</label>
+                            <label class="card-title" style="text-align: center;">@Model[i].nomMenu</label>
                             <div id=@menuid style="display:none">
                                 <p class="card-text">@Model[i].descripcion</p>
                                 <ul class="topmenu" id="menu">
@@ -259,17 +259,14 @@
                                                 }
                                                 else
                                                 {
-                                                    url = @Model[j].controller + "/?Login=" + @Session["UsuarioAD"].ToString();
+                                                    url = @Model[j].controller + "?Login=" + @Session["UsuarioAD"].ToString();
 
                                                 }
                                             }
                                         }
-
-
                                         <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
                                         i++;
                                     }
-
                                 </ul>
                             </div>
                         </div>
