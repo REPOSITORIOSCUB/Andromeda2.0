@@ -1,4 +1,5 @@
 ﻿using BAL.Modelos;
+using Newtonsoft.Json;
 using ServiciosApp;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,80 @@ namespace AppAndromedaCore.Controllers
             {
                 return View();
             }
+        }
+
+        public string CambioPWD(string objpwds)
+        {
+            string respuesta = String.Empty;
+            bool datos = false;
+            var cuenta = new
+            {
+                pwdAnterior = "",
+                pwdNuevo = ""
+            };
+
+
+            if (!String.IsNullOrEmpty(objpwds))
+            {
+                if (Session["UsuarioAD"] != null) 
+                {
+                    try
+                    {
+                        string usuario = Session["UsuarioAD"].ToString();
+
+                        //List<cuenta> objpwd = (List<cuenta>)JsonConvert.DeserializeObject(objpwds, (typeof(List<cuenta>)));
+                        var objpwd = JsonConvert.DeserializeAnonymousType(objpwds, cuenta);
+
+
+                        if (objpwd != null)
+                        {
+                            
+                                ConsultaPerfilUsuario perfil = new ConsultaPerfilUsuario();
+
+                                datos = perfil.ActualizarPassword(usuario, objpwd.pwdAnterior, objpwd.pwdNuevo);
+                                
+                                //foreach (var item in objpwd.)
+                                //{
+                                //    datos = perfil.ActualizarPassword(usuario, item[0].ToString(), item[1].ToString());
+                                //}
+
+                                if (datos)
+                                {
+                                    respuesta = "success";
+                                    TempData["Message"] = "Se actulizó la contraseña correctamente.";
+                                    TempData["AlertType"] = "success";
+                                    ViewBag.Message = "Se actualiza la contraseña correctamente.";
+                                    ViewBag.AlertType = "success";
+                            }
+                                else
+                                {
+                                    respuesta = "errorgrabando";
+                                }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        return "errorgrabando";
+                    }
+
+
+                }
+                else
+                {
+                    respuesta = "errorsesion";
+                }
+
+
+            }
+            else
+            {
+                respuesta = "errorgrabando";
+            }    
+                 
+
+            return respuesta;
         }
 
     public ActionResult LogOut()

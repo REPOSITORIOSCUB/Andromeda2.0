@@ -66,32 +66,31 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
-                @*<li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="far fa-bell"></i>
-                            <span class="badge badge-danger navbar-badge">15</span>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-cog"></i>
+                        <span class="badge badge-danger navbar-badge"><span class="fas fa-bell" /></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Configuración</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" onclick="Opencambio()">
+                            <i class="fas fa-key mr-2"></i> Cambio de contraseña
+                            @*<span class="float-right text-muted text-sm">3 mins</span>*@
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 registros
-                                <span class="float-right text-muted text-sm">3 mins</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
+                        @*<div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-users mr-2"></i> 8 contactos creados
                                 <span class="float-right text-muted text-sm">12 horas</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-file mr-2"></i> 3 nuevos reportes
-                                <span class="float-right text-muted text-sm">2 dias</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">Ver todas </a>
-                        </div>
-                    </li>*@
+                            </a>*@
+                        <div class="dropdown-divider"></div>
+                        <a href="/Home/LogOut" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Salir
+                        </a>
+                        @*<div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">Ver todas </a>*@
+                    </div>
+                </li>
                 <li>
                     @*<img src="~/Content/AdminLT/dist/img/logoheader.png" class="logoheader" alt="">*@
                 </li>
@@ -150,7 +149,7 @@
                         </li>
                         <li class="clearfix">&nbsp;</li>
                         <li class="nav-header">
-                            <h6 id="pversion" style="font-size: small;"></h6>
+                            <h6 style="font-size: small;">V @typeof(AppAndromedaCore.MvcApplication).Assembly.GetName().Version</h6>
                         </li>
                     </ul>
                 </nav>
@@ -201,6 +200,56 @@
         </footer>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="ContrasenaModal" tabindex="-1" role="dialog" aria-labelledby="contrasenaModalLabel" aria-hidden="true" style="display:none">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="personaModalLabel">Cambio de contraseña</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-content">
+                        <div class="form-group col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-key mr-2"></i></div>
+                                </div>
+                                <input type="password" class="form-control" id="PWDAnterior" name="Contrasena anterior" value="" placeholder="Contraseña Actual" />
+                            </div>
+                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                        </div>
+                        <div class="form-group col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-sync fa-spin mr-2"></i></div>
+                                </div>
+                                <input type="password" class="form-control" id="PWDNueva" name="Contrasena nueva" value="" placeholder="Nuevea Constrseña" />
+                            </div>
+                            @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                        </div>
+                        <!--<div class="form-group col-sm-9">
+                            <h6>Contraseña anterior:</h6>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-key mr-2"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="PWDAnterior" name="Nombre" value="" />
+                            </div>-->
+                        @*@Html.ValidationMessageFor(model => model.Nombre)*@
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="modal-footer mr-auto">
+                    @*<button type="button" class="btn btn-danger fa fa-trash-alt" data-dismiss="modal">Cancelar</button>*@
+                    <button id="guardar" type="button" class="btn btn-success btn-mae-grdr fa fa-check-circle" onclick="GuardarCambioContrasena()">&nbsp;Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
     //obtener el usuario logueado
      document.getElementById('usurioLog').innerHTML = '@Session["UsuarioAD"]';
@@ -211,7 +260,7 @@
     //    });
     </script>
 
-    @if (ViewBag.Message != null)
+    @if (TempData["Message"] != null)
     {
         <script type="text/javascript">
         window.onload = function () {
@@ -220,6 +269,30 @@
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 5000
+            });
+
+            Toast.fire({
+                icon: '@TempData["AlertType"]',
+                title: '@TempData["Message"]'
+            });
+
+         };
+        </script>
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 8000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
             });
 
             Toast.fire({
@@ -299,27 +372,97 @@
 
             bsCustomFileInput.init();
 
-    });
-    </script>
-    @if (ViewBag.Message != null)
-    {
-        <script type="text/javascript">
-        window.onload = function () {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 5000
-            });
+        });
 
+    function Opencambio() {
+        $('#ContrasenaModal').modal('show');
+    };
+
+    function GuardarCambioContrasena() {
+
+        var Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 5000 });
+
+        if ($("#PWDAnterior").val() === $("#PWDNueva").val()) {
             Toast.fire({
-                icon: '@ViewBag.AlertType',
-                title: '@ViewBag.Message'
+                type: 'success',
+                icon: "error",
+                title: 'La nueva contraseña debe ser diferente a la actual.',
+                customClass: { popup: 'adjust', icon: 'error' }
             });
+            return;
+        }
 
-         };
-        </script>
-    }
+        if ($("#PWDAnterior").val() === "") {
+            Toast.fire({
+                type: 'success',
+                icon: "info",
+                title: ' Ingrese la contraseña actual',
+                customClass: { popup: 'adjust', icon: 'info' }
+            });
+            return;
+        }
+        if ($("#PWDNueva").val() === "") {
+            Toast.fire({
+                type: 'success',
+                icon: "info",
+                title: ' Debe ingresar la nueva contraseña',
+                customClass: { popup: 'adjust', icon: 'info' }
+            });
+            return;
+        }
+        if ($("#PWDNueva").val().length > 20) {
+            Toast.fire({
+                type: 'success',
+                icon: "warning",
+                title: 'La nueva contraseña debe contener maximo 20 caracteres.',
+                customClass: { popup: 'adjust', icon: 'warning' }
+            });
+            return;
+        }
+        var objPwd = {
+            pwdAnterior: $("#PWDAnterior").val(),
+            pwdNuevo: $("#PWDNueva").val()
+        };
+        var jPwds = JSON.stringify(objPwd);
+
+        $.ajax({
+                url: '@Url.Action("CambioPWD", "Home")',
+                data: {
+                    objpwds: jPwds
+                },
+                method: "GET",
+                dataType: "text",
+                async: true,
+                beforeSend: function () {
+                },
+                success: function (result) {
+
+                    switch (result) {
+                        case "success":
+                            window.location.href = "/Home/Dashboard";
+                            break;
+                        case "errorgrabando":
+                            Toast.fire({
+                                type: 'success',
+                                icon: "error",
+                                title: ' No es posible actualizar su contraseña.',
+                                customClass: { popup: 'adjust', icon: 'error' }
+                            });
+
+                            break;
+                        case "errorsesion":
+                            window.location.href = "/Home/LogIn";
+                            break;
+                    }
+                },
+                error: function () {
+                    window.location.href = "/Home/LogIn";
+                }
+            });
+    };
+
+
+    </script>
 
 </body>
 </html>

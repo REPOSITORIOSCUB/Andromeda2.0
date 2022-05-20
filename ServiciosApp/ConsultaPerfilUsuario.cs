@@ -101,5 +101,50 @@ namespace ServiciosApp
                 return JsonConvert.DeserializeObject<List<PermisoAccesoModel>>(error);
             }
         }
+
+        public bool ActualizarPassword(string usuario, string pwdactual, string pwdnuevo)
+        {
+            bool resultado = false;
+
+            string URL = ConfigurationManager.AppSettings["ApiAndromeda"].ToString() + "GetCambioPWD/" + usuario + "/" + pwdactual +"/"+ pwdnuevo;
+            string error = "";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+            try
+            {
+                WebResponse response = request.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    //Permisos.Add(JsonConvert.DeserializeObject<AccesoModel>(reader.ReadToEnd()));
+                    string resp = reader.ReadToEnd();
+                    //  dynamic parsedJson = JsonConvert.DeserializeObject(resp);
+                    error = resp;
+                    if (resp == "[{}]" || String.IsNullOrEmpty(resp))
+                    {
+                         return resultado;
+                    }
+                    else
+                    {
+                        if (resp == "false")
+                        {
+                            resultado = false;
+                        }
+                        else
+                        {
+                            resultado = true;
+                        }                       
+                        return resultado;
+                    }
+
+                }
+            }
+            catch (WebException)
+            {
+
+                return resultado;
+            }
+
+            
+        }
     }
 }

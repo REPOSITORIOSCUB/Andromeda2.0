@@ -45,7 +45,8 @@ namespace AppAndromedaCore
                      "~/Content/AdminLT/plugins/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.css",
                      "~/Content/AdminLT/plugins/select2/css/select2.min.css",
                      "~/Content/AdminLT/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css",
-                     "~/Content/AdminLT/dist/css/PersonalizadosSitio.css"
+                     "~/Content/AdminLT/dist/css/PersonalizadosSitio.css",
+                     "~/Content/Popup/estilos.css"
                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -69,7 +70,8 @@ namespace AppAndromedaCore
                     "~/Content/AdminLT/plugins/daterangepicker/daterangepicker.js",
                     "~/Content/AdminLT/plugins/bootstrap-toggle/bootstrap-toggle.min.js",
                     "~/Content/AdminLT/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.js",
-                    "~/Content/AdminLT/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
+                    "~/Content/AdminLT/plugins/bs-custom-file-input/bs-custom-file-input.min.js",
+                    "~/Content/Popup/popup.js"
                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/AdminLT/js").Include(

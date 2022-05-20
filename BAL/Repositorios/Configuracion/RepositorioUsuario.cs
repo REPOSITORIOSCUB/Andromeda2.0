@@ -227,7 +227,7 @@ namespace BAL.Repositorios.Configuracion
             obj.Login = dr[1].ToString();
             obj.Password = dr[2].ToString();
             obj.bhabilitado =Convert.ToInt32(dr[4].ToString());
-            obj.idtipousuario = Convert.ToInt32(dr[5].ToString());
+            obj.idtipousuario = String.IsNullOrEmpty(dr[5].ToString())? 0 : Convert.ToInt32(dr[5].ToString());
             
 
             return obj;
