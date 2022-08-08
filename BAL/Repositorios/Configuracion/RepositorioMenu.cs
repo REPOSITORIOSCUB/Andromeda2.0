@@ -58,6 +58,7 @@ namespace BAL.Repositorios.Configuracion
 
             _command.Parameters.Add("vDescripcion", "NVARCHAR2").Value = obj.Descripcion;
             _command.Parameters["vDescripcion"].Direction = ParameterDirection.Input;
+            
 
             //_command.Parameters.Add("pFecregi", "NVARCHAR2").Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");// entidad.FechaRegistro;
             //_command.Parameters["pFecregi"].Direction = ParameterDirection.Input;

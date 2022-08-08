@@ -28,6 +28,7 @@ namespace BAL.Modelos.Configuracion
         public string Imagen { get; set; }
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
+      
 
 
         [Display(Name = "Archivo")]

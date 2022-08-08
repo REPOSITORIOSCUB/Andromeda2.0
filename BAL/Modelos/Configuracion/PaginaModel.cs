@@ -17,5 +17,7 @@ namespace BAL.Modelos.Configuracion
         [Display(Name = "Ruta")]
         public string Controlador { get; set; }
         public int Estado { get; set; }
+        [Display(Name = "Usa Login")]
+        public string linkExterno { get; set; }
     }
 }

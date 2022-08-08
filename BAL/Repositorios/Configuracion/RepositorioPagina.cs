@@ -53,6 +53,9 @@ namespace BAL.Repositorios.Configuracion
             _command.Parameters.Add("vBHabilitado", "INT").Value = 1;
             _command.Parameters["vBHabilitado"].Direction = ParameterDirection.Input;
 
+            _command.Parameters.Add("vLinkExterno", "INT").Value = obj.linkExterno;
+            _command.Parameters["vLinkExterno"].Direction = ParameterDirection.Input;
+
             //_command.Parameters.Add("pFecregi", "NVARCHAR2").Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");// entidad.FechaRegistro;
             //_command.Parameters["pFecregi"].Direction = ParameterDirection.Input;
 
@@ -89,6 +92,9 @@ namespace BAL.Repositorios.Configuracion
 
             _command.Parameters.Add("vBHabilitado", "INT").Value = obj.Estado;
             _command.Parameters["vBHabilitado"].Direction = ParameterDirection.Input;
+
+            _command.Parameters.Add("vLinkExterno", "INT").Value = obj.linkExterno;
+            _command.Parameters["vLinkExterno"].Direction = ParameterDirection.Input;
 
             return Metodos.EjecutarComando(_command);
         }
@@ -127,6 +133,7 @@ namespace BAL.Repositorios.Configuracion
             obj.Accion = registro[2].ToString();
             obj.Controlador = registro[3].ToString();
             obj.Estado = Convert.ToInt32(registro[4]);
+            obj.linkExterno = registro[5].ToString();
             return obj;
 
         }

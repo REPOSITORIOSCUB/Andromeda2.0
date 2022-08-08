@@ -91,6 +91,16 @@ namespace AppAndromedaCore.Controllers
             if (verificarSession())
             {
                 PaginaModel datos = new PaginaModel();
+                //-- Selector  si requiere usuairo logueado
+
+                List<SelectListItem> lstlogin = new List<SelectListItem>();
+                lstlogin.Add(new SelectListItem() { Text = "SI", Value = "0" });
+                lstlogin.Add(new SelectListItem() { Text = "NO", Value = "1" });
+
+                lstlogin.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = null });
+                ViewBag.ListaLogueo = new SelectList(lstlogin.ToList(), "Value", "Text", "");
+                //----------------------
+
                 return View(datos);
             }
             else
@@ -188,7 +198,7 @@ namespace AppAndromedaCore.Controllers
                 MensajesOperacion mensajes = new MensajesOperacion();
                 MensajesOperacion msgAnter = new MensajesOperacion();
 
-                PaginaModel tabusu = new PaginaModel();
+                PaginaModel tabusu = new PaginaModel();                
 
                 if (id != null)
                 {
@@ -197,6 +207,16 @@ namespace AppAndromedaCore.Controllers
 
                 if (tabusu != null)
                 {
+                    //-- Selector  si requiere usuairo logueado
+
+                    List<SelectListItem> lstlogin = new List<SelectListItem>();
+                    lstlogin.Add(new SelectListItem() { Text = "SI", Value = "0" });
+                    lstlogin.Add(new SelectListItem() { Text = "NO", Value = "1" });
+
+                    lstlogin.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = null });
+
+                    ViewBag.ListaLogueo = new SelectList(lstlogin.ToList(), "Value", "Text", tabusu.linkExterno);
+                    //----------------------
                     return View(tabusu);
                 }
                 else

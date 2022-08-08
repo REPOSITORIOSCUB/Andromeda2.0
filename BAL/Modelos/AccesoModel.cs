@@ -16,5 +16,6 @@ namespace BAL.Modelos
         public string controller { get; set; }
         public string imagen { get; set; }
         public string descripcion { get; set; }
+        public string linkExterno { get; set; }
     }
 }

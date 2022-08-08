@@ -81,12 +81,45 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 ViewBag.ShowMsg = (mensajes.Mostro.ToString().ToLower().Equals("true")) ? "S" : "N";
 
                 IEnumerable<PerfilXPagXModModel> respuesta = _repositorioPerfilXPagXMod.getobj();
+
+
+                List<PerfilXPagXModModel> respuesta0 = respuesta.ToList();//_repositorioPerfilXPagXMod.getobj().ToList();
+
+                var respuesta1 = from  d in respuesta0                               
+                                select new { 
+                                     idmod = d.IdModulo,
+                                     nommod = d.IdModulo.ToString(),
+                                     idperfil = d.IdPerfil,
+                                     nomperfil= d.IdPerfil.ToString(),
+                                };
+
+                var queryNameAndPop = respuesta1.GroupBy(p => new { p.idmod, p.nommod, p.idperfil, p.nomperfil });  // respuesta.GroupBy(p  => p.IdModulo).Select(g => g.Key);
+
+
                 TipoUsuarioModel Perfil ;
                 ModuloModel Mod;
                 PaginaModel Pag;
 
+
+
                 try
                 {
+
+                    foreach (var item in queryNameAndPop)
+                    {
+                        
+                        if (!string.IsNullOrEmpty(item.Key.idperfil))
+                        {
+                            Perfil = _repositorioTipoUsuario.FindId(item.Key.idperfil);
+                            item.Key.nomperfil.Replace(item.Key.nomperfil, Perfil.Nombre);
+                        }
+                        if (!string.IsNullOrEmpty(item.Key.idmod))
+                        {
+                            Mod = _repositoriomodulo.FindId(item.Key.idmod);
+                            item.Key.nomperfil.Replace(item.Key.nomperfil, Mod.Nombre);
+                        }
+                    }
+
                     foreach (PerfilXPagXModModel pxm in respuesta)
                     {
                         if (pxm.IdPerfil != null)

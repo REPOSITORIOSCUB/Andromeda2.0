@@ -89,11 +89,11 @@
                                     @*@Html.DisplayFor(modelItem => item.estado)*@
                                     @if (item.estado.ToString().Equals("1"))
                                     {
-                                        <span>Activo</span>
+                                        <span class="badge badge-success">Activo</span>
                                     }
                                     else
                                     {
-                                        <span>Inactivo</span>
+                                        <span class="badge badge-danger">Inactivo</span>
                                     }
                                 </td>
                                 <td>

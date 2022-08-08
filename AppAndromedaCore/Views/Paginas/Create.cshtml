@@ -81,6 +81,14 @@
                                     </div>
                                     @*@Html.ValidationMessageFor(model => model.Nombre)*@
                                 </div>
+                                <div class="form-group col-sm">
+                                    <h6>@Html.LabelFor(model => model.linkExterno, htmlAttributes: new { @class = "control-label col-md" })</h6>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-barss"></i></span>
+                                        @Html.DropDownListFor(model => model.linkExterno, ViewBag.ListaLogueo as SelectList, new { @id = "Id", @class = "form-control" })
+                                    </div>
+                                </div>
+
                             </div>                           
                             <div align="left">
                                 @Html.ActionLink(" Cancelar", "Index", "Paginas", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
