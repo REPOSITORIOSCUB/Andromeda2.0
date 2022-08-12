@@ -306,7 +306,7 @@ namespace BAL.Repositorios.Configuracion
             List<InfoUsuariosModel> lista = new List<InfoUsuariosModel>();
             DataTable dttLista = new DataTable();
 
-            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.ListarDatosPersonas");
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.ListarDatosPersonas2");
             _command.CommandType = CommandType.StoredProcedure;
 
             _command.Parameters.Add("vDato", "NVARCHAR2").Value = dato;

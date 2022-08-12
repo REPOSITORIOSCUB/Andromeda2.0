@@ -14,6 +14,8 @@
     function OcultarMenu(vMenu) {
         $(vMenu).css("display", "none");
     }
+   
+
 </script>
 
 <style>
@@ -239,20 +241,30 @@
                                             {
                                                 case "0.0":  //Acceso del modulo central
                                                     url = @Model[j].controller + "?Login=" + @Session["UsuarioAD"].ToString();
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
                                                     break;
                                                 case "1.0":  //Acceso a aplicaciones externas
                                                     url = @Model[j].controller;
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
                                                     break;
                                                 case "2.0":  //Acceso   A SMS
                                                     url = @Model[j].controller + @Session["UsuarioAD"].ToString() + "#";
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
                                                     break;
                                                 case "3.0":  //Acceso  Gestor contratación
                                                     url = @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString();
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    break;
+                                                case "4.0":  //Acceso  Telemedicina
+                                                             //url = "javascript:funcion()";
+                                                    var r = "'" + @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString() + "&Doc=" + "]" + @Session["UsuarioAD"].ToString() + "'";                                                 
+                                                    <li class="topmenu"><a id="myLink" href="javascript:ConsultarIdentificacion(@r);" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    //url = @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString()+ "&Doc="+ javascript:funcion();
                                                     break;
 
                                             }
                                         }
-                                        <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                        @*<li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>*@
                                         i++;
                                     }
                                 </ul>
@@ -268,6 +280,9 @@
 @if (ViewBag.Message != null)
 {
     <script type="text/javascript">
+
+       // $('#myLink').click(function () { funcion(); return false; });
+
         window.onload = function () {
             const Toast = Swal.mixin({
                 toast: true,
@@ -286,6 +301,42 @@
                 title: '@ViewBag.Message'
             });
 
-         };
+        };
     </script>
+    
 }
+<script type="text/javascript">
+
+        function ConsultarIdentificacion(vruta) {
+
+        const dtos = vruta.split("]");
+       
+
+        jQuery.ajax({
+            url:'@Url.Action("GetInformacionUsuario", "Usuarios")',
+            type: "GET",
+            async: false,
+            cache: false,
+            data: { usuario : dtos[1]},
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {             
+
+                if (data != null) {
+                    var respuesta = JSON.parse(data);   
+                    var dato = dtos[0] + respuesta[0].idetificadion;//"43026263";
+                       window.open(dato, '_blank').focus();
+
+                    }
+
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+                    //hace algo antes des consultar
+                },
+            });
+
+
+        }
+</script>

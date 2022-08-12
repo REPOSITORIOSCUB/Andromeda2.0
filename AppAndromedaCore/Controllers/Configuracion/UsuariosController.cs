@@ -642,6 +642,35 @@ namespace AppAndromedaCore.Controllers
             }
         }
 
+        /// <summary>
+        /// Consulta cedula y nombre del usuario
+        /// </summary>
+        /// <param name="usuario">usuario intranet</param>
+        /// <returns>Nombre y usuario</returns>
+        public JsonResult GetInformacionUsuario(string usuario)
+        {
+            string odatos = string.Empty;            
+            if (verificarSession())
+            {
+                try
+                {
+                    
+                    IEnumerable<InfoUsuariosModel> inf = _repositorioUsuario.getDatosPersona(usuario);
+                    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                    odatos = serializer.Serialize(inf);
+                    return Json(odatos, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception)
+                {
+                    return Json(odatos, JsonRequestBehavior.AllowGet);
+                }               
+            }
+            else
+            {
+                return Json(odatos, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         private bool verificarSession()
         {
             try
