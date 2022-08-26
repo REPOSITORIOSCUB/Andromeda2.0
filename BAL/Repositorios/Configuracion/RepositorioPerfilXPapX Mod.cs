@@ -218,5 +218,36 @@ namespace BAL.Repositorios.Configuracion
 
             return obj; 
         }
+
+        public IEnumerable<PerfilXPagXModModel> getmodxper()
+        {
+            List<PerfilXPagXModModel> lista = new List<PerfilXPagXModModel>();
+            DataTable dttLista = new DataTable();
+
+            _command = Metodos.CrearComandoProc("UPB_PA2_COREAPP.listarperfilxmoduloNombre");
+            _command.CommandType = CommandType.StoredProcedure;
+
+            _command.Parameters.Add("vcursorgeneral", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            dttLista = Metodos.EjecutarComandoSelect(_command);
+
+            foreach (DataRow regi in dttLista.Rows)
+            {
+                lista.Add(LlenarEntidad2(regi));
+            }
+
+
+            return lista;
+        }
+
+        private PerfilXPagXModModel LlenarEntidad2(DataRow Registro)
+        {
+            PerfilXPagXModModel obj = new PerfilXPagXModModel();
+            obj.IdModulo = Registro[0].ToString();
+            obj.IdPerfil = Registro[1].ToString();                     
+            obj.Estado = Convert.ToInt32(Registro[2]);
+
+            return obj;
+        }
     }
 }

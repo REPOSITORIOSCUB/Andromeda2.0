@@ -13,6 +13,7 @@ namespace BAL.Interfaces.Configuracion
         bool Edit(PerfilXPagXModModel obj);
         bool Delete(PerfilXPagXModModel obj);
         IEnumerable<PerfilXPagXModModel> getobj();
+        IEnumerable<PerfilXPagXModModel> getmodxper();
         PerfilXPagXModModel FindId(string id);
         bool ValidarCampos(PerfilXPagXModModel PerXPagXMod, string opcion);
     }

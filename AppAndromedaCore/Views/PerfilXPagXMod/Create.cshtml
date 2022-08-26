@@ -34,6 +34,17 @@
         {
             @Html.AntiForgeryToken()
 
+            @*<div class="modal fade vertical-align-center" id="ModalProgreso" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" style="justify-content:center">
+                    <div class="spinner-border text-primary" role="status">
+                    </div>
+                </div>
+            </div>*@
+            <div class="d-flex align-items-center text-primary" id="spinner" aria-hidden="true"  style="visibility:hidden">
+                <strong>Cargando...</strong>
+                <div class="spinner-border ml-1 text-primary" role="status" aria-hidden="true"></div>
+            </div>
+
             <div class="card bg-light mb-3" style="max-width: 100%;">
                 <div class="card-header bg-gradient-lightblue" style="text-align:center">
                     <div class="container">
@@ -88,17 +99,15 @@
                                 <div id="collapseEncabezado" class="collapsing in" role="tabpanel" data-parent="#accordionEncabezado">
                                     <div class="accordion" id="accordionEncabezado" style="margin-left:10px;margin-right:10px;">
                                         <div class="card-body">
-                                            @*<br />
-                                                <ul data-widget="treeview-checkable">
-                                                    <li><a href="#">One Level</a></li>
-                                                    <li class="treeview">
-                                                        <a href="#">Multilevel</a>
-                                                        <ul class="treeview-menu">
-                                                            <li><a href="#">Level 2</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <br />*@
+                                            <div class="row-cols-3">
+                                                <div class="input-group rounded">
+                                                    <input type="search" id="search-input" class="form-control rounded" placeholder="Buscar.." aria-label="Search" aria-describedby="search-addon" />
+                                                    <span class="input-group-text border-0" id="search-addon">
+                                                        <i class="fas fa-search"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <br />
                                             <div id="jstree">
                                                 @*<ul>
                                                     <li data-jstree='{"icon":"fa fa-minus"}'>
@@ -111,7 +120,7 @@
                                                     <li data-jstree='{"icon":"fa fa-plus"}'>Root node 2</li>
                                                 </ul>*@
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -119,8 +128,8 @@
                                 <div align="left">
                                     @Html.ActionLink(" Cancelar", "Index", "PerfilXPagXMod", new { @class = "btn btn-danger btn-large fa fa-trash-alt" })
                                     @*<button type="submit" name="guardar" id="guardar" class="btn btn-success btn-mae-grdr fa fa-check-circle">
-                                            Guardar
-                                        </button>*@
+                                        Guardar
+                                    </button>*@
                                     <button id="guardar" type="button" class="btn btn-success btn-mae-grdr fa fa-check-circle" onclick="Guardar()"> Guardar</button>
                                 </div>
                             </div>
@@ -157,7 +166,7 @@
             "three_state": false,
             "keep_selected_style": false
         },
-        "plugins": ["sort", "checkbox"], 
+        "plugins": ["sort", "checkbox", "search"], 
         'sort': function (a, b) {
             a1 = this.get_node(a);
             b1 = this.get_node(b);
@@ -166,8 +175,20 @@
             } else {
                 return (a1.icon > b1.icon) ? 1 : -1;
             }
-        }       
-       });
+        },
+        'search': {
+            "case_sensitive": false,
+            "show_only_matches": true
+        }      
+    });
+    var to = false;
+    $('#search-input').keyup(function () {
+        if (to) { clearTimeout(to); }
+        to = setTimeout(function () {
+            var v = $('#search-input').val();
+            $('#jstree').jstree(true).search(v);
+        }, 250);
+    });
        
 
         $('#jstree').on("changed.jstree", function (e, data) {
@@ -183,7 +204,8 @@
         $(".select2bs4").select2();
 
         $('#IdCodModulo').change(function () {
-
+          // $("#ModalProgreso").modal().show();
+            document.getElementById("spinner").style.visibility = "visible";
             $.post('/PerfilXPagXMod/GetPagina', { pxm: $('#IdCodModulo').val() })
                 .done(function (result) {
                     if (result) {
@@ -211,8 +233,6 @@
                                     }));
                                 }
 
-                                debugger;
-
                                 for (var i = 0; i < itemData.Perfil.length; i++) {
                                     $("#IdCodPerfil").prepend($('<option value="' + itemData.Perfil[i].Id  + '">' + itemData.Perfil[i].Nombre + "</option>", {
                                     }));
@@ -232,18 +252,17 @@
                                     
                                 }
                                // $("#jstree").jstree("disable_node", 0);
+                               
                             }
                         });
 
                         
                         var listinfo = info;
-
+                        // $("#ModalProgreso").modal().hide();
+                        document.getElementById("spinner").style.visibility = "hidden";
                         listarmenu(listinfo);
 
-                        //$('#jstree').jstree(true).settings.core.data = listinfo;
-                        //$('#jstree').jstree(true).refresh();
-                        //$("#jstree").jstree("open_all");
-                        //$("#jstree").jstree("deselect_all");
+                        
                     }
                 }
                 )
@@ -253,13 +272,21 @@
                  
         $('#jstree').jstree(true).settings.core.data = listinfo;
         $('#jstree').jstree(true).refresh();
-        $("#jstree").jstree("open_all");
-        $("#jstree").jstree("deselect_all");
+        setTimeout(function () {
+            $("#jstree").jstree("open_all");
+            $("#jstree").jstree("deselect_all");
+
+        }, 700);
+       
+        //abrimos el arbol de los menus
+        $("#collapseEncabezado").collapse("show");
+       
+       
     }
 
         function Guardar() {
             var Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 5000 });
-            debugger;
+            
 
             if ($("#IdCodModulo").val() === "") {
                 Toast.fire({

@@ -80,75 +80,99 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 //if (muestraMsg.Equals("N")) 
                 ViewBag.ShowMsg = (mensajes.Mostro.ToString().ToLower().Equals("true")) ? "S" : "N";
 
-                IEnumerable<PerfilXPagXModModel> respuesta = _repositorioPerfilXPagXMod.getobj();
+                IEnumerable<PerfilXPagXModModel> respuesta = _repositorioPerfilXPagXMod.getmodxper();
 
-
-                List<PerfilXPagXModModel> respuesta0 = respuesta.ToList();//_repositorioPerfilXPagXMod.getobj().ToList();
-
-                var respuesta1 = from  d in respuesta0                               
-                                select new { 
-                                     idmod = d.IdModulo,
-                                     nommod = d.IdModulo.ToString(),
-                                     idperfil = d.IdPerfil,
-                                     nomperfil= d.IdPerfil.ToString(),
-                                };
-
-                var queryNameAndPop = respuesta1.GroupBy(p => new { p.idmod, p.nommod, p.idperfil, p.nomperfil });  // respuesta.GroupBy(p  => p.IdModulo).Select(g => g.Key);
-
-
-                TipoUsuarioModel Perfil ;
-                ModuloModel Mod;
-                PaginaModel Pag;
-
-
-
-                try
-                {
-
-                    foreach (var item in queryNameAndPop)
-                    {
-                        
-                        if (!string.IsNullOrEmpty(item.Key.idperfil))
-                        {
-                            Perfil = _repositorioTipoUsuario.FindId(item.Key.idperfil);
-                            item.Key.nomperfil.Replace(item.Key.nomperfil, Perfil.Nombre);
-                        }
-                        if (!string.IsNullOrEmpty(item.Key.idmod))
-                        {
-                            Mod = _repositoriomodulo.FindId(item.Key.idmod);
-                            item.Key.nomperfil.Replace(item.Key.nomperfil, Mod.Nombre);
-                        }
-                    }
-
-                    foreach (PerfilXPagXModModel pxm in respuesta)
-                    {
-                        if (pxm.IdPerfil != null)
-                        {
-                            Perfil = _repositorioTipoUsuario.FindId(pxm.IdPerfil);
-                            pxm.IdPerfil = Perfil.Nombre;
-                        }
-                        if (pxm.IdPagina != null)
-                        {
-                            Pag = _repositorioPagina.FindId(pxm.IdPagina);
-
-                            pxm.IdPagina = Pag.Mensaje;
-                        }
-                        if (pxm.IdModulo != null)
-                        {
-                            Mod = _repositoriomodulo.FindId(pxm.IdModulo);
-
-                            pxm.IdModulo = Mod.Nombre;
-                        }
-                    }
-                }
-                catch (Exception )
-                {
-
-                    throw;
-                }               
-
-                //return View(_repositorioMenu.getobj());
                 return View(respuesta);
+
+                //List<PerfilXPagXModModel> respuesta0 = respuesta.OrderBy(x => x.IdModulo).ToList();//_repositorioPerfilXPagXMod.getobj().ToList();
+
+                //var respuesta1 = from  d in respuesta0                               
+                //                select new { 
+                //                     idmod = d.IdModulo,
+                //                     nommod = d.IdModulo.ToString(),
+                //                     idperfil = d.IdPerfil,
+                //                     nomperfil= d.IdPerfil.ToString(),
+                //                };
+
+                //var queryNameAndPop = respuesta1.GroupBy(p => new { p.idmod, p.nommod, p.idperfil, p.nomperfil });  // respuesta.GroupBy(p  => p.IdModulo).Select(g => g.Key);
+
+
+                //TipoUsuarioModel Perfil ;
+                //ModuloModel Mod;
+                ////PaginaModel Pag;
+
+
+
+                //try
+                //{
+
+                //    foreach (var item in queryNameAndPop)
+                //    {
+
+                //        if (!string.IsNullOrEmpty(item.Key.idperfil))
+                //        {
+                //            Perfil = _repositorioTipoUsuario.FindId(item.Key.idperfil);
+                //            item.Key.nomperfil.Replace(item.Key.nomperfil, Perfil.Nombre);
+                //        }
+                //        if (!string.IsNullOrEmpty(item.Key.idmod))
+                //        {
+                //            Mod = _repositoriomodulo.FindId(item.Key.idmod);
+                //            item.Key.nomperfil.Replace(item.Key.nomperfil, Mod.Nombre);
+                //        }
+                //    }
+
+                //    foreach (PerfilXPagXModModel pxm in respuesta)
+                //    {
+                //        if (pxm.IdPerfil != null)
+                //        {
+                //            Perfil = _repositorioTipoUsuario.FindId(pxm.IdPerfil);
+                //            pxm.IdPerfil = Perfil.Nombre;
+                //        }
+                //        //if (pxm.IdPagina != null)
+                //        //{
+                //        //    Pag = _repositorioPagina.FindId(pxm.IdPagina);
+
+                //        //    pxm.IdPagina = Pag.Mensaje;
+                //        //}
+                //        if (pxm.IdModulo != null)
+                //        {
+                //            Mod = _repositoriomodulo.FindId(pxm.IdModulo);
+
+                //            pxm.IdModulo = Mod.Nombre;
+                //        }
+                //    }
+                //}
+                //catch (Exception )
+                //{
+
+                //    throw;
+                //}
+
+
+                //List<PerfilXPagXModModel> respuesta3 = respuesta.OrderBy(x => x.IdModulo).ToList();//_repositorioPerfilXPagXMod.getobj().ToList();
+
+                //var respuesta4 = from d in respuesta3                                 
+                //                 select new
+                //                 {                                         
+                //                     IdModulo =  d.IdModulo.ToString(),                                     
+                //                     IdPerfil = d.IdPerfil.ToString(),
+                //                     Estado = d.Estado
+                //                 };
+
+                //var queryNameAndPop2 = respuesta4.OrderBy(c => c.IdModulo).GroupBy(p => new { p.IdModulo, p.IdPerfil, p.Estado });
+
+                //List<PerfilXPagXModModel> respuesta2 = new List<PerfilXPagXModModel>(); 
+                //foreach (var dato in queryNameAndPop2)
+                //{
+                //    PerfilXPagXModModel datos = new PerfilXPagXModModel();
+                //    datos.IdModulo = dato.Key.IdModulo;
+                //    datos.Estado = dato.Key.Estado;
+                //    datos.IdPerfil = dato.Key.IdPerfil;
+
+                //    respuesta2.Add(datos);
+                //}
+
+                //return View(respuesta2.AsEnumerable());
             }
             else
             {
@@ -192,7 +216,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                         lstmodulo.Add(new SelectListItem() { Text = modulo.Nombre, Value = modulo.Id });
                     }
                 }
-                lstmodulo.Insert(0, new SelectListItem { Text = "", Value = null });
+                lstmodulo.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = null });
                 ViewBag.ListaModulo = new SelectList(lstmodulo.ToList(), "Value", "Text", "");
                 //----------------------
 
@@ -466,7 +490,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
         }
 
         // GET: PerfilXPagXMod/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id, string userperfil)
         {
             if (VerificarSession())
             {
@@ -480,9 +504,10 @@ namespace AppAndromedaCore.Controllers.Configuracion
 
                 PerfilXPagXModModel objperxpagxmod = new PerfilXPagXModModel();
 
-                if (id != null) objperxpagxmod = _repositorioPerfilXPagXMod.FindId(id);
+                //if (id != null) objperxpagxmod = _repositorioPerfilXPagXMod.FindId(id);
 
-                if (objperxpagxmod != null)
+                //if (objperxpagxmod != null)
+                if (!String.IsNullOrEmpty(id) || !string.IsNullOrEmpty(userperfil))
                 {
 
                     //----Selector de perfil
@@ -494,8 +519,15 @@ namespace AppAndromedaCore.Controllers.Configuracion
                         {
                             lstperfil.Add(new SelectListItem() { Text = perfil.Nombre, Value = perfil.Id.ToString() });
                         }
+                    }                    
+                    var idperfil = lstperfil.Where(x => x.Text.Equals(userperfil)).Select(t => t.Value);
+                    string _idperfil = "";
+                    foreach (var item in idperfil)
+                    {
+                        _idperfil = item.ToString();
                     }
-                    ViewBag.ListaPerfil = new SelectList(lstperfil.ToList(), "Value", "Text", objperxpagxmod.IdPerfil);
+
+                    ViewBag.ListaPerfil = new SelectList(lstperfil.ToList(), "Value", "Text", _idperfil);
                     //----------------------
                     //-- Selector  del Modulo
                     IEnumerable<ModuloModel> objmodulo = _repositoriomodulo.getobj();
@@ -507,29 +539,38 @@ namespace AppAndromedaCore.Controllers.Configuracion
                             lstmodulo.Add(new SelectListItem() { Text = modulo.Nombre, Value = modulo.Id });
                         }
                     }
-                    ViewBag.ListaModulo = new SelectList(lstmodulo.ToList(), "Value", "Text", objperxpagxmod.IdModulo);
-                    //----------------------
-                    //-- Selector  de Página
-                    IEnumerable<PaginaModel> objpagina = _repositorioPagina.getobj();
-                    List<SelectListItem> lstpagina = new List<SelectListItem>();
-                    foreach (PaginaModel pagina in objpagina)
+                    var idmod = lstmodulo.Where(x => x.Text.Equals(id)).Select(t => t.Value);
+                    string _idmodulo = "";
+                    foreach (var item in idmod)
                     {
-                        if (pagina.Id.ToString() != null)
-                        {
-                            lstpagina.Add(new SelectListItem() { Text = pagina.Mensaje, Value = pagina.Id.ToString() });
-                        }
+                        _idmodulo = item.ToString();
                     }
-                    ViewBag.ListaPagina = new SelectList(lstpagina.ToList(), "Value", "Text", objperxpagxmod.IdPagina);
+
+                    ViewBag.ListaModulo = new SelectList(lstmodulo.ToList(), "Value", "Text", _idmodulo);
                     //----------------------
+                    ////-- Selector  de Página
+                    //IEnumerable<PaginaModel> objpagina = _repositorioPagina.getobj();
+                    //List<SelectListItem> lstpagina = new List<SelectListItem>();
+                    //foreach (PaginaModel pagina in objpagina)
+                    //{
+                    //    if (pagina.Id.ToString() != null)
+                    //    {
+                    //        lstpagina.Add(new SelectListItem() { Text = pagina.Mensaje, Value = pagina.Id.ToString() });
+                    //    }
+                    //}
+                    //ViewBag.ListaPagina = new SelectList(lstpagina.ToList(), "Value", "Text", objperxpagxmod.IdPagina);
+                    ////----------------------
                     //-- Selector Estado----
                     ViewBag.ListaEstado = new SelectList(
                                    new List<SelectListItem>
                                    {
-                                        new SelectListItem { Text = "Activo", Value = "1" },
+                                        
                                         new SelectListItem { Text = "Inactivo", Value = "0"},
-                                   }, "Value", "Text");
+                                        new SelectListItem { Text = "Activo", Value = "1" }
+                                   }, "Value", "Text", "1");
                     ///-------------------
                     return View(objperxpagxmod);
+                   
                 }
                 else
                 {
@@ -779,6 +820,8 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 return RedirectToAction("LogIn", "Home");
             }
         }
+
+        //optienen las paginas 
         public JsonResult GetPagina(string pxm)
         {
 
@@ -831,6 +874,26 @@ namespace AppAndromedaCore.Controllers.Configuracion
 
             }
         }
+
+        //Optiene  las paginas asignadas
+        [HttpGet]
+        public JsonResult GetPaginasAsignadas(string pmodulo, string pperfil)
+        {
+            
+
+            if (String.IsNullOrEmpty(pmodulo)  || String.IsNullOrEmpty(pperfil))
+                return Json(new { success = false, Message = "Error en la consulta" }, JsonRequestBehavior.AllowGet);
+            else
+            {
+                 
+                IEnumerable<PerfilXPagXModModel> ListaPPM = _repositorioPerfilXPagXMod.getobj();
+                var pagina = ListaPPM.Where(x => x.IdModulo == pmodulo  && x.IdPerfil == pperfil).ToList();
+
+                return Json(new { success = true, pagina }, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
         private bool VerificarSession()
         {
             try
