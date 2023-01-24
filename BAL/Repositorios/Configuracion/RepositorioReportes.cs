@@ -107,10 +107,10 @@ namespace BAL.Repositorios.Configuracion
             _command.Parameters.Add("vimagen", "NVARCHAR2").Value = obj.RutaImagen;
             _command.Parameters["vimagen"].Direction = ParameterDirection.Input;
 
-            _command.Parameters.Add("vOrden", "NUMBER").Value =  obj.Orden;
+            _command.Parameters.Add("vOrden", "NUMBER").Value =obj.Orden;
             _command.Parameters["vOrden"].Direction = ParameterDirection.Input;
 
-            _command.Parameters.Add("vBHabilitado", "INT").Value = obj.Activo;
+            _command.Parameters.Add("vBHabilitado", "NUMBER").Value = obj.Activo;
             _command.Parameters["vBHabilitado"].Direction = ParameterDirection.Input;
 
             _command.Parameters.Add("vUsuactuc", "NVARCHAR2").Value = obj.UsuarioModifica.ToString();

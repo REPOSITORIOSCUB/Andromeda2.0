@@ -98,30 +98,30 @@
             <span class="error animated tada" id="msg"></span>
             <form name="form1" class="box" th:object="${login}" method="post">
                 <div class="top-content-style">
-                  
-                        <img class="box effect2" src="~/Content/Login/images/Logo.png" alt="" style="width: 60%;" />
-                    
-                    
+
+                    <img class="box effect2" src="~/Content/Login/images/Logo.png" alt="" style="width: 60%;" />
+
+
                 </div>
                 <h4>ANDRÓMEDA 2.0</h4>
                 <h5>Bienvenido</h5>
                 @*<input type="text" name="email" placeholder="Usuario" autocomplete="off">*@
-                @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", })
+                @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", onkeyup = "minusculas(this);" })
                 <i class="typcn typcn-eye" id="eye"></i>
                 @*<input type="password" name="password" placeholder="Contraseña" id="pwd" autocomplete="off">*@
                 @Html.TextBoxFor(model => model.Password, new { id = "pwd", placeholder = "Contraseña", autocomplete = "off", @class = "form-control input100", @type = "password" })
                 @*<label>
-            <input type="checkbox">
-            <span></span>
-            <small class="rmb">Remember me</small>
-        </label>
-        <a href="#" class="forgetpass">Forget Password?</a>*@
+                        <input type="checkbox">
+                        <span></span>
+                        <small class="rmb">Remember me</small>
+                    </label>
+                    <a href="#" class="forgetpass">Forget Password?</a>*@
                 <input type="submit" value="Ingresar" class="btn1">
             </form>
             @*<a href="#" class="dnthave">Don’t have an account? Sign up</a>*@
         </div>
         <div class="footer">
-            <span>Desarrollado por <a href="">CTIC ®</a></span>
+            <span>Versión @typeof(AppAndromedaCore.MvcApplication).Assembly.GetName().Version - &copy; @DateTime.Now.Year.ToString() - Desarrollado por <a href="">CTIC ®</a></span>
         </div>
     </div>
 
@@ -161,6 +161,11 @@
     <script src="https://cldup.com/S6Ptkwu_qA.js"></script>
     <script src="~/Content/Login/js/master.js"></script>
 
+    <script type="text/javascript">
+        function minusculas(e) {
+            e.value = e.value.toLowerCase();
+        }
+    </script>
 
 </body>
 

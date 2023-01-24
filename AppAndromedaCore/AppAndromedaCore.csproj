@@ -1903,9 +1903,12 @@
     <Content Include="Content\Imagenes\REPORTES.jpg" />
     <Content Include="Content\Imagenes\Reportes\AtencionInsegura.jpg" />
     <Content Include="Content\Imagenes\Reportes\BalaceScoreCard.jpg" />
+    <Content Include="Content\Imagenes\Reportes\CumplimientoPOA.jpg" />
     <Content Include="Content\Imagenes\Reportes\GesionDocumentos.jpg" />
     <Content Include="Content\Imagenes\Reportes\GestionDeDocumentos.jpg" />
     <Content Include="Content\Imagenes\Reportes\GestionRiesgo.jpg" />
+    <Content Include="Content\Imagenes\Reportes\Materna.jpg" />
+    <Content Include="Content\Imagenes\Reportes\MejoramientoAcreditacion.jpg" />
     <Content Include="Content\Imagenes\Reportes\Muestra.jpg" />
     <Content Include="Content\Imagenes\Reportes\PacientesInternacionales.jpg" />
     <Content Include="Content\Imagenes\Reportes\ProduccionServicios.jpg" />
