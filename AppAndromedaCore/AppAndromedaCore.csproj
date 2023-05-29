@@ -1600,6 +1600,7 @@
     <Content Include="Content\AdminLT\plugins\pace-progress\themes\yellow\pace-theme-mac-osx.css" />
     <Content Include="Content\AdminLT\plugins\pace-progress\themes\yellow\pace-theme-material.css" />
     <Content Include="Content\AdminLT\plugins\pace-progress\themes\yellow\pace-theme-minimal.css" />
+    <Content Include="Content\AdminLT\plugins\particles\particles.js" />
     <Content Include="Content\AdminLT\plugins\pdfmake\pdfmake.js" />
     <Content Include="Content\AdminLT\plugins\pdfmake\pdfmake.min.js" />
     <Content Include="Content\AdminLT\plugins\pdfmake\vfs_fonts.js" />

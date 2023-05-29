@@ -71,7 +71,8 @@ namespace AppAndromedaCore
                     "~/Content/AdminLT/plugins/bootstrap-toggle/bootstrap-toggle.min.js",
                     "~/Content/AdminLT/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.js",
                     "~/Content/AdminLT/plugins/bs-custom-file-input/bs-custom-file-input.min.js",
-                    "~/Content/Popup/popup.js"
+                    "~/Content/Popup/popup.js",
+                    "~/Content/AdminLT/plugins/particles/particles.js"
                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/AdminLT/js").Include(
