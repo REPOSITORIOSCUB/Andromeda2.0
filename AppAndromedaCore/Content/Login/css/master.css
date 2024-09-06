@@ -26,7 +26,7 @@ body, html {
 }
 
 .container {
-    margin: 0;
+    /*margin: 0;
     top: 50px;
     left: 50%;
     position: absolute;
@@ -38,29 +38,57 @@ body, html {
     border-bottom: 10px solid #dbe3ee;
     width: 400px;
     height: 500px;
-    box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
+    box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);*/
+    top: 50px;
+    left: 39%;
+    width: 400px;
+    height: 500px;
+    transform: translateX(-50%);
+    background-color: rgb(228 234 255);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    width: 350px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
+    transition: transform 0.3s;
+    position: absolute;
 }
-
-.box h4 {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #1f549d;
-    font-size: 30px;
-    margin-top: 2px;
-}
-
-    .box h4 span {
-        color: #212942;
-        font-weight: lighter;
+    .container:hover {
+        transform: scale(1.02);
     }
 
+.box h4 {
+    /*font-family: 'Source Sans Pro', sans-serif;
+    color: #1f549d;
+    font-size: 30px;
+    margin-top: 2px;*/
+    font-size: 24px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+    /*.box h4 span {
+        color: #212942;
+        font-weight: lighter;
+    }*/
+
 .box h5 {
-    font-family: 'Source Sans Pro', sans-serif;
+    /* font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     color: #1f549d  ;
     letter-spacing: 1.5px;
     margin-top: -15px;
-    margin-bottom: 30px;
+    margin-bottom: 30px;*/
+    font-size: 24px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
+
+
 
 .box input[type = "text"], .box input[type = "password"] {
     display: block;
@@ -77,6 +105,88 @@ body, html {
     -ms-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+    .form-control:focus, .form-control:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        outline: none;
+    }
+
+.btn1 {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+    .btn1:hover {
+        background-color: #1e40af;
+        transform: scale(1.05);
+    }
+
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Efecto 3D para la Imagen */
+.image-3d {
+    perspective: 1000px;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+    .image-3d img {
+        width: 60%;
+        display: block;
+        margin: 0 auto;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+    }
+
+    .image-3d:hover img {
+        transform: rotateY(20deg) rotateX(10deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 ::-webkit-input-placeholder {
@@ -115,7 +225,7 @@ label span {
 
 .btn1 {
     border: 0;
-    background: #1f549d;
+    background: linear-gradient(145deg, rgba(31, 84, 157, 0.9), rgba(0, 212, 255, 1));
     color: #dfdeee;
     border-radius: 100px;
     width: 340px;
@@ -126,6 +236,8 @@ label span {
     left: 8%;
     transition: 0.3s;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Sombra suave */
+    0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
     .btn1:hover {
@@ -209,8 +321,9 @@ label span {
     }
 
 .top-content-style {
+    border-radius: 26px;
     padding: 1vw 1vw 1vw;
-    background: #1f549d;
+    background: linear-gradient(145deg, rgba(31, 84, 157, 0.9), rgba(0, 212, 255, 1));
 }
 
     .top-content-style img {

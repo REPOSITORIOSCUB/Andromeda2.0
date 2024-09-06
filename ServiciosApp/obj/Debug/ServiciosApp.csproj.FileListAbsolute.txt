@@ -65,6 +65,6 @@ C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\Newtonsoft.Json.xml
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\bin\Debug\DAL.pdb
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.AssemblyReference.cache
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CoreCompileInputs.cache
-C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.csproj.CopyComplete
+C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\Servicio.78C0BC25.Up2Date
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.dll
 C:\RepositoriosProyectos\Andromeda2.0\ServiciosApp\obj\Debug\ServiciosApp.pdb

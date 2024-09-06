@@ -1,0 +1,342 @@
+﻿@using BAL.Modelos;
+@model List<AccesoModel>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function MostrarMenu(vMenu) {
+        $(vMenu).css("display", "block");
+    }
+
+    function OcultarMenu(vMenu) {
+        $(vMenu).css("display", "none");
+    }
+   
+
+</script>
+
+<style>
+    .card {
+        margin: 0;
+        max-width: 450px;
+        background-color: transparent;
+        border: 20px solid transparent !important;
+        border-image-slice: 1 !important;
+        -webkit-transition: -webkit-transform 0.6s ease;
+        transition: -webkit-transform 0.6s ease;
+        transition: transform 0.6s ease;
+        transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+        -webkit-animation: blockAppear .6s ease-in-out;
+        animation: blockAppear .6s ease-in-out;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card:hover {
+            z-index: 999;
+            height: 100%;
+            width: 240px;
+            border: none !important;
+            /*            -webkit-transform: translate(-0px, -30px);
+                transform: translate(-0px, -30px);*/
+            /*            -webkit-transform: translate(-30px, -50px);
+                transform: translate(-10px, -10px);*/
+            /*            -webkit-transform: translate(0px, 30px);
+                transform: translate(0px, 30px);*/
+        }
+
+        .card:before {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            display: block;
+            content: '';
+            position: absolute;
+            width: 100%;
+            /*height: 100%;*/
+            -webkit-transition: -webkit-box-shadow 0.6s ease;
+            transition: -webkit-box-shadow 0.6s ease;
+            transition: box-shadow 0.6s ease;
+            transition: box-shadow 0.6s ease, -webkit-box-shadow 0.6s ease;
+            box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%) !important;
+        }
+
+        .card:hover:before {
+            max-width: 210px;
+            -webkit-box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
+            box-shadow: 25px 25px 20px RGBA(142, 142, 142, .6);
+            /*Para cambiar el ancho de la sombra*/
+            /*original:*/
+            /*box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);*/
+        }
+
+        .card:hover .card-img-top {
+            height: 210px;
+            width: 210px;
+        }
+
+        .card:hover .card-block {
+            /*ancho1*/
+            margin-top: 5px;
+            border-radius: 10px;
+            width: 210px;
+            background-image: -webkit-gradient(linear,right bottom, left top,from(rgb(72, 85, 108)),color-stop(50%, rgb(27, 33, 43)),color-stop(51%, rgb(20, 25, 34)),to(rgb(53, 59, 69)));
+            background-image: linear-gradient(to top left,rgb(72, 85, 108) 0%,rgb(27, 33, 43) 50%,rgb(20, 25, 34) 51%,rgb(53, 59, 69) 100%);
+            *box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
+            border-radius: 15px !important;
+        }
+
+        .card:hover .card-title {
+            color: white;
+            padding-left: 3px;
+        }
+
+    .card-title {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .card:hover .card-text {
+        color: white;
+        padding-left: 3px;
+    }
+
+    .card-block {
+        background-color: transparent;
+        background-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255, 255, 255, 0.75)),color-stop(0%, rgba(245, 245, 245, 0.75)),color-stop(16.6%, rgba(245, 245, 245, 0.75)),color-stop(37.8%, rgb(245, 245, 245)),color-stop(48.8%, rgb(245, 245, 245)),color-stop(53.1%, rgb(254, 254, 254)),color-stop(79.4%, rgba(245, 245, 245, 0.75)),color-stop(84.3%, rgba(245, 245, 245, 0.75)));
+        background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%);
+        background-repeat: no-repeat;
+        box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%) !important;
+        border-radius: 3px !important;
+        width: 100px;
+    }
+
+
+
+    .card-text {
+        padding-left: 3px;
+        padding-right: 3px;
+        color: lightyellow
+    }
+
+    .card-img-top {
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        -webkit-transition: height 0.8s ease;
+        transition: height 0.8s ease;
+        border-radius: 15px !important;
+        box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%) !important;
+    }
+</style>
+
+<style>
+    ul#menu {
+        font-size: 0;
+        z-index: 999;
+        position: relative;
+        display: block;
+        float: left;
+        padding: 0 7px 7px;
+        background-color: none;
+        border-radius: 0px;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+    }
+
+        ul#menu > li {
+            margin: 3px 0 0;
+        }
+
+        ul#menu a:active, ul#menu a:focus {
+            outline-style: none;
+        }
+
+        ul#menu a {
+            display: block;
+            vertical-align: middle;
+            text-align: left;
+            text-decoration: none;
+            font: 15px Noto Sans,Arial,Helvetica,sans-serif;
+            color: #000000;
+            cursor: pointer;
+            padding: 3px;
+            background-repeat: repeat;
+            border-width: 0px;
+            border-style: none;
+        }
+
+        ul#menu li.topmenu > a {
+            background-color: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #BBBBBB;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            padding: 3px 14px;
+            color: #BBBBBB;
+        }
+
+        ul#menu li.topmenu:hover > a, ul#menu li.topmenu a.pressed {
+            background-color: #86DbC8;
+            border-style: solid;
+            border-color: #86DbC8;
+            color: #314F49;
+        }
+
+    .tablero-menu-fondo {
+        background-image: url('../../Content/Imagenes/BACKGROUND_PRINCIPAL.jpg');
+        border: 2px;
+        border-radius: 5px;
+        color: rgb(72, 85, 108);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: calc(100% - 1px);
+        height: 81vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        position: relative;
+        z-index: 1;
+        overflow: auto;
+    }
+</style>
+
+<div class="tablero-menu-fondo">
+    <div class="row container col-md-12">
+
+        @if (Model != null)
+        {
+            var menuid = "";
+            var url = "";
+
+            for (var i = 0; i < Model.Count(); i++)
+            {
+                menuid = "menu" + i;
+                <div>
+                    <div class="card col-md-2" onmouseover="MostrarMenu(@menuid)" onmouseout="OcultarMenu(@menuid)">
+                        <div class="card-img-top" style="background-image: url('../../@Model[i].imagen'); background-position:center;background-size:contain"></div>
+                        <div class="card-block">
+                            <label class="card-title" style="text-align: center;">@Model[i].nomMenu</label>
+                            <div id=@menuid style="display:none">
+                                <p class="card-text">@Model[i].descripcion</p>
+                                <ul class="topmenu" id="menu">
+                                    @for (var j = i + 1; j < Model.Count(); j++)
+                                    {
+                                        if (string.IsNullOrWhiteSpace(@Model[j].idPadre))
+                                        {
+                                            break;
+
+                                        }
+                                        else
+                                        {
+                                            switch (Model[j].linkExterno)
+                                            {
+                                                case "0.0":  //Acceso del modulo central
+                                                    url = @Model[j].controller + "?Login=" + @Session["UsuarioAD"].ToString();
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    break;
+                                                case "1.0":  //Acceso a aplicaciones externas
+                                                    url = @Model[j].controller;
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    break;
+                                                case "2.0":  //Acceso   A SMS
+                                                    url = @Model[j].controller + @Session["UsuarioAD"].ToString() + "#";
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    break;
+                                                case "3.0":  //Acceso  Gestor contratación
+                                                    url = @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString();
+                                                    <li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    break;
+                                                case "4.0":  //Acceso  Telemedicina
+                                                             //url = "javascript:funcion()";
+                                                    var r = "'" + @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString() + "&Doc=" + "]" + @Session["UsuarioAD"].ToString() + "'";                                                 
+                                                    <li class="topmenu"><a id="myLink" href="javascript:ConsultarIdentificacion(@r);" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>
+                                                    //url = @Model[j].controller + "?Usuario=" + @Session["UsuarioAD"].ToString()+ "&Doc="+ javascript:funcion();
+                                                    break;
+
+                                            }
+                                        }
+                                        @*<li class="topmenu"><a href=@url target="_blank" style="width:195px;"><img src="" alt="">@Model[j].nomMenu</a></li>*@
+                                        i++;
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+       // $('#myLink').click(function () { funcion(); return false; });
+
+        window.onload = function () {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 8000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: '@ViewBag.AlertType',
+                title: '@ViewBag.Message'
+            });
+
+        };
+    </script>
+    
+}
+<script type="text/javascript">
+
+        function ConsultarIdentificacion(vruta) {
+
+        const dtos = vruta.split("]");
+       
+
+        jQuery.ajax({
+            url:'@Url.Action("GetInformacionUsuario", "Usuarios")',
+            type: "GET",
+            async: false,
+            cache: false,
+            data: { usuario : dtos[1]},
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {             
+
+                if (data != null) {
+                    var respuesta = JSON.parse(data);   
+                    var dato = dtos[0] + respuesta[0].idetificadion;//"43026263";
+                       window.open(dato, '_blank').focus();
+
+                    }
+
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+                    //hace algo antes des consultar
+                },
+            });
+
+
+        }
+</script>

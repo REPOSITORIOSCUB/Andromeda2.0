@@ -278,13 +278,19 @@
             buscar();
         };
 
-        function AsignarIdentificacion(idetificadion, nombre) {
-            document.getElementById("idpersona").value = idetificadion;
-            document.getElementById("nombrePersona").value = nombre;
-            $('#personaModal').modal("hide");
-
+        function AsignarIdentificacion(idetificadion, nombre, usuario) {
+            $("#idpersona").val("");
+            $("#nombrePersona").val("");
             $("#Password").val("");
             $("#Login").val("");
+
+            document.getElementById("idpersona").value = idetificadion;
+            document.getElementById("nombrePersona").value = nombre;     
+            document.getElementById("Login").value = usuario;     
+            document.getElementById("Password").value = idetificadion;
+            $('#personaModal').modal("hide");
+
+           
         };
 
         //busqueda por cedula

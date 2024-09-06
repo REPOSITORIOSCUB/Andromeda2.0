@@ -1890,10 +1890,13 @@
     <Content Include="Content\Imagenes\ADMINISTRATIVO-Y-FINANCIERO.JPG" />
     <Content Include="Content\Imagenes\APP EXTERNAS .jpg" />
     <Content Include="Content\Imagenes\ARMADOCUENTA.jpg" />
+    <Content Include="Content\Imagenes\AYUDAS_DIAGNOSTICAS.jpg" />
     <Content Include="Content\Imagenes\BACKGROUND_PRINCIPAL.jpg" />
     <Content Include="Content\Imagenes\ErrorPage.jpg" />
+    <Content Include="Content\Imagenes\FAMILIA-UPB.jpg" />
     <Content Include="Content\Imagenes\GENERALES.jpg" />
     <Content Include="Content\Imagenes\GESTION INTERNA .jpg" />
+    <Content Include="Content\Imagenes\MATRIZ-RIESGOS.jpg" />
     <Content Include="Content\Imagenes\MEJORAMIENTO CONTINUO.jpg" />
     <Content Include="Content\Imagenes\MONITOREO-COVID.JPG" />
     <Content Include="Content\Imagenes\PAGOS Y DONACIONES.jpg" />
@@ -1906,6 +1909,7 @@
     <Content Include="Content\Imagenes\Reportes\BalaceScoreCard.jpg" />
     <Content Include="Content\Imagenes\Reportes\CumplimientoPOA.jpg" />
     <Content Include="Content\Imagenes\Reportes\GesionDocumentos.jpg" />
+    <Content Include="Content\Imagenes\Reportes\GestionAltas.jpg" />
     <Content Include="Content\Imagenes\Reportes\GestionDeDocumentos.jpg" />
     <Content Include="Content\Imagenes\Reportes\GestionRiesgo.jpg" />
     <Content Include="Content\Imagenes\Reportes\Materna.jpg" />
@@ -1920,6 +1924,7 @@
     <Content Include="Content\Imagenes\REPOSITORIO.jpg" />
     <Content Include="Content\Imagenes\TELEMEDICINA_CUB.JPG" />
     <Content Include="Content\Imagenes\UTILIDADES-SMS.JPG" />
+    <Content Include="Content\Imagenes\wd1.svg" />
     <Content Include="Content\jsTree\docs.css" />
     <Content Include="Content\jsTree\themes\default-dark\32px.png" />
     <Content Include="Content\jsTree\themes\default-dark\40px.png" />
@@ -1979,6 +1984,7 @@
     <Content Include="Content\Login\vendor\select2\select2.min.js" />
     <Content Include="Content\Popup\estilos.css" />
     <Content Include="Content\Popup\popup.js" />
+    <Content Include="Content\TableroMenu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2255,6 +2261,7 @@
     <Content Include="Views\Shared\_jsTreeDemo.cshtml" />
     <Content Include="Views\jsTree3\Demo.cshtml" />
     <Content Include="Views\jsTree3\AJAXDemo.cshtml" />
+    <Content Include="Views\Home\Dashboard - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

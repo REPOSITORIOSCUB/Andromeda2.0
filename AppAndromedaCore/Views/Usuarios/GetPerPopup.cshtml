@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usuario)
+            </th>
             <th class="operaciones4"></th>
         </tr>        
     </thead>
@@ -42,9 +45,12 @@
                     @Html.DisplayFor(modelItem => item.nombre)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.usuario)
+                </td>
+                <td>
                     <a class="btn btn-success btn-xs tmn">
                         <i class="fa fa-plus-circle co" aria-hidden="true" style="color:#ffffff"
-                           onclick="AsignarIdentificacion(@item.idetificadion,'@item.nombre')"></i>
+                           onclick="AsignarIdentificacion(@item.idetificadion,'@item.nombre','@item.usuario')"></i>
                     </a>
 
                 </td>
@@ -58,6 +64,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usuario)
             </th>
             <th class="operaciones4"></th>
         </tr>

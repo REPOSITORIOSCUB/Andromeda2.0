@@ -97,13 +97,13 @@
         <div class="container">
             <span class="error animated tada" id="msg"></span>
             <form name="form1" class="box" th:object="${login}" method="post">
-                <div class="top-content-style">
+                <div class="top-content-style image-3d">
 
                     <img class="box effect2" src="~/Content/Login/images/Logo.png" alt="" style="width: 60%;" />
 
 
                 </div>
-                <h4>ANDRÓMEDA 2.0</h4>
+                <h4>ANDRÓMEDA 2.5</h4>
                 <h5>Bienvenido</h5>
                 @*<input type="text" name="email" placeholder="Usuario" autocomplete="off">*@
                 @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", onkeyup = "minusculas(this);" })

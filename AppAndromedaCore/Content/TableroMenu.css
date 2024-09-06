@@ -1,0 +1,317 @@
+﻿/* FONDO */
+/*.tablero-menu-fondo {
+    background-image: url('../../Content/Imagenes/BACKGROUND_PRINCIPAL.jpg');
+    border: 2px;
+    border-radius: 5px;
+    color: rgb(72, 85, 108);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: calc(100% - 1px);
+    height: 81vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    position: relative;
+    z-index: 1;
+    overflow: auto;
+}*/
+/*MENU*/
+.rounded-btn {
+    border-radius: 50px;
+}
+
+.menu-header {
+    padding: 10px;
+}
+
+.menu-image {
+    max-width: 80px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+    .menu-image:hover {
+        transform: scale(1.1);
+    }
+
+.fade-in {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.card-body {
+    display: none;
+    animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contenedor {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    flex-flow: row wrap !important;
+    justify-content: space-around !important;
+}
+
+.elemento {
+    width: 21%;
+}
+
+.card {
+    border: 0px !important;
+}
+
+/*.card-header {
+    background-color: rgb(31,84,157,0.9164040616246498) !important;*/
+    /*border-radius: 2rem !important;
+    margin: auto;*/
+    /*background: linear-gradient(288deg, rgba(31,84,157,0.3897934173669467) 0%, rgba(31,84,157,0.9164040616246498) 0%, rgba(0,212,255,1) 100%);*/
+    /*background-size: 200% 200%;*/
+    /*animation: wave 7s ease infinite;*/
+    /*border-radius: 2rem !important;
+    margin: auto;
+    overflow: hidden;
+}*/
+
+.card-header {
+    background-color: rgb(31, 84, 157, 0.9164040616246498) !important;
+    border-radius: 2rem !important;
+    margin: auto;
+    overflow: hidden;
+    background-size: 200% 200%;
+    /* Efecto de sombra para dar profundidad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Sombra suave */
+    0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra profunda */
+    /* Borde adicional para un efecto 3D */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Gradiente sutil para mayor profundidad */
+    background: linear-gradient(145deg, rgba(31, 84, 157, 0.9), rgba(0, 212, 255, 1));
+    /* Añadir una animación suave para darle vida */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card-header:hover {
+        transform: translateY(-5px); /* Elevar ligeramente en hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra más profunda en hover */
+    }
+
+
+.card-title {
+    font-size: 1rem;
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .card-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    h1 {
+        font-size: 2.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/*Modal*/
+.modal-header {
+    border-radius: 2rem;
+    box-shadow:inset;
+}
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Altura mínima del contenedor para ocupar toda la pantalla */
+}
+
+.modal-content {
+    margin: auto; /* Centra el contenido del modal */
+    background-color: #fff;
+    border-radius: 32px;
+}
+
+.list-group-item {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.rounded-btn {
+    border-radius: 5px !important;
+}
+
+    .rounded-btn:hover {
+        background-color: #dfedf4 !important;
+        border-radius: 2rem !important;
+    }
+
+.list-group-item {
+  font-size:20px;
+}
+/*Fondo de Menú*/
+/*body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}*/
+.cover {
+    width: 100%;
+    padding-bottom: 120px;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+}
+.wave-container {
+    /*position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff;*/ /* Cambia este color de fondo según prefieras */
+    width:100%;
+    height: 100%;
+    /*background: #fff;*/
+    position : relative;
+    top:0;
+}
+
+.main-content {
+    position: relative;
+    z-index: 10;  /*Asegura que el contenido principal esté encima de las olas */
+    text-align: center;
+    padding-top: 50px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: #0074D9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    .menu-item:hover {
+        transform: scale(1.1);
+    }
+
+/* Olas en CSS */
+.wave {
+    /*position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 200px;
+    background-color: #0074D9;*/ /* Color de las olas */
+    /*opacity: 0.6;
+    border-radius: 35% 45% 0 0;*/
+    width:6000px;
+    height:100%;
+    position: absolute;
+    top:150px;
+    left:0;
+    background-image:url(Imagenes/wd1.svg);
+    background-position:bottom;
+    z-index: 1; /* Asegura que las olas estén detrás del contenido principal */
+}
+
+.wave1 {   
+    animation: wave-animation 14s linear infinite;
+}
+
+.wave2 {
+   
+    animation: wave-animation2 14s linear -.125s infinite, desplazamiento 7s ease -.125s infinite;
+    opacity: 0.5
+}
+
+@keyframes wave-animation {
+
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes wave-animation2 {   
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes desplazamiento {
+    0%, 100% {
+       transform: translateY(-25px);
+
+    }
+    50% {
+       transform: translateY(10px);
+    
+    }
+}
+/* Fin Fondo de Menú*/

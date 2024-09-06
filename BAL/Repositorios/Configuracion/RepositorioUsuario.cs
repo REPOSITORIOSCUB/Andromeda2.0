@@ -330,7 +330,8 @@ namespace BAL.Repositorios.Configuracion
             InfoUsuariosModel obj = new InfoUsuariosModel();
 
             obj.idetificadion = registro[0].ToString();           
-            obj.nombre = registro[1].ToString();            
+            obj.nombre = registro[1].ToString();
+            obj.usuario = registro[2].ToString();
 
             return obj;
         }

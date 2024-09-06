@@ -532,6 +532,6 @@ C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\Microsoft.CodeDom.Pro
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\bin\DAL.pdb
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.AssemblyReference.cache
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CoreCompileInputs.cache
-C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.csproj.CopyComplete
+C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndro.611F621E.Up2Date
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.dll
 C:\RepositoriosProyectos\Andromeda2.0\AppAndromedaCore\obj\Debug\AppAndromedaCore.pdb

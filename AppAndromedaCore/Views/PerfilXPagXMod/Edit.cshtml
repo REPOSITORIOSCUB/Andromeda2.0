@@ -222,8 +222,8 @@
             $.post('/PerfilXPagXMod/GetPagina', { pxm: $('#IdCodModulo').val() })
                 .done(function (result) {
                     if (result) {
-
-                        
+                        debugger;
+                        console.table(result);
                         $("#IdCodCampo").empty();
 
                         $("#IdCodPerfil").empty();
@@ -254,6 +254,8 @@
                                 }
 
 
+                                console.table(itemData.objpag);
+                                debugger;
 
 
                                 if (itemData.objpag.length > 0) {
@@ -269,7 +271,7 @@
                                 
                                 setTimeout(function () {
                                     $('#jstree').jstree('open_all');
-                                    CargarOpciones();
+                                    //CargarOpciones();
                                 }, 500);
 
 
@@ -422,7 +424,9 @@
                      
                         if (result != "") {
                             var dato = JSON.parse(result);
-                            
+
+                            console.table(dato);
+                            debugger;
                             for (var i = 0; i < dato.pagina.length; i++) {
                                 
                                // console.log(dato.pagina[i].IdPagina);

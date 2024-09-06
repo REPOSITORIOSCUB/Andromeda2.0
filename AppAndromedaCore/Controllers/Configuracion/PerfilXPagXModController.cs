@@ -549,16 +549,16 @@ namespace AppAndromedaCore.Controllers.Configuracion
                     ViewBag.ListaModulo = new SelectList(lstmodulo.ToList(), "Value", "Text", _idmodulo);
                     //----------------------
                     ////-- Selector  de Página
-                    //IEnumerable<PaginaModel> objpagina = _repositorioPagina.getobj();
-                    //List<SelectListItem> lstpagina = new List<SelectListItem>();
-                    //foreach (PaginaModel pagina in objpagina)
-                    //{
-                    //    if (pagina.Id.ToString() != null)
-                    //    {
-                    //        lstpagina.Add(new SelectListItem() { Text = pagina.Mensaje, Value = pagina.Id.ToString() });
-                    //    }
-                    //}
-                    //ViewBag.ListaPagina = new SelectList(lstpagina.ToList(), "Value", "Text", objperxpagxmod.IdPagina);
+                    IEnumerable<PaginaModel> objpagina = _repositorioPagina.getobj();
+                    List<SelectListItem> lstpagina = new List<SelectListItem>();
+                    foreach (PaginaModel pagina in objpagina)
+                    {
+                        if (pagina.Id.ToString() != null)
+                        {
+                            lstpagina.Add(new SelectListItem() { Text = pagina.Mensaje, Value = pagina.Id.ToString() });
+                        }
+                    }
+                    ViewBag.ListaPagina = new SelectList(lstpagina.ToList(), "Value", "Text", objperxpagxmod.IdPagina);
                     ////----------------------
                     //-- Selector Estado----
                     ViewBag.ListaEstado = new SelectList(
@@ -837,7 +837,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 var pagina = ListaPPM.Where(x => x.IdModulo == modulo.Id).ToList();
 
                 IEnumerable<PerfilXModuloModel> ListaPerfiles = _repositorioPerfilXModulo.getobj();
-                var idPerfil = ListaPerfiles.Where(x => x.IdModulo == modulo.Id).ToList();
+                var idPerfil = ListaPerfiles.Where(x => x.IdPerfil == modulo.Id).ToList();
 
                 var idPagina1 = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
                 var lista = pagina.Select(x => new { x.IdPagina }).Distinct().ToList();
@@ -847,6 +847,7 @@ namespace AppAndromedaCore.Controllers.Configuracion
                 {
                     if (item.IdPagina != null)
                     {
+                        
                         var p = _repositorioPagina.FindId(item.IdPagina);
                         var perf = _repositorioTipoUsuario.FindId(item.IdPerfil);
                         item.IdPerfil = perf.Nombre;

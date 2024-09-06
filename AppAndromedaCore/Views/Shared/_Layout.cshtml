@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@* Ruta: Views/Shared/_Layout.cshtml *@
+@{
+    // Obtener la información del ensamblado utilizando reflexión
+    var assembly = typeof(AppAndromedaCore.MvcApplication).Assembly;
+    var companyAttribute = (System.Reflection.AssemblyCompanyAttribute)Attribute.GetCustomAttribute(assembly, typeof(System.Reflection.AssemblyCompanyAttribute));
+    var copyrightAttribute = (System.Reflection.AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(assembly, typeof(System.Reflection.AssemblyCopyrightAttribute));
+
+    // Asignar los valores de los atributos o mostrar un texto por defecto si no existen
+    var companyName = companyAttribute?.Company ?? "Nombre de la compañía no disponible";
+    var copyrightInfo = copyrightAttribute?.Copyright ?? "Derechos de autor no disponibles";
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -32,6 +43,7 @@
     @*<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">*@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapse text-sm">
     <div class="wrapper">
@@ -60,7 +72,7 @@
                             </button>
                         </div>
                     </div>*@
-                <h3 style="color:#ffffff">ANDRÓMEDA 2.0</h3>
+                <h3 style="color:#ffffff">ANDRÓMEDA 2.5</h3>
             </form>
 
             <!-- Right navbar links -->
@@ -85,6 +97,7 @@
                             </a>*@
                         <div class="dropdown-divider"></div>
                         <a href="/Home/LogOut" class="dropdown-item">
+                        @*<a href="http://10.66.36.221:9185/Home/LogIn" class="dropdown-item">*@
                             <i class="fas fa-sign-out-alt mr-2"></i> Salir
                         </a>
                         @*<div class="dropdown-divider"></div>
@@ -119,7 +132,7 @@
                     @*<div class="collapse" id="loggedinMenu">*@
                     <div>
                         <ul class="nav nav-aside mg-b-0">
-                            <li class="nav-item"><a href="http://andromeda:9185/Home/Dashboard" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
+                            <li class="nav-item"><a href="http://10.66.36.221:9185/Home/LogIn" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -148,8 +161,16 @@
                             </a>
                         </li>
                         <li class="clearfix">&nbsp;</li>
-                        <li class="nav-header">
-                            <h6 style="font-size: small;">V @typeof(AppAndromedaCore.MvcApplication).Assembly.GetName().Version</h6>
+                        <li class="nav-header" style=" text-align: center;">
+                            <h6 style="font-size: small; text-align: center;">
+                                V @typeof(AppAndromedaCore.MvcApplication).Assembly.GetName().Version
+                            </h6>
+                            <span style="font-family: 'Verdana'; font-size: xx-small; text-align: center;">
+                                @companyName
+                            </span><br />
+                            <span style="font-family: 'Verdana'; font-size: xx-small; text-align: center;">
+                                @copyrightInfo
+                            </span>
                         </li>
                     </ul>
                 </nav>
@@ -195,7 +216,7 @@
         <footer class="main-footer text-sm" style="height:37px">
             <div class="float-right d-none d-sm-inline-block">
                 @*<b>Version</b> 1.0.1.1*@
-                <h5> Proyecto Andrómeda - CTIC 2022</h5>
+                <h5> Proyecto Andrómeda - CTIC - @copyrightInfo</h5>
             </div>
         </footer>
     </div>
