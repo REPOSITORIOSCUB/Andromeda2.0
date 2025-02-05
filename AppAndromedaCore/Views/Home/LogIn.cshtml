@@ -103,20 +103,24 @@
 
 
                 </div>
-                <h4>ANDRÓMEDA 2.5</h4>
-                <h5>Bienvenido</h5>
-                @*<input type="text" name="email" placeholder="Usuario" autocomplete="off">*@
-                @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", onkeyup = "minusculas(this);" })
-                <i class="typcn typcn-eye" id="eye"></i>
-                @*<input type="password" name="password" placeholder="Contraseña" id="pwd" autocomplete="off">*@
-                @Html.TextBoxFor(model => model.Password, new { id = "pwd", placeholder = "Contraseña", autocomplete = "off", @class = "form-control input100", @type = "password" })
-                @*<label>
-                        <input type="checkbox">
-                        <span></span>
-                        <small class="rmb">Remember me</small>
-                    </label>
-                    <a href="#" class="forgetpass">Forget Password?</a>*@
-                <input type="submit" value="Ingresar" class="btn1">
+                <div class="logo-andromeda-container text-center">
+                    <img class="logo-andromeda" src="~/Content/Login/images/LogoAndromeda.png" alt="Logo Andromeda" />
+                    <h3>Bienvenido</h3>
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Login, new { placeholder = "Usuario", autocomplete = "off", @class = "form-control input100", onkeyup = "minusculas(this);" })
+                    <i class="typcn typcn-eye" id="eye"></i>
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Password, new { id = "pwd", placeholder = "Contraseña", autocomplete = "off", @class = "form-control input100", @type = "password" })
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Ingresar" class="btn btn-primary btn1">
+                </div>
+
             </form>
             @*<a href="#" class="dnthave">Don’t have an account? Sign up</a>*@
         </div>

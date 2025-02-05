@@ -15,7 +15,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ANDROMEDA 2.0</title>
+    <title>@ViewBag.Title - ANDROMEDA 2.5</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/bundles/AdminLT")
     @Scripts.Render("~/bundles/modernizr")
@@ -65,14 +65,18 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 @*<div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>*@
-                <h3 style="color:#ffffff">ANDRÓMEDA 2.5</h3>
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        </div>*@
+                <h3 style="color:#ffffff">ANDRÓMEDA 2.5 - Menu </h3>
+                
+                @*<div class="logo-andromeda-container2">                                      
+                    <img class="logo-andromeda2" src="~/Content/AdminLT/dist/img/LogoAndromedablanco.png" alt="Andrómeda" />
+                </div>*@
             </form>
 
             <!-- Right navbar links -->
@@ -96,7 +100,7 @@
                                 <span class="float-right text-muted text-sm">12 horas</span>
                             </a>*@
                         <div class="dropdown-divider"></div>
-                        <a href="/Home/LogOut" class="dropdown-item">
+                        <a href="/Home/LogIn" class="dropdown-item">
                         @*<a href="http://10.66.36.221:9185/Home/LogIn" class="dropdown-item">*@
                             <i class="fas fa-sign-out-alt mr-2"></i> Salir
                         </a>
@@ -132,7 +136,8 @@
                     @*<div class="collapse" id="loggedinMenu">*@
                     <div>
                         <ul class="nav nav-aside mg-b-0">
-                            <li class="nav-item"><a href="http://10.66.36.221:9185/Home/LogIn" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
+                            <li class="nav-item"><a href="/Home/LogIn" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>
+                            @*<li class="nav-item"><a href="http://10.66.36.221:9185/Home/LogIn" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Salir</span></a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -168,9 +173,9 @@
                             <span style="font-family: 'Verdana'; font-size: xx-small; text-align: center;">
                                 @companyName
                             </span><br />
-                            <span style="font-family: 'Verdana'; font-size: xx-small; text-align: center;">
+                            @*<span style="font-family: 'Verdana'; font-size: xx-small; text-align: center;">
                                 @copyrightInfo
-                            </span>
+                            </span>*@
                         </li>
                     </ul>
                 </nav>
@@ -200,7 +205,7 @@
             <!-- /.content-header -->
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid">                    
                     @RenderBody()
                 </div><!--/. container-fluid -->
             </section>
@@ -216,7 +221,8 @@
         <footer class="main-footer text-sm" style="height:37px">
             <div class="float-right d-none d-sm-inline-block">
                 @*<b>Version</b> 1.0.1.1*@
-                <h5> Proyecto Andrómeda - CTIC - @copyrightInfo</h5>
+                @*<h5>CTIC - @copyrightInfo</h5>*@
+                <h5>CTIC - 2025</h5>
             </div>
         </footer>
     </div>

@@ -14,8 +14,8 @@
     
     <div class="wave-container">
         <!-- Olas en movimiento -->
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
+        <!--<div class="wave wave1"></div>
+    <div class="wave wave2"></div>-->
         <!-- Aquí puedes agregar el contenido principal de tu página -->
         <div class="main-content">
             <div class="row justify-content-center d-flex flex-wrap">
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="card-body">
                                         @*<h5 class="card-title">@Model[i].nomMenu</h5>*@
-                                        <p class="card-text">@Model[i].descripcion</p>
+                                        <p class="card-text card-text-custom" style="color:white">@Model[i].descripcion</p>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
 
             </div>
         </div>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     </div>
  
 </header>
@@ -190,6 +190,79 @@
             });
 
           }
+    // background
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Añadir luz ambiental y direccional para resaltar efectos
+    const light = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(light);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    // Crear la esfera central con un material más sofisticado
+    const globeGeometry = new THREE.SphereGeometry(2, 64, 64);
+    const globeMaterial = new THREE.MeshStandardMaterial({
+        color: 0x3498db, // Azul que combina con la interfaz
+        wireframe: true,
+        emissive: 0x1f3f7a, // Leve brillo azul oscuro
+        roughness: 0.5
+    });
+    const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+    scene.add(globe);
+   
+    // Crear textura circular para los puntos
+    const circleTexture = new THREE.TextureLoader().load('/Content/threejs/circle.png', function (texture) {});//'https://threejs.org/examples/textures/sprites/circle.png');     
+    
+    //puntos orbitando
+    const pointsGeometry = new THREE.BufferGeometry();
+    const pointsMaterial = new THREE.PointsMaterial({
+        color: 0x02ccf9,
+        size: 0.08,
+        map: circleTexture,
+        transparent: true,
+        alphaTest: 0.5,
+        depthWrite: false 
+    });
+
+    const points = [];
+    for (let i = 0; i < 300; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.random() * Math.PI;
+        const x = 2.2 * Math.sin(phi) * Math.cos(theta);
+        const y = 2.2 * Math.sin(phi) * Math.sin(theta);
+        const z = 2.2 * Math.cos(phi);
+        points.push(x, y, z);
+    }
+    pointsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 4));
+    const pointCloud = new THREE.Points(pointsGeometry, pointsMaterial);
+    scene.add(pointCloud);
+
+    camera.position.z = 4;
+    // fin puntos
+
+
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        globe.rotation.y += 0.002;
+        pointCloud.rotation.y -= 0.0015;
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+    });
 
 </script>
 

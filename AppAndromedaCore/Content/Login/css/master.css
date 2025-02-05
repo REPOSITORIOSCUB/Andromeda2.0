@@ -340,4 +340,15 @@ label span {
 .effect2 {
     position: relative;
 }
+/*Logo andromeda*/
+.logo-andromeda-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+}
 
+.logo-andromeda {
+    width: 90%; /* Ajusta el tamaño según sea necesario */
+}

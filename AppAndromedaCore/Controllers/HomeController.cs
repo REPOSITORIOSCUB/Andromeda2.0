@@ -81,9 +81,9 @@ namespace AppAndromedaCore.Controllers
                         else
                         {
 
-                            TempData["Message"] = "Datos incorrectos favor valide el usuario ó contraseña.";
+                            TempData["Message"] = "No cuenta con permisos para ingresar.";
                             TempData["AlertType"] = "warning";
-                            ViewBag.Message = "Datos incorrectos favor valide el usuario ó contraseña.";
+                            ViewBag.Message = "No cuenta con permisos para ingresar.";
                             ViewBag.AlertType = "error";
                             return View(usuario);
                         }

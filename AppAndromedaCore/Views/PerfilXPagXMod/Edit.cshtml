@@ -152,7 +152,7 @@
     </div>
 
     @section Scripts {
-        <script src='~/Scripts/jsTree3/jstree.min.js'></script>
+ j       <script src='~/Scripts/jsTree3/jstree.min.js'></script>
 
         <script>
             var perfil = "";
@@ -222,11 +222,11 @@
             $.post('/PerfilXPagXMod/GetPagina', { pxm: $('#IdCodModulo').val() })
                 .done(function (result) {
                     if (result) {
-                        debugger;
-                        console.table(result);
+                        
+                       // console.table(result);
                         $("#IdCodCampo").empty();
 
-                        $("#IdCodPerfil").empty();
+                       // $("#IdCodPerfil").empty();
 
                         $("#menu").empty();
 
@@ -254,9 +254,7 @@
                                 }
 
 
-                                console.table(itemData.objpag);
-                                debugger;
-
+                                //console.table(itemData.objpag);
 
                                 if (itemData.objpag.length > 0) {
                                     //info.push({ "id": 0, "parent": '#', "text": "MENU", "icon": 'fa fa-bars', "disabled": true })
@@ -271,7 +269,7 @@
                                 
                                 setTimeout(function () {
                                     $('#jstree').jstree('open_all');
-                                    //CargarOpciones();
+                                     CargarOpciones();
                                 }, 500);
 
 
@@ -404,11 +402,11 @@
             });
             }
 
-            function CargarOpciones() {                           
+            function CargarOpciones() {                          
 
                 var vmodulo = $("#IdCodModulo").val();
                 var vperfil = perfil;
-                   
+                
                  $.ajax({
                     url: '@Url.Action("GetPaginasAsignadas", "PerfilXPagXMod")',
                     data: {
@@ -424,9 +422,7 @@
                      
                         if (result != "") {
                             var dato = JSON.parse(result);
-
-                            console.table(dato);
-                            debugger;
+                           
                             for (var i = 0; i < dato.pagina.length; i++) {
                                 
                                // console.log(dato.pagina[i].IdPagina);
